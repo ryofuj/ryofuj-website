@@ -12,12 +12,21 @@
             <img src="{{ url_for('static', filename='img-asset/' + project['image']) }}" alt="{{ project['company'] }}" />
             <div>
                 <h3>{{ project['role'] }}</h3>
-                <p>{{ project['comapny'] }}</p>
+                <p>{{ project['company'] }}</p>
                 <p>{{ project['description'] }}</p>
+                {% if project['link'] %}
+                    <p><a href="{{ project['link'] }}" target="_blank">Learn More</a></p>
+                {% endif %}
             </div>
         </div>
     {% else %}
-        <p>No project selected.</p>
+        {% if request.args.get('project_id') == '7' %}
+            <h1>Welcome to Schedule Mastermind</h1>
+            <p>This is where the Schedule Mastermind application will be displayed.</p>
+        {% else %}
+            <p>No project selected.</p>
+        {% endif %}
     {% endif %}
+
 </body>
 </html>

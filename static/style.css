@@ -505,6 +505,23 @@ body, html {
     -webkit-text-stroke: 1.5vw rgb(255, 255, 255);
 }
 
+.experience-block a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.experience-block a:hover {
+    text-decoration: underline;
+}
+
+.experience-block img {
+    max-width: 200px;
+    max-height: 200px;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
 
 
 @media (min-width: 768px) {
