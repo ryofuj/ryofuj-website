@@ -1,7 +1,7 @@
 from flask import Flask
-from app.main.views import main
-from app.app1.views import app1
-from app.app2.views import app2
+from apps.main.views import main
+from apps.app1.views import app1
+from apps.app2.views import app2
 # more projects... add 
 # from app.app3.views import app3
 
