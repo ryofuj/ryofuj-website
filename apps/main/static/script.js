@@ -64,3 +64,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+function openFeedbackForm() {
+    document.getElementById('feedback-modal').style.display = 'block';
+    document.getElementById('modal-overlay').style.display = 'block';
+  }
+  
+  function closeFeedbackForm() {
+    document.getElementById('feedback-modal').style.display = 'none';
+    document.getElementById('modal-overlay').style.display = 'none';
+  }
+  
+  // Close the modal when clicking outside of it
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('modal-overlay')) {
+      closeFeedbackForm();
+    }
+  }
+  
+  // Handle form submission
+  document.getElementById('feedback-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var feedback = document.getElementById('feedback').value;
+  
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/submit_feedback', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        alert('Thank you for your feedback!');
+        closeFeedbackForm();
+      }
+    };
+    xhr.send('feedback=' + encodeURIComponent(feedback));
+  });
+  

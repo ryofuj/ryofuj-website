@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify, redirect
-
+import os
+import sqlite3
 
 main = Blueprint(
     'main',
@@ -175,3 +176,22 @@ def experience():
         return render_template('main/experience.html', project=selected_project)
 
     return "Project not found", 404
+
+@main.route('/feedback')
+def feedback():
+    return render_template('main/feedback_form.html')
+
+@main.route('/submit_feedback', methods=['POST'])
+def submit_feedback():
+    feedback_text = request.form['feedback']
+    insert_feedback(feedback_text)
+    return jsonify({'status': 'success'})
+
+def insert_feedback(feedback_text):
+    db_path = os.path.join(os.path.dirname(__file__), 'feedback.db')
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    c.execute('CREATE TABLE IF NOT EXISTS feedback (id INTEGER PRIMARY KEY, text TEXT)')
+    c.execute('INSERT INTO feedback (text) VALUES (?)', (feedback_text,))
+    conn.commit()
+    conn.close()

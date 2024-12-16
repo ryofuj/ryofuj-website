@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from apps.main.views import main
 from apps.app1.views import app1
 from apps.app2.views import app2
@@ -16,3 +16,6 @@ def create_app():
     # app.register_blueprint(app3, url_prefix="/app3")
 
     return app
+
+def feedback():
+    return render_template('app1/feedback_form.html')

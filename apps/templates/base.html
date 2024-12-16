@@ -6,6 +6,17 @@
     {% block styles %}
     <!-- Default styles can go here -->
     {% endblock %}
+    <style>
+        #feedback-tab {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            background: #f00;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     {% block content %}
@@ -14,5 +25,8 @@
     {% block scripts %}
     <!-- Default scripts can go here -->
     {% endblock %}
+    <div id="feedback-tab">
+        <a href="#" onclick="openFeedbackForm()">Feedback</a>
+    </div>  
 </body>
 </html>
