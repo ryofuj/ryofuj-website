@@ -8,9 +8,9 @@ class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
     description = db.Column(db.Text, nullable=True)
-    image_url = db.Column(db.String(300), nullable=True)  # We can keep this for a main/thumbnail image
+    image_url = db.Column(db.String(300), nullable=True)
+    category = db.Column(db.String(50), nullable=True)  # <--- NEW
 
-    # Relationship to project images (optional convenience relationship)
     images = db.relationship('ProjectImage', backref='project', lazy=True)
 
     def to_dict(self):
@@ -19,9 +19,10 @@ class Project(db.Model):
             "title": self.title,
             "description": self.description,
             "image_url": self.image_url,
-            # Convert related images to dict
+            "category": self.category,
             "images": [img.to_dict() for img in self.images]
         }
+
 
 class ProjectImage(db.Model):
     __tablename__ = 'project_images'

@@ -15,6 +15,7 @@ CORS(app)
 
 # Create tables if they don't exist
 with app.app_context():
+    db.drop_all()
     db.create_all()
 
 # API Routes
