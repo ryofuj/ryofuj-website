@@ -17,21 +17,7 @@ CORS(app)
 with app.app_context():
     db.create_all()
 
-# Serve React build (production mode)
-@app.route('/')
-def index():
-    return send_from_directory(app.static_folder, 'index.html')
-
-# If you're handling sub-routes like /about or /projects in React (client-side), 
-# you can add a fallback route to always serve index.html:
-@app.errorhandler(404)
-def not_found(e):
-    return send_from_directory(app.static_folder, 'index.html')
-
-# -------------------
-# API ROUTES
-# -------------------
-
+# API Routes
 @app.route('/api/projects', methods=['GET'])
 def get_projects():
     """Return a list of all projects."""
@@ -43,6 +29,16 @@ def get_project(project_id):
     """Return a single project by ID."""
     project = Project.query.get_or_404(project_id)
     return jsonify(project.to_dict())
+
+# Serve React frontend only in production
+if os.getenv('FLASK_ENV') == 'production':
+    @app.route('/', defaults={'path': ''})
+    @app.route('/<path:path>')
+    def serve(path):
+        if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+            return send_from_directory(app.static_folder, path)
+        else:
+            return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
