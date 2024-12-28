@@ -3,7 +3,7 @@ from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 from models import db, Project
 
-app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
+app = Flask(__name__)
 
 # Configure the database (SQLite file named database.db)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -15,7 +15,6 @@ CORS(app)
 
 # Create tables if they don't exist
 with app.app_context():
-    db.drop_all()
     db.create_all()
 
 # API Routes

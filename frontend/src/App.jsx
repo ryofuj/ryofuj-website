@@ -2,9 +2,9 @@
    src/App.jsx
    ========================================= */
    import React, { useState, useEffect } from 'react';
-   // Example imports of your own components
    import ProjectTile from './components/ProjectTile';
    import Modal from './components/Modal';
+   import ErrorBoundary from './components/ErrorBoundary';
    
    function App() {
      // State for the list of projects
@@ -19,11 +19,12 @@
        fetch('/api/projects')
          .then((res) => res.json())
          .then((data) => {
+           console.log('Fetched Projects:', data);  // Debugging line
            setProjects(data);
            setLoading(false);
          })
          .catch((err) => {
-           console.error(err);
+           console.error('Error fetching projects:', err);
            setLoading(false);
          });
      }, []);
@@ -85,33 +86,35 @@
      }
    
      return (
-       <div className="App" style={{ padding: '1rem', fontFamily: 'sans-serif' }}>
-         <h1>My Portfolio</h1>
+       <ErrorBoundary>
+         <div className="App" style={{ padding: '1rem', fontFamily: 'sans-serif' }}>
+           <h1>My Portfolio</h1>
    
-         {/* 
-           Display a grid (or flex) of project tiles. 
-           Clicking a tile sets the URL hash, which triggers the modal.
-         */}
-         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-           {projects.map((project) => (
-             <ProjectTile
-               key={project.id}
-               project={project}
-               onClick={() => {
-                 window.location.hash = `project-${project.id}`;
-               }}
+           {/* 
+             Display a grid (or flex) of project tiles. 
+             Clicking a tile sets the URL hash, which triggers the modal.
+           */}
+           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+             {projects.map((project) => (
+               <ProjectTile
+                 key={project.id}
+                 project={project}
+                 onClick={() => {
+                   window.location.hash = `project-${project.id}`;
+                 }}
+               />
+             ))}
+           </div>
+   
+           {/* If a project is selected, render the Modal */}
+           {selectedProject && (
+             <Modal
+               project={selectedProject}
+               onClose={closeModal}
              />
-           ))}
+           )}
          </div>
-   
-         {/* If a project is selected, render the Modal */}
-         {selectedProject && (
-           <Modal
-             project={selectedProject}
-             onClose={closeModal}
-           />
-         )}
-       </div>
+       </ErrorBoundary>
      );
    }
    

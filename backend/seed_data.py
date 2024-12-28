@@ -1,21 +1,35 @@
-# Example seed_data.py
+import json
 from app import db, Project, app
 
-with app.app_context():
-    db.drop_all()
-    db.create_all()
+def seed_database():
+    # Load project data from projects.json
+    with open('projects.json', 'r') as f:
+        projects_data = json.load(f)
 
-    p1 = Project(
-        title="Project Alpha",
-        description="A test project",
-        image_url="/images/alpha.jpg"
-    )
-    p2 = Project(
-        title="Project Beta",
-        description="Another test project",
-        image_url="/images/beta.jpg"
-    )
+    with app.app_context():
+        # Drop existing tables and create new ones
+        db.drop_all()
+        db.create_all()
 
-    db.session.add_all([p1, p2])
-    db.session.commit()
-    print("Database seeded!")
+        # Iterate over project data and add to the database
+        for project in projects_data:
+            new_project = Project(
+                id=project['id'],
+                company=project['company'],
+                title=project['title'],
+                term=project['term'],
+                image_url=project.get('image_url'),
+                images=project.get('images', [project.get('image_url')]) if project.get('image_url') else [],
+                role=project['role'],
+                description=project['description'],
+                link=project['link'],
+                model_url=project.get('model_url')
+            )
+            db.session.add(new_project)
+
+        # Commit the session to save data
+        db.session.commit()
+        print("Database seeded with project data successfully!")
+
+if __name__ == "__main__":
+    seed_database()

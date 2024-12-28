@@ -6,51 +6,55 @@
    /**
     * Carousel
     * @param {string[]} images - An array of image URLs
-    * @param {number} interval - Milliseconds between auto-slide
+    * @param {number} interval - Milliseconds between auto-slide (default 3000)
     */
    function Carousel({ images = [], interval = 3000 }) {
      const [activeIndex, setActiveIndex] = useState(0);
    
      useEffect(() => {
+       if (images.length === 0) return;
+   
        // Auto-advance the carousel every 'interval' ms
        const timer = setInterval(() => {
-         setActiveIndex((prev) => (prev + 1) % images.length);
+         setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
        }, interval);
    
        return () => clearInterval(timer);
-     }, [images, interval]);
+     }, [images.length, interval]);
+   
+     // Handle manual navigation
+     const goToIndex = (index) => {
+       setActiveIndex(index);
+     };
    
      if (!images.length) {
        return <p>No images to display</p>;
      }
    
-     // Ensure index is valid
-     const currentIndex = activeIndex < images.length ? activeIndex : 0;
-     const currentImage = images[currentIndex];
-   
      return (
-       <div style={{ textAlign: 'center' }}>
-         {/* Display the current image */}
+       <div style={{ position: 'relative', textAlign: 'center' }}>
+         {/* Current Image */}
          <img
-           src={currentImage}
-           alt={`Carousel item ${currentIndex + 1}`}
-           style={{ maxWidth: '100%', display: 'block', margin: '0 auto' }}
+           src={images[activeIndex]}
+           alt={`Slide ${activeIndex + 1}`}
+           style={{ maxWidth: '100%', maxHeight: '400px', objectFit: 'cover', borderRadius: '8px' }}
          />
    
-         {/* Dots for manual nav (optional) */}
-         <div style={{ marginTop: '1rem' }}>
+         {/* Navigation Dots */}
+         <div style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)' }}>
            {images.map((_, idx) => (
              <span
                key={idx}
-               onClick={() => setActiveIndex(idx)}
+               onClick={() => goToIndex(idx)}
                style={{
-                 cursor: 'pointer',
                  display: 'inline-block',
-                 width: '10px',
-                 height: '10px',
-                 borderRadius: '50%',
+                 width: '12px',
+                 height: '12px',
                  margin: '0 5px',
-                 backgroundColor: idx === currentIndex ? '#333' : '#ccc'
+                 borderRadius: '50%',
+                 backgroundColor: idx === activeIndex ? '#fff' : 'rgba(255, 255, 255, 0.5)',
+                 cursor: 'pointer',
+                 boxShadow: '0 0 2px rgba(0,0,0,0.5)'
                }}
              />
            ))}
