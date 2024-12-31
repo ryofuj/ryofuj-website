@@ -64,18 +64,28 @@
             <div class="modal-content">
                 <span class="close" data-modal-id="{{ project.id }}">&times;</span>
                 <h2>{{ project.title }}</h2>
-                <p><strong>Position:</strong> {{ project.position }}</p>
-                <p><strong>Term:</strong> {{ project.term }}</p>
+                {% if project.position %}
+                    <p><strong>Position:</strong> {{ project.position }}</p>
+                {% endif %}
+                {% if project.term %}
+                    <p><strong>Term:</strong> {{ project.term }}</p>
+                {% endif %}
                 <p>{{ project.description }}</p>
                 {% if project.link %}
-                    <p><a href="{{ project.link }}" target="_blank">Learn More</a></p>
+                    {% if project.link.startswith('http') %}
+                        <p><a href="{{ project.link }}" target="_blank">Learn More</a></p>
+                    {% else %}
+                        <p><a href="{{ project.link }}">Learn More</a></p>
+                    {% endif %}
                 {% endif %}
                 <!-- Image Gallery -->
-                <div class="image-gallery">
-                    {% for image in project.images %}
-                        <img src="{{ url_for('static', filename='images/' + image.image_filename) }}" alt="{{ project.title }} Image {{ loop.index }}" loading="lazy">
-                    {% endfor %}
-                </div>
+                {% if project.images %}
+                    <div class="image-gallery">
+                        {% for image in project.images %}
+                            <img src="{{ url_for('static', filename='images/' + image.image_filename) }}" alt="{{ project.title }} Image {{ loop.index }}" loading="lazy">
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
@@ -133,6 +143,21 @@
                     modal.style.display = 'block';
                 }
             }
+
+            // Handle browser navigation (back/forward buttons)
+            window.addEventListener('popstate', () => {
+                const newHash = window.location.hash;
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                if (newHash.startsWith('#project')) {
+                    const projectId = newHash.replace('#project', '');
+                    const modal = document.getElementById(`modal${projectId}`);
+                    if (modal) {
+                        modal.style.display = 'block';
+                    }
+                }
+            });
         });
     </script>
 </body>
