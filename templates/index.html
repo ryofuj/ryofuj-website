@@ -1,164 +1,193 @@
-<!-- templates/index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Existing head content -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison Luxury Living</title>
-    <!-- Link to Google Fonts for MuseoModerno -->
-    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- Optional: Include Font Awesome for icons (if using) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVvFdqYPPgk3mpmKjcNJIg8eI4kKKykX8q0Y/PAF1KyfW3zNFPKqfB0IzxaPlxnjTqIKz2BtfN6+7VZIl9+qPQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ryo Fujimura</title>
+  <!-- Google Fonts for MuseoModerno -->
+  <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet" />
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <!-- Optional: Font Awesome (if using icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pVvFdqYPPgk3mpmKjcNJIg8eI4kKKykX8q0Y/PAF1KyfW3zNFPKqfB0IzxaPlxnjTqIKz2BtfN6+7VZIl9+qPQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-    <div class="container">
-        <!-- Logo -->
-        <div id="logo" class="box" style="grid-area: logo;">
-            {% if logo.image_filename %}
-                <img src="{{ url_for('static', filename='images/' + logo.image_filename) }}" alt="Maison Luxury Living Logo" loading="lazy">
-            {% endif %}
-            <!-- Removed the logo text -->
-            <!-- <h1 class="logo">{{ logo.text }}</h1> -->
-        </div>
-
-        <!-- Profile Picture -->
-        <div id="profilePicture" class="box" style="grid-area: profilePicture;">
-            {% if profile.image_filename %}
-                <img src="{{ url_for('static', filename='images/' + profile.image_filename) }}" alt="Profile Picture" loading="lazy">
-            {% endif %}
-            <!-- Description removed as per request -->
-            <!-- <p class="subtext">{{ profile.description }}</p> -->
-        </div>
-
-        <!-- Projects -->
-        {% for project in projects %}
-            <div id="project{{ project.id }}" class="box project-tile" style="grid-area: {{ project.grid_position }};">
-                {% if project.image_filename %}
-                    <img src="{{ url_for('static', filename='images/' + project.image_filename) }}" alt="{{ project.title }}" loading="lazy">
-                {% endif %}
-                <!-- Sticker for Project Type -->
-                <div class="sticker {{ project.project_type|lower }}">
-                    {{ project.project_type }}
-                </div>
-                <!-- Project Title as Button -->
-                <button class="project-title-button" data-project-id="{{ project.id }}">
-                    {{ project.title }}
-                </button>
-            </div>
-        {% endfor %}
-
-        <!-- Name Tile -->
-        <div id="name" class="box" style="grid-area: name;">
-            <p class="full-name">{{ name.full_name }}</p>
-            <h2 class="title">{{ name.title }}</h2>
-            <p class="intro" id="typewriter-intro">{{ name.intro }}</p>
-        </div>
+  <div class="container">
+    <!-- Logo Tile -->
+    <div id="logo" class="box" style="grid-area: logo;">
+      {% if logo.image_filename %}
+        <img
+          src="{{ url_for('static', filename='images/' + logo.image_filename) }}"
+          alt="Ryo Fujimura's Logo"
+          loading="lazy"
+        />
+      {% endif %}
     </div>
 
-    <!-- Modals for Projects -->
+    <!-- Profile Picture Tile -->
+    <div id="profilePicture" class="box" style="grid-area: profilePicture;">
+      {% if profile.image_filename %}
+        <img
+          src="{{ url_for('static', filename='images/' + profile.image_filename) }}"
+          alt="Profile Picture"
+          loading="lazy"
+        />
+      {% endif %}
+    </div>
+
+    <!-- Loop through Projects -->
     {% for project in projects %}
-        <div id="modal{{ project.id }}" class="modal">
-            <div class="modal-content">
-                <span class="close" data-modal-id="{{ project.id }}">&times;</span>
-                <h2>{{ project.title }}</h2>
-                {% if project.position %}
-                    <p><strong>Position:</strong> {{ project.position }}</p>
-                {% endif %}
-                {% if project.term %}
-                    <p><strong>Term:</strong> {{ project.term }}</p>
-                {% endif %}
-                <p>{{ project.description }}</p>
-                {% if project.link %}
-                    {% if project.link.startswith('http') %}
-                        <p><a href="{{ project.link }}" target="_blank">Learn More</a></p>
-                    {% else %}
-                        <p><a href="{{ project.link }}">Learn More</a></p>
-                    {% endif %}
-                {% endif %}
-                <!-- Image Gallery -->
-                {% if project.images %}
-                    <div class="image-gallery">
-                        {% for image in project.images %}
-                            <img src="{{ url_for('static', filename='images/' + image.image_filename) }}" alt="{{ project.title }} Image {{ loop.index }}" loading="lazy">
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
+      <!-- Make the entire tile a button -->
+      <button
+        id="project{{ project.id }}"
+        class="box project-tile"
+        style="grid-area: {{ project.grid_position }};"
+        data-project-id="{{ project.id }}"
+      >
+        <!-- Sticker at Top-Right -->
+        <div class="sticker {{ project.project_type|lower }}">
+          {{ project.project_type }}
         </div>
+
+        <!-- Centered Content: Title (large) + Smaller Image -->
+        <div class="project-content">
+          <!-- Large Title -->
+          <h3 class="project-title">{{ project.title }}</h3>
+          <!-- Smaller Image -->
+          {% if project.image_filename %}
+            <img
+              class="project-image"
+              src="{{ url_for('static', filename='images/' + project.image_filename) }}"
+              alt="{{ project.title }}"
+              loading="lazy"
+            />
+          {% endif %}
+        </div>
+      </button>
     {% endfor %}
 
-    <!-- Typewriter Animation Script -->
-    <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Handle opening modals
-            const buttons = document.querySelectorAll('.project-title-button');
-            const modals = document.querySelectorAll('.modal');
-            const closes = document.querySelectorAll('.close');
+    <!-- Name Tile -->
+    <div id="name" class="box" style="grid-area: name;">
+      <p class="full-name">{{ name.full_name }}</p>
+      <h2 class="title">{{ name.title }}</h2>
+      <p class="intro" id="typewriter-intro">{{ name.intro }}</p>
+    </div>
+  </div>
 
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const projectId = button.getAttribute('data-project-id');
-                    const modal = document.getElementById(`modal${projectId}`);
-                    if (modal) {
-                        modal.style.display = 'block';
-                        // Update the URL with project parameter
-                        history.pushState(null, '', `#project${projectId}`);
-                    }
-                });
-            });
+  <!-- Project Modals -->
+  {% for project in projects %}
+    <div id="modal{{ project.id }}" class="modal">
+      <div class="modal-content">
+        <!-- Close Button -->
+        <span class="close" data-modal-id="{{ project.id }}">&times;</span>
 
-            closes.forEach(close => {
-                close.addEventListener('click', () => {
-                    const projectId = close.getAttribute('data-modal-id');
-                    const modal = document.getElementById(`modal${projectId}`);
-                    if (modal) {
-                        modal.style.display = 'none';
-                        // Remove the project parameter from the URL
-                        history.pushState(null, '', window.location.pathname);
-                    }
-                });
-            });
+        <!-- Modal Details -->
+        <h2>{{ project.title }}</h2>
+        {% if project.position %}
+          <p><strong>Position:</strong> {{ project.position }}</p>
+        {% endif %}
+        {% if project.term %}
+          <p><strong>Term:</strong> {{ project.term }}</p>
+        {% endif %}
+        {% if project.description %}
+          <p>{{ project.description }}</p>
+        {% endif %}
+        {% if project.link %}
+          <p>
+            <a href="{{ project.link }}" target="_blank">Learn More</a>
+          </p>
+        {% endif %}
 
-            // Close modals when clicking outside the modal content
-            window.addEventListener('click', (event) => {
-                modals.forEach(modal => {
-                    if (event.target == modal) {
-                        modal.style.display = 'none';
-                        // Remove the project parameter from the URL
-                        history.pushState(null, '', window.location.pathname);
-                    }
-                });
-            });
+        <!-- Additional Images (if any) -->
+        <div class="image-gallery">
+          {% for image in project.images %}
+            <img
+              src="{{ url_for('static', filename='images/' + image.image_filename) }}"
+              alt="{{ project.title }} Image {{ loop.index }}"
+              loading="lazy"
+            />
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 
-            // Open modal based on URL hash
-            const hash = window.location.hash;
-            if (hash.startsWith('#project')) {
-                const projectId = hash.replace('#project', '');
-                const modal = document.getElementById(`modal${projectId}`);
-                if (modal) {
-                    modal.style.display = 'block';
-                }
-            }
+  <!-- Typewriter JS -->
+  <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
 
-            // Handle browser navigation (back/forward buttons)
-            window.addEventListener('popstate', () => {
-                const newHash = window.location.hash;
-                modals.forEach(modal => {
-                    modal.style.display = 'none';
-                });
-                if (newHash.startsWith('#project')) {
-                    const projectId = newHash.replace('#project', '');
-                    const modal = document.getElementById(`modal${projectId}`);
-                    if (modal) {
-                        modal.style.display = 'block';
-                    }
-                }
-            });
+  <!-- Modal Handling JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const projectTiles = document.querySelectorAll('.project-tile');
+      const modals = document.querySelectorAll('.modal');
+      const closes = document.querySelectorAll('.close');
+
+      // Open modal on tile click
+      projectTiles.forEach((tile) => {
+        tile.addEventListener('click', () => {
+          const projectId = tile.getAttribute('data-project-id');
+          const modal = document.getElementById(`modal${projectId}`);
+          if (modal) {
+            modal.style.display = 'block';
+            history.pushState(null, '', `#project${projectId}`);
+          }
         });
-    </script>
+      });
+
+      // Close modal on clicking close button
+      closes.forEach((close) => {
+        close.addEventListener('click', () => {
+          const projectId = close.getAttribute('data-modal-id');
+          const modal = document.getElementById(`modal${projectId}`);
+          if (modal) {
+            modal.style.display = 'none';
+            history.pushState(null, '', window.location.pathname);
+          }
+        });
+      });
+
+      // Close modal when clicking outside modal content
+      window.addEventListener('click', (event) => {
+        modals.forEach((modal) => {
+          if (event.target === modal) {
+            modal.style.display = 'none';
+            history.pushState(null, '', window.location.pathname);
+          }
+        });
+      });
+
+      // Open modal if URL has a #project hash
+      const hash = window.location.hash;
+      if (hash.startsWith('#project')) {
+        const projectId = hash.replace('#project', '');
+        const modal = document.getElementById(`modal${projectId}`);
+        if (modal) {
+          modal.style.display = 'block';
+        }
+      }
+
+      // Handle back/forward browser navigation
+      window.addEventListener('popstate', () => {
+        const newHash = window.location.hash;
+        // Close all modals first
+        modals.forEach((modal) => {
+          modal.style.display = 'none';
+        });
+        if (newHash.startsWith('#project')) {
+          const projectId = newHash.replace('#project', '');
+          const modal = document.getElementById(`modal${projectId}`);
+          if (modal) {
+            modal.style.display = 'block';
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>

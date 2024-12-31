@@ -1,78 +1,69 @@
-/* static/css/style.css */
-
+/* Root Variables for Theme */
 :root {
     --primary-color: #d7b99e;
     --secondary-color: #f4efe8;
     --accent-color: #333;
     --black: #000000; /* Pitch Black */
     --white: #ffffff;
-    --page-background-color: #191919; /* Updated Background */
+    --page-background-color: #191919; /* Dark Gray */
     --logo-background-color: #000000; /* Pitch Black */
-    --logo-padding: 20px; /* Thick padding for logo tile */
-    --font-family: 'MuseoModerno', sans-serif; /* MuseoModerno Font */
-    /* Golden Ratio Constants */
-    --golden-ratio: 1.618;
-    /* Sticker Colors */
-    --project-sticker-color: #ff9800; /* Orange for Projects */
-    --experience-sticker-color: #4caf50; /* Green for Experiences */
+    --logo-padding: 20px; /* Thick padding for the logo tile */
+    --font-family: 'MuseoModerno', sans-serif; /* Custom Font */
+    --golden-ratio: 1.618; /* For scaling font sizes */
+    --project-sticker-color: #ff9800;    /* Orange for 'Project' */
+    --experience-sticker-color: #4caf50; /* Green for 'Experience' */
 }
 
-/* Ensure all elements use border-box sizing */
-*, *::before, *::after {
-    box-sizing: border-box; /* Ensures consistent sizing */
-}
-
-/* Set page background */
-body {
-    font-family: var(--font-family);
+/* Reset and Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: var(--page-background-color); /* Set background to #191919 */
-    color: var(--white); /* Change text color to white for better contrast */
+}
+
+/* Body Styling */
+body {
+    font-family: var(--font-family), Arial, sans-serif;
+    background-color: var(--page-background-color);
+    color: var(--white);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
+/* Main Container: Grid Layout */
 .container {
     display: grid;
-    /* Define grid areas based on your initial layout */
     grid-template-rows: repeat(7, 25vh);
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px; /* Increased gap from 10px to 20px for more spacing */
-    padding: 20px; /* Adjusted padding for consistency */
+    gap: 20px;
+    padding: 20px;
     flex-grow: 1;
 
     grid-template-areas:
-        /* row a */
         "profilePicture project1 logo project2"
-        /* row b */
         "profilePicture name name project2"
-        /* row c */
         "project3 name name project6"
-        /* row d */
         "project4 project4 project5 project6"
-        /* row e */
         "project7 project8 project9 project10"
-        /* row f */
         "project11 project12 project13 project14"
-        /* row g */
         "project15 project15 project15 project15";
 }
 
-/* Shared styles for boxes */
+/* Shared Tile Styles */
 .box {
-    position: relative; /* To position the sticker absolutely within the box */
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: var(--primary-color);
     border-radius: 8px;
-    padding: 15px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* Ensures child elements respect the border-radius */
+    overflow: hidden;
 }
 
 .box:hover {
@@ -80,135 +71,150 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Specific styles for the logo image with reduced size */
-#logo img {
-    width: 50%; /* Reduced from 100% to 50% */
-    height: auto;
-    object-fit: contain; /* Ensures the entire image is visible without cropping */
-    border-radius: 8px; /* Matches the box's border-radius */
-    max-height: 100%; /* Prevents the image from exceeding the container's height */
-    /* Optional: Add inner padding */
-    /* padding: 10px; */
-}
-
-/* Adjust the logo box to accommodate the logo image with padding */
+/* Logo Tile */
 #logo.box {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--logo-padding); /* Reintroduce thick padding */
-    background-color: var(--logo-background-color); /* Pitch Black */
-    /* Optional: Add border or outline */
-    /* border: 2px solid rgba(255, 255, 255, 0.2); */
+    padding: var(--logo-padding);
+    background-color: var(--logo-background-color);
 }
 
-/* Reapply object-fit: cover for other images */
-.box:not(#logo) img {
+#logo img {
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    max-height: 100%;
+}
+
+/* Profile Picture Tile */
+#profilePicture.box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
 }
 
-/* Fade-In Animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Entire Tile as Button for Projects */
+.project-tile {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    /* Center content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Animation Class */
-.fade-in {
-    animation: fadeIn 1s ease-in-out;
+.project-tile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Full Name Styles */
-.full-name {
-    font-size: calc(1em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.618em */
-    font-weight: bold;
-    margin: 0;
-    color: var(--white); /* Ensure contrast */
-}
-
-/* Title Styles */
-.title {
-    font-size: calc(1em * var(--golden-ratio)); /* ~1.618em */
-    font-weight: semi-bold;
-    margin: 5px 0;
-    color: var(--white);
-}
-
-/* Intro Typewriter Styles */
-.intro {
-    font-size: 1em; /* Base font size */
-    color: var(--white); /* Ensure contrast against the black background */
-    white-space: normal; /* Allow text to wrap */
-    overflow: hidden; /* Hide the overflowing text */
-    border-right: 0.15em solid var(--white); /* Cursor effect */
-    animation: blink-caret 0.75s step-end infinite; /* Cursor blink animation */
-    width: 90%; /* Adjust width to control text wrapping within the tile */
-    margin: 0 auto; /* Center the intro text */
-}
-
-/* Blink Cursor Animation */
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--white); }
-}
-
-/* Specific styles for profilePicture */
-#profilePicture.box {
-    padding: 0; /* Removes padding to allow the image to fill the tile */
-}
-
-/* Sticker Styles */
+/* The sticker remains top-right inside the tile */
 .sticker {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.7);
     color: var(--white);
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 0.8em;
     font-weight: bold;
     text-transform: uppercase;
-    pointer-events: none; /* Allows clicks to pass through */
+    pointer-events: none; /* not clickable */
 }
 
-/* Specific sticker colors based on project_type */
+/* Sticker Colors Based on Type */
 .sticker.project {
-    background-color: var(--project-sticker-color); /* Orange for Projects */
+    background-color: var(--project-sticker-color);
 }
 
 .sticker.experience {
-    background-color: var(--experience-sticker-color); /* Green for Experiences */
+    background-color: var(--experience-sticker-color);
 }
 
-/* Modal Styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+/* Project Content: Title & Image in Center */
+.project-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal-content {
-    background-color: var(--page-background-color); /* Match page background */
-    margin: 5% auto; /* 5% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+.project-title {
+    font-size: 1.2em; /* Larger Title */
+    margin-bottom: 10px;
+    color: var(--white);
+    font-weight: bold;
+    text-align: center;
+}
+
+.project-image {
+    width: 60%;           /* Smaller than before */
+    height: auto;
+    object-fit: contain;  /* Entire image visible without cropping */
     border-radius: 8px;
-    position: relative;
+}
+
+/* Name Tile */
+#name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#name .full-name {
+    font-size: calc(1em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.618em */
+    font-weight: bold;
     color: var(--white);
 }
 
-/* Close Button */
+#name .title {
+    font-size: calc(1em * var(--golden-ratio)); /* ~1.618em */
+    font-weight: semi-bold;
+    margin: 10px 0;
+    color: var(--white);
+}
+
+#name .intro {
+    font-size: 1em;
+    text-align: center;
+    color: var(--white);
+    white-space: normal;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: var(--page-background-color);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 8px;
+    color: var(--white);
+    position: relative;
+}
+
 .close {
     color: #aaa;
     float: right;
@@ -217,14 +223,11 @@ body {
     cursor: pointer;
 }
 
-.close:hover,
-.close:focus {
+.close:hover {
     color: #fff;
-    text-decoration: none;
-    cursor: pointer;
 }
 
-/* Image Gallery within Modal */
+/* Image Gallery in Modal */
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -237,35 +240,12 @@ body {
     border-radius: 4px;
 }
 
-/* Adjust image gallery for larger screens */
-@media (min-width: 768px) {
-    .image-gallery img {
-        width: calc(33.333% - 10px);
-    }
-}
-
-/* Project Title Button Styles */
-.project-title-button {
-    background-color: transparent;
-    border: none;
-    color: var(--white);
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.project-title-button:hover {
-    color: var(--accent-color);
-}
-
-/* Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .container {
-        grid-template-rows: auto;
         grid-template-columns: 1fr;
-        gap: 10px; /* Reduced gap for smaller screens */
-        padding: 10px; /* Adjusted padding for smaller screens */
+        gap: 10px;
+        padding: 10px;
 
         grid-template-areas:
             "logo"
@@ -288,35 +268,34 @@ body {
             "project15";
     }
 
-    /* Further reduce logo size on smaller screens */
     #logo img {
-        width: 40%; /* Reduce logo size to 40% */
+        width: 40%;
     }
 
-    /* Adjust font sizes based on Golden Ratio */
-    .full-name {
-        font-size: calc(1em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.618em */
+    #name .full-name {
+        font-size: calc(1em * var(--golden-ratio) * var(--golden-ratio));
     }
 
-    .title {
-        font-size: calc(1em * var(--golden-ratio)); /* ~1.618em */
+    #name .title {
+        font-size: calc(1em * var(--golden-ratio));
     }
 
-    .intro {
-        font-size: 1em; /* Base font size */
-        width: 100%; /* Allow full width for smaller screens */
+    #name .intro {
+        font-size: 1em;
     }
 
-    /* Adjust sticker font size for smaller screens */
     .sticker {
         font-size: 0.7em;
         padding: 4px 8px;
+    }
+
+    .project-image {
+        width: 70%;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        grid-template-columns: 1fr;
         padding: 5px;
     }
 
@@ -324,50 +303,48 @@ body {
         padding: 10px;
     }
 
-    /* Further reduce logo size on very small screens */
     #logo img {
-        width: 30%; /* Reduce logo size to 30% */
+        width: 30%;
     }
 
-    /* Adjust font sizes based on Golden Ratio */
-    .full-name {
-        font-size: calc(0.8em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.094em */
+    #name .full-name {
+        font-size: calc(0.8em * var(--golden-ratio) * var(--golden-ratio));
     }
 
-    .title {
-        font-size: calc(0.8em * var(--golden-ratio)); /* ~1.294em */
+    #name .title {
+        font-size: calc(0.8em * var(--golden-ratio));
     }
 
-    .intro {
-        font-size: 0.8em; /* Slightly smaller for mobile */
-        width: 100%; /* Allow full width for smaller screens */
+    #name .intro {
+        font-size: 0.8em;
     }
 
-    /* Adjust sticker font size for very small screens */
     .sticker {
         font-size: 0.6em;
         padding: 3px 6px;
     }
+
+    .project-image {
+        width: 80%;
+    }
 }
 
-/* Additional spacing for computer view */
 @media (min-width: 769px) {
     .container {
-        gap: 20px; /* Ensures more spacing only for larger screens */
+        gap: 20px;
         padding: 20px;
     }
 
-    /* Adjust font sizes based on Golden Ratio */
-    .full-name {
-        font-size: calc(1.2em * var(--golden-ratio) * var(--golden-ratio)); /* ~3.142em */
+    #name .full-name {
+        font-size: calc(1.2em * var(--golden-ratio) * var(--golden-ratio));
     }
 
-    .title {
-        font-size: calc(1.2em * var(--golden-ratio)); /* ~1.942em */
+    #name .title {
+        font-size: calc(1.2em * var(--golden-ratio));
     }
 
-    .intro {
-        font-size: 1.2em; /* Slightly larger for desktop */
-        width: 90%; /* Control width for better wrapping */
+    #name .intro {
+        font-size: 1.2em;
+        width: 90%;
     }
 }

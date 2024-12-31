@@ -1,53 +1,42 @@
 # populate_db.py
 
 from app import app, db
-from models import Logo, Profile, Project, Name, Image
-
-def map_type(original_type):
-    """Map the original type to the project_type in the Project model."""
-    mapping = {
-        "Work": "Experience",
-        "Leadership": "Experience",
-        "Project": "Project",
-        "Publication": "Publication"  # Ensure your Project model accommodates this
-    }
-    return mapping.get(original_type, "Other")  # Default to "Other" if type not found
+from models import Logo, Profile, Name, Project, Image
 
 def populate():
     with app.app_context():
         # Clear existing data
         db.drop_all()
         db.create_all()
-        
+
         # Add Logo
         logo = Logo(
-            image_filename='logo.jpg',
-            # Removed the 'text' field as per previous updates
+            image_filename='logo.png'
         )
         db.session.add(logo)
-        
+
         # Add Profile
         profile = Profile(
             image_filename='profile.jpg'
         )
         db.session.add(profile)
-        
+
         # Add Name
         name = Name(
-            full_name='John Doe',
-            title='Senior Interior Designer',
-            intro='Passionate about creating luxurious and comfortable living spaces.'
+            full_name='Ryo Fujimura',
+            title='Software Engineer',
+            intro='Student at CSULB, majoring in computer science. Add something more here...'
         )
         db.session.add(name)
-        
-        # Define the project data
-        project_data = [
+
+        # Add Projects with project_type and other details
+        projects_data = [
             {
                 "company": "American Honda Motor Company, Inc.",
-                "type": "Work",
+                "type": "Project",
                 "term": "June 2024 - August 2024",
                 "image": "honda.svg",
-                "title": "Software Engineer",
+                "title": "Software Engineer Intern",
                 "description": "Conducted comprehensive research on on-device generative AI, focusing on its potential applications within the automotive industry to enhance vehicle functionalities. Developed and demonstrated applications on an NVIDIA Jetson Orin Nano 8GB using Linux and CUDA, showcasing on-device generative AI capabilities with Meta's Llama 3 model to enhance vehicle autonomy and local AI performance.",
                 "link": "https://www.honda.com/"
             },
@@ -80,7 +69,7 @@ def populate():
             },
             {
                 "company": "Matcha Time",
-                "type": "Project",
+                "type": "Work",
                 "term": "March 2024 - April 2024",
                 "image": "matchatime.svg",
                 "title": "Co-PM and Developer",
@@ -130,44 +119,56 @@ def populate():
                 "image": "resume.png",
                 "title": "6G Network and Data Management with Blockchain",
                 "description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
-                "link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing&ouid=105540344575210946400&rtpof=true&sd=true"
+                "link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing"
             },
             # Add more projects as needed
         ]
-        
-        # Create Project instances
-        projects = []
-        for pdata in project_data:
+
+        new_projects = []
+        grid_pos_counter = 1
+
+        for item in projects_data:
+            # Determine project_type based on 'type' field
+            type_lower = item["type"].lower()
+            if type_lower in ["work", "leadership"]:
+                project_type = "Experience"
+            elif type_lower in ["project", "publication"]:
+                project_type = "Project"
+            else:
+                project_type = "Experience"  # Default fallback
+
+            grid_position = f"project{grid_pos_counter}"
+            grid_pos_counter += 1
+
             project = Project(
-                title=pdata["title"],
-                image_filename=pdata["image"],
-                grid_position=f"project{len(projects) + 1}",  # Assign grid positions sequentially
-                project_type=map_type(pdata["type"]),
-                position=pdata.get("position", ""),  # Default to empty string if not provided
-                term=pdata.get("term", ""),
-                description=pdata.get("description", ""),
-                link=pdata.get("link", "")
+                title=item["title"],
+                image_filename=item["image"],
+                grid_position=grid_position,
+                project_type=project_type,
+                position=item.get("company", ""),
+                term=item.get("term", ""),
+                description=item.get("description", ""),
+                link=item.get("link", "")
             )
-            projects.append(project)
-        
+            new_projects.append(project)
+
         # Add all projects to the session and commit to assign IDs
-        db.session.add_all(projects)
+        db.session.add_all(new_projects)
         db.session.commit()
-        
-        # Create Image instances and associate them with Projects
-        images = []
-        for project in projects:
-            # Assuming one image per project as per provided data
-            image = Image(
-                project_id=project.id,
-                image_filename=project.image_filename
-            )
-            images.append(image)
-        
-        # Add all images to the session and commit
-        db.session.add_all(images)
-        db.session.commit()
-        
+
+        # Add Images for each project if needed (optional)
+        # Since each project in your data has only one image, we can skip this step
+        # If you have multiple images per project, you can add them here
+        #
+        # Example:
+        # images = [
+        #     Image(project_id=new_projects[0].id, image_filename='project1_1.jpg'),
+        #     Image(project_id=new_projects[0].id, image_filename='project1_2.jpg'),
+        #     # Add more images as needed
+        # ]
+        # db.session.add_all(images)
+        # db.session.commit()
+
         print("Database populated successfully!")
 
 if __name__ == '__main__':
