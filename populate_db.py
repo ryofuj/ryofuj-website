@@ -11,8 +11,9 @@ def populate():
         
         # Add Logo
         logo = Logo(
-            image_filename='logo.png',
-            text=''
+            image_filename='logo.jpg',
+            # Removed the 'text' field
+            # text='Maison Luxury Living'
         )
         db.session.add(logo)
         
@@ -24,9 +25,9 @@ def populate():
         
         # Add Name
         name = Name(
-            full_name='Ryo Fujimura',
-            title='Software Engineer',
-            intro='Student at CSULB, majoring in Computer Science. I am passionate about software development. I am a quick learner and a team player.'
+            full_name='John Doe',
+            title='Senior Interior Designer',
+            intro='Passionate about creating luxurious and comfortable living spaces.'
         )
         db.session.add(name)
         
@@ -57,11 +58,3 @@ def populate():
 
 if __name__ == '__main__':
     populate()
-
-
-'''
-flask db migrate -m "Initial migration."
-flask db upgrade
-
-python3 populate_db.py
-'''

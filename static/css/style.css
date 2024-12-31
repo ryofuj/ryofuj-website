@@ -4,10 +4,10 @@
     --primary-color: #d7b99e;
     --secondary-color: #f4efe8;
     --accent-color: #333;
-    --black: #000000;
+    --black: #000000; /* Pitch Black */
     --white: #ffffff;
-    --logo-background-color: #000000; /* Pitch Black */
     --page-background-color: #a1a1a1; /* Updated Background */
+    --logo-background-color: #000000; /* Pitch Black */
     --logo-padding: 20px; /* Thick padding for logo tile */
     --font-family: 'MuseoModerno', sans-serif; /* MuseoModerno Font */
     /* Golden Ratio Constants */
@@ -219,11 +219,11 @@ body {
 
     /* Adjust font sizes based on Golden Ratio */
     .full-name {
-        font-size: calc(0.8em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.618em * 0.8 = ~2.094em */
+        font-size: calc(0.8em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.094em */
     }
 
     .title {
-        font-size: calc(0.8em * var(--golden-ratio)); /* ~1.618em * 0.8 = ~1.294em */
+        font-size: calc(0.8em * var(--golden-ratio)); /* ~1.294em */
     }
 
     .intro {
@@ -240,11 +240,11 @@ body {
 
     /* Adjust font sizes based on Golden Ratio */
     .full-name {
-        font-size: calc(1.2em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.618em * 1.2 = ~3.142em */
+        font-size: calc(1.2em * var(--golden-ratio) * var(--golden-ratio)); /* ~3.142em */
     }
 
     .title {
-        font-size: calc(1.2em * var(--golden-ratio)); /* ~1.618em * 1.2 = ~1.942em */
+        font-size: calc(1.2em * var(--golden-ratio)); /* ~1.942em */
     }
 
     .intro {

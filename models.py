@@ -9,10 +9,11 @@ class Logo(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     image_filename = db.Column(db.String(100), nullable=False)
-    text = db.Column(db.String(100), nullable=False)
+    # Removed the 'text' field
+    # text = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):
-        return f'<Logo {self.text}>'
+        return f'<Logo {self.image_filename}>'
 
 class Profile(db.Model):
     __tablename__ = 'profiles'

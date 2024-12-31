@@ -6,7 +6,7 @@
     <!-- Existing head content -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison Luxury Living</title>
+    <title>Ryo Fujimura</title>
     <!-- Link to Google Fonts for MuseoModerno -->
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -16,9 +16,10 @@
         <!-- Logo -->
         <div id="logo" class="box" style="grid-area: logo;">
             {% if logo.image_filename %}
-                <img src="{{ url_for('static', filename='images/' + logo.image_filename) }}" alt="{{ logo.text }} Logo" loading="lazy">
+                <img src="{{ url_for('static', filename='images/' + logo.image_filename) }}" alt="Maison Luxury Living Logo" loading="lazy">
             {% endif %}
-            <h1 class="logo">{{ logo.text }}</h1>
+            <!-- Removed the logo text -->
+            <!-- <h1 class="logo">{{ logo.text }}</h1> -->
         </div>
 
         <!-- Profile Picture -->
