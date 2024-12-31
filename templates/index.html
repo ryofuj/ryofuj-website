@@ -1,284 +1,54 @@
+<!-- templates/index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Maison Luxury Living</title>
-
-  <style>
-    :root {
-      --primary-color: #d7b99e;
-      --secondary-color: #f4efe8;
-      --accent-color: #333;
-      --black: #000;
-      --white: #fff;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--secondary-color);
-      color: var(--black);
-      /* Let the body grow to full height */
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* 
-      Large grid layout:
-        Row naming: a=1, b=2, c=3, d=4
-        Column naming: 1,2,3,4
-        Then for rows below d we continue e=5, f=6, g=7... etc.
-    */
-    .container {
-      display: grid;
-      /* We need enough rows to hold up to row 'g' if we consider 
-         4 rows for the first screen + 3 more for the extra projects. */
-      grid-template-rows: repeat(7, 25vh); /* 7 rows, each 25vh for example */
-      grid-template-columns: repeat(4, 1fr); /* 4 columns */
-      gap: 10px;
-      padding: 10px;
-      flex-grow: 1;
-
-      /* 
-        We'll define the grid areas for the first 4 rows (a–d).
-        Then rows 5–7 for projects 7–15 
-      */
-      grid-template-areas:
-        /* row a (1) */
-        "profilePicture  project1    logo         project2"
-        /* row b (2) */
-        "profilePicture  name        name         project2"
-        /* row c (3) */
-        "project3        name        name         project6"
-        /* row d (4) */
-        "project4        project4    project5     project6"
-        /* row e (5) => for projects 7,8,9,10  */
-        "project7        project8    project9     project10"
-        /* row f (6) => for projects 11,12,13,14 */
-        "project11       project12   project13    project14"
-        /* row g (7) => project15 spans entire row */
-        "project15       project15   project15    project15"
-      ;
-    }
-
-    /***** SHARED STYLES FOR BOXES *****/
-    .box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--primary-color);
-      border-radius: 8px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .box:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-    .box img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .subtext {
-      margin-top: 10px;
-      font-size: 1em;
-      color: var(--black);
-    }
-    /* Additional styling for bigger “title” elements like the Logo or Name */
-    .logo {
-      font-size: 2em;
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin: 0;
-    }
-    .name {
-      font-size: 1.6em;
-      font-weight: bold;
-    }
-
-    /***** ASSIGN GRID-AREAS TO EACH ITEM *****/
-    #profilePicture {
-      grid-area: profilePicture; /* covers 1ab => column 1, rows 1-2 */
-    }
-    #project1 {
-      grid-area: project1; /* 2a => column 2, row 1 */
-    }
-    #logo {
-      grid-area: logo; /* 3a => column 3, row 1 */
-    }
-    #project2 {
-      grid-area: project2; /* 4ab => column 4, rows 1-2 */
-    }
-    #project3 {
-      grid-area: project3; /* 1c => column 1, row 3 */
-    }
-    #name {
-      grid-area: name; /* 23bc => columns 2-3, rows 2-3 */
-    }
-    #project4 {
-      grid-area: project4; /* 12d => columns 1-2, row 4 */
-    }
-    #project5 {
-      grid-area: project5; /* 3d => column 3, row 4 */
-    }
-    #project6 {
-      grid-area: project6; /* 4cd => column 4, rows 3-4 */
-    }
-    #project7 {
-      grid-area: project7;
-    }
-    #project8 {
-      grid-area: project8;
-    }
-    #project9 {
-      grid-area: project9;
-    }
-    #project10 {
-      grid-area: project10;
-    }
-    #project11 {
-      grid-area: project11;
-    }
-    #project12 {
-      grid-area: project12;
-    }
-    #project13 {
-      grid-area: project13;
-    }
-    #project14 {
-      grid-area: project14;
-    }
-    #project15 {
-      grid-area: project15;
-    }
-
-
-    /* 
-      On smaller screens, we’ll rearrange everything into a single column:
-        Logo
-        Profile Picture
-        Name
-        Project 1
-        Project 2
-        ...
-        Project 15
-    */
-    @media (max-width: 768px) {
-      .container {
-        grid-template-rows: auto; /* let rows auto-size */
-        grid-template-columns: 1fr; /* single column */
-
-        grid-template-areas:
-          "logo"
-          "profilePicture"
-          "name"
-          "project1"
-          "project2"
-          "project3"
-          "project4"
-          "project5"
-          "project6"
-          "project7"
-          "project8"
-          "project9"
-          "project10"
-          "project11"
-          "project12"
-          "project13"
-          "project14"
-          "project15";
-      }
-    }
-  </style>
+    <!-- Existing head content -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Luxury Living</title>
+    <!-- Link to Google Fonts for MuseoModerno -->
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <div class="container">
+        <!-- Logo -->
+        <div id="logo" class="box" style="grid-area: logo;">
+            {% if logo.image_filename %}
+                <img src="{{ url_for('static', filename='images/' + logo.image_filename) }}" alt="{{ logo.text }} Logo" loading="lazy">
+            {% endif %}
+            <h1 class="logo">{{ logo.text }}</h1>
+        </div>
 
-  <div class="container">
-    <!-- profile picture (1ab => col 1, rows a-b) -->
-    <div id="profilePicture" class="box">
-      <img src="https://via.placeholder.com/200" alt="Profile Picture">
-      <p class="subtext">Profile Picture</p>
-    </div>
+        <!-- Profile Picture -->
+        <div id="profilePicture" class="box" style="grid-area: profilePicture;">
+            {% if profile.image_filename %}
+                <img src="{{ url_for('static', filename='images/' + profile.image_filename) }}" alt="Profile Picture" loading="lazy">
+            {% endif %}
+            <!-- Description removed as per request -->
+            <!-- <p class="subtext">{{ profile.description }}</p> -->
+        </div>
 
-    <!-- project 1 (2a) -->
-    <div id="project1" class="box">
-      <p class="subtext">Project 1</p>
-    </div>
+        <!-- Projects -->
+        {% for project in projects %}
+            <div id="project{{ project.id }}" class="box" style="grid-area: {{ project.grid_position }};">
+                {% if project.image_filename %}
+                    <img src="{{ url_for('static', filename='images/' + project.image_filename) }}" alt="{{ project.title }}" loading="lazy">
+                {% endif %}
+                <p class="subtext">{{ project.title }}</p>
+            </div>
+        {% endfor %}
 
-    <!-- logo (3a) -->
-    <div id="logo" class="box">
-      <h1 class="logo">Maison</h1>
-      <p class="subtext">Luxury Living</p>
-    </div>
-
-    <!-- project 2 (4ab => col 4, rows a-b) -->
-    <div id="project2" class="box">
-      <p class="subtext">Project 2</p>
-    </div>
-
-    <!-- project 3 (1c => col 1, row c) -->
-    <div id="project3" class="box">
-      <p class="subtext">Project 3</p>
-    </div>
-
-    <!-- name (23bc => col 2-3, rows b-c) -->
-    <div id="name" class="box">
-      <p class="name">Your Name</p>
-    </div>
-
-    <!-- project 4 (12d => col 1-2, row d) -->
-    <div id="project4" class="box">
-      <p class="subtext">Project 4</p>
+        <!-- Name Tile -->
+        <div id="name" class="box" style="grid-area: name;">
+            <p class="full-name">{{ name.full_name }}</p>
+            <h2 class="title">{{ name.title }}</h2>
+            <p class="intro" id="typewriter-intro">{{ name.intro }}</p>
+        </div>
     </div>
 
-    <!-- project 5 (3d => col 3, row d) -->
-    <div id="project5" class="box">
-      <p class="subtext">Project 5</p>
-    </div>
-
-    <!-- project 6 (4cd => col 4, rows c-d) -->
-    <div id="project6" class="box">
-      <p class="subtext">Project 6</p>
-    </div>
-
-    <!-- Below are the additional projects (7–15), 
-         placed in rows 5,6,7 (grid areas project7...project15) -->
-
-    <div id="project7" class="box">
-      <p class="subtext">Project 7</p>
-    </div>
-    <div id="project8" class="box">
-      <p class="subtext">Project 8</p>
-    </div>
-    <div id="project9" class="box">
-      <p class="subtext">Project 9</p>
-    </div>
-    <div id="project10" class="box">
-      <p class="subtext">Project 10</p>
-    </div>
-
-    <div id="project11" class="box">
-      <p class="subtext">Project 11</p>
-    </div>
-    <div id="project12" class="box">
-      <p class="subtext">Project 12</p>
-    </div>
-    <div id="project13" class="box">
-      <p class="subtext">Project 13</p>
-    </div>
-    <div id="project14" class="box">
-      <p class="subtext">Project 14</p>
-    </div>
-
-    <div id="project15" class="box">
-      <p class="subtext">Project 15</p>
-    </div>
-  </div>
-
+    <!-- Typewriter Animation Script -->
+    <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
 </body>
 </html>
