@@ -1,7 +1,7 @@
 # populate_db.py
 
 from app import app, db
-from models import Logo, Profile, Project, Name
+from models import Logo, Profile, Project, Name, Image
 
 def populate():
     with app.app_context():
@@ -12,8 +12,7 @@ def populate():
         # Add Logo
         logo = Logo(
             image_filename='logo.jpg',
-            # Removed the 'text' field
-            # text='Maison Luxury Living'
+            # Removed the 'text' field as per previous updates
         )
         db.session.add(logo)
         
@@ -31,29 +30,55 @@ def populate():
         )
         db.session.add(name)
         
-        # Add Projects
+        # Add Projects with project_type and other details
         projects = [
-            Project(title='Project1', image_filename='project1.jpg', grid_position='project1'),
-            Project(title='Project2', image_filename='project2.jpg', grid_position='project2'),
-            Project(title='Project3', image_filename='project3.jpg', grid_position='project3'),
-            Project(title='Project4', image_filename='project4.jpg', grid_position='project4'),
-            Project(title='Project5', image_filename='project5.jpg', grid_position='project5'),
-            Project(title='Project6', image_filename='project6.jpg', grid_position='project6'),
-            Project(title='Project7', image_filename='project7.jpg', grid_position='project7'),
-            Project(title='Project8', image_filename='project8.jpg', grid_position='project8'),
-            Project(title='Project9', image_filename='project9.jpg', grid_position='project9'),
-            Project(title='Project10', image_filename='project10.jpg', grid_position='project10'),
-            Project(title='Project11', image_filename='project11.jpg', grid_position='project11'),
-            Project(title='Project12', image_filename='project12.jpg', grid_position='project12'),
-            Project(title='Project13', image_filename='project13.jpg', grid_position='project13'),
-            Project(title='Project14', image_filename='project14.jpg', grid_position='project14'),
-            Project(title='Project15', image_filename='project15.jpg', grid_position='project15'),
+            Project(
+                title='Modern Living Room',
+                image_filename='project1.jpg',
+                grid_position='project1',
+                project_type='Project',
+                position='Lead Designer',
+                term='Summer 2023',
+                description='Designed a modern living room with minimalist aesthetics and functional furniture.',
+                link='https://example.com/projects/modern-living-room'
+            ),
+            Project(
+                title='Corporate Workspace',
+                image_filename='project2.jpg',
+                grid_position='project2',
+                project_type='Experience',
+                position='Project Manager',
+                term='Winter 2022',
+                description='Managed the design and implementation of a corporate workspace to enhance productivity.',
+                link='https://example.com/experiences/corporate-workspace'
+            ),
+            # Add more projects as needed
         ]
         
-        db.session.bulk_save_objects(projects)
+        # **Important:** Use `add_all` instead of `bulk_save_objects` to ensure IDs are populated
+        db.session.add_all(projects)
+        db.session.commit()  # Commit to assign IDs to projects
         
-        # Commit all changes
+        # Add Images for each project
+        # It's crucial to associate images with the correct project IDs
+        images = []
+        for project in projects:
+            if project.title == 'Modern Living Room':
+                images.extend([
+                    Image(project_id=project.id, image_filename='project1_1.jpg'),
+                    Image(project_id=project.id, image_filename='project1_2.jpg'),
+                ])
+            elif project.title == 'Corporate Workspace':
+                images.extend([
+                    Image(project_id=project.id, image_filename='project2_1.jpg'),
+                    Image(project_id=project.id, image_filename='project2_2.jpg'),
+                ])
+            # Add images for other projects accordingly
+
+        # **Again, use `add_all` instead of `bulk_save_objects`**
+        db.session.add_all(images)
         db.session.commit()
+        
         print("Database populated successfully!")
 
 if __name__ == '__main__':

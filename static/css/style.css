@@ -6,12 +6,15 @@
     --accent-color: #333;
     --black: #000000; /* Pitch Black */
     --white: #ffffff;
-    --page-background-color: #a1a1a1; /* Updated Background */
+    --page-background-color: #191919; /* Updated Background */
     --logo-background-color: #000000; /* Pitch Black */
     --logo-padding: 20px; /* Thick padding for logo tile */
     --font-family: 'MuseoModerno', sans-serif; /* MuseoModerno Font */
     /* Golden Ratio Constants */
     --golden-ratio: 1.618;
+    /* Sticker Colors */
+    --project-sticker-color: #ff9800; /* Orange for Projects */
+    --experience-sticker-color: #4caf50; /* Green for Experiences */
 }
 
 /* Ensure all elements use border-box sizing */
@@ -24,7 +27,7 @@ body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    background-color: var(--page-background-color); /* Set background to #a1a1a1 */
+    background-color: var(--page-background-color); /* Set background to #191919 */
     color: var(--white); /* Change text color to white for better contrast */
     min-height: 100vh;
     display: flex;
@@ -59,6 +62,7 @@ body {
 
 /* Shared styles for boxes */
 .box {
+    position: relative; /* To position the sticker absolutely within the box */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,7 +123,7 @@ body {
 
 /* Full Name Styles */
 .full-name {
-    font-size: calc(1.618em * 1.618); /* Approximately 2.618em */
+    font-size: calc(1em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.618em */
     font-weight: bold;
     margin: 0;
     color: var(--white); /* Ensure contrast */
@@ -127,7 +131,7 @@ body {
 
 /* Title Styles */
 .title {
-    font-size: 1.618em; /* Approximately 1.618em */
+    font-size: calc(1em * var(--golden-ratio)); /* ~1.618em */
     font-weight: semi-bold;
     margin: 5px 0;
     color: var(--white);
@@ -137,10 +141,12 @@ body {
 .intro {
     font-size: 1em; /* Base font size */
     color: var(--white); /* Ensure contrast against the black background */
-    white-space: nowrap; /* Prevent text from wrapping */
+    white-space: normal; /* Allow text to wrap */
     overflow: hidden; /* Hide the overflowing text */
     border-right: 0.15em solid var(--white); /* Cursor effect */
     animation: blink-caret 0.75s step-end infinite; /* Cursor blink animation */
+    width: 90%; /* Adjust width to control text wrapping within the tile */
+    margin: 0 auto; /* Center the intro text */
 }
 
 /* Blink Cursor Animation */
@@ -152,6 +158,105 @@ body {
 /* Specific styles for profilePicture */
 #profilePicture.box {
     padding: 0; /* Removes padding to allow the image to fill the tile */
+}
+
+/* Sticker Styles */
+.sticker {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+/* Specific sticker colors based on project_type */
+.sticker.project {
+    background-color: var(--project-sticker-color); /* Orange for Projects */
+}
+
+.sticker.experience {
+    background-color: var(--experience-sticker-color); /* Green for Experiences */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: var(--page-background-color); /* Match page background */
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 8px;
+    position: relative;
+    color: var(--white);
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Image Gallery within Modal */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.image-gallery img {
+    width: calc(50% - 10px);
+    border-radius: 4px;
+}
+
+/* Adjust image gallery for larger screens */
+@media (min-width: 768px) {
+    .image-gallery img {
+        width: calc(33.333% - 10px);
+    }
+}
+
+/* Project Title Button Styles */
+.project-title-button {
+    background-color: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.project-title-button:hover {
+    color: var(--accent-color);
 }
 
 /* Responsive Design */
@@ -199,6 +304,13 @@ body {
 
     .intro {
         font-size: 1em; /* Base font size */
+        width: 100%; /* Allow full width for smaller screens */
+    }
+
+    /* Adjust sticker font size for smaller screens */
+    .sticker {
+        font-size: 0.7em;
+        padding: 4px 8px;
     }
 }
 
@@ -228,6 +340,13 @@ body {
 
     .intro {
         font-size: 0.8em; /* Slightly smaller for mobile */
+        width: 100%; /* Allow full width for smaller screens */
+    }
+
+    /* Adjust sticker font size for very small screens */
+    .sticker {
+        font-size: 0.6em;
+        padding: 3px 6px;
     }
 }
 
@@ -249,5 +368,6 @@ body {
 
     .intro {
         font-size: 1.2em; /* Slightly larger for desktop */
+        width: 90%; /* Control width for better wrapping */
     }
 }

@@ -6,10 +6,12 @@
     <!-- Existing head content -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ryo Fujimura</title>
+    <title>Maison Luxury Living</title>
     <!-- Link to Google Fonts for MuseoModerno -->
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Optional: Include Font Awesome for icons (if using) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVvFdqYPPgk3mpmKjcNJIg8eI4kKKykX8q0Y/PAF1KyfW3zNFPKqfB0IzxaPlxnjTqIKz2BtfN6+7VZIl9+qPQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
@@ -33,11 +35,18 @@
 
         <!-- Projects -->
         {% for project in projects %}
-            <div id="project{{ project.id }}" class="box" style="grid-area: {{ project.grid_position }};">
+            <div id="project{{ project.id }}" class="box project-tile" style="grid-area: {{ project.grid_position }};">
                 {% if project.image_filename %}
                     <img src="{{ url_for('static', filename='images/' + project.image_filename) }}" alt="{{ project.title }}" loading="lazy">
                 {% endif %}
-                <p class="subtext">{{ project.title }}</p>
+                <!-- Sticker for Project Type -->
+                <div class="sticker {{ project.project_type|lower }}">
+                    {{ project.project_type }}
+                </div>
+                <!-- Project Title as Button -->
+                <button class="project-title-button" data-project-id="{{ project.id }}">
+                    {{ project.title }}
+                </button>
             </div>
         {% endfor %}
 
@@ -49,7 +58,82 @@
         </div>
     </div>
 
+    <!-- Modals for Projects -->
+    {% for project in projects %}
+        <div id="modal{{ project.id }}" class="modal">
+            <div class="modal-content">
+                <span class="close" data-modal-id="{{ project.id }}">&times;</span>
+                <h2>{{ project.title }}</h2>
+                <p><strong>Position:</strong> {{ project.position }}</p>
+                <p><strong>Term:</strong> {{ project.term }}</p>
+                <p>{{ project.description }}</p>
+                {% if project.link %}
+                    <p><a href="{{ project.link }}" target="_blank">Learn More</a></p>
+                {% endif %}
+                <!-- Image Gallery -->
+                <div class="image-gallery">
+                    {% for image in project.images %}
+                        <img src="{{ url_for('static', filename='images/' + image.image_filename) }}" alt="{{ project.title }} Image {{ loop.index }}" loading="lazy">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
     <!-- Typewriter Animation Script -->
     <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle opening modals
+            const buttons = document.querySelectorAll('.project-title-button');
+            const modals = document.querySelectorAll('.modal');
+            const closes = document.querySelectorAll('.close');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const projectId = button.getAttribute('data-project-id');
+                    const modal = document.getElementById(`modal${projectId}`);
+                    if (modal) {
+                        modal.style.display = 'block';
+                        // Update the URL with project parameter
+                        history.pushState(null, '', `#project${projectId}`);
+                    }
+                });
+            });
+
+            closes.forEach(close => {
+                close.addEventListener('click', () => {
+                    const projectId = close.getAttribute('data-modal-id');
+                    const modal = document.getElementById(`modal${projectId}`);
+                    if (modal) {
+                        modal.style.display = 'none';
+                        // Remove the project parameter from the URL
+                        history.pushState(null, '', window.location.pathname);
+                    }
+                });
+            });
+
+            // Close modals when clicking outside the modal content
+            window.addEventListener('click', (event) => {
+                modals.forEach(modal => {
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                        // Remove the project parameter from the URL
+                        history.pushState(null, '', window.location.pathname);
+                    }
+                });
+            });
+
+            // Open modal based on URL hash
+            const hash = window.location.hash;
+            if (hash.startsWith('#project')) {
+                const projectId = hash.replace('#project', '');
+                const modal = document.getElementById(`modal${projectId}`);
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
