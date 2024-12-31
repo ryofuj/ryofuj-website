@@ -1,20 +1,16 @@
-/* Root Variables for Theme */
+/* Root Variables */
 :root {
-    --primary-color: #d7b99e;
-    --secondary-color: #f4efe8;
-    --accent-color: #333;
-    --black: #000000; /* Pitch Black */
+    --dark-bg: #0A182D;                 /* Overall background color */
+    --tile-color: #A27D5C;              /* Base color for tiles */
+    --accent-color: rgb(188,201,209);   /* Light accent for text */
     --white: #ffffff;
-    --page-background-color: #191919; /* Dark Gray */
-    --logo-background-color: #000000; /* Pitch Black */
-    --logo-padding: 20px; /* Thick padding for the logo tile */
-    --font-family: 'MuseoModerno', sans-serif; /* Custom Font */
-    --golden-ratio: 1.618; /* For scaling font sizes */
-    --project-sticker-color: #ff9800;    /* Orange for 'Project' */
-    --experience-sticker-color: #4caf50; /* Green for 'Experience' */
+    --black: #000000;
+    --logo-padding: 20px;
+    --font-family: 'MuseoModerno', sans-serif;
+    --golden-ratio: 1.618;
 }
 
-/* Reset and Box Sizing */
+/* Basic Reset & Box Sizing */
 *,
 *::before,
 *::after {
@@ -23,17 +19,17 @@
     padding: 0;
 }
 
-/* Body Styling */
+/* Body */
 body {
     font-family: var(--font-family), Arial, sans-serif;
-    background-color: var(--page-background-color);
-    color: var(--white);
+    background-color: var(--dark-bg);
+    color: var(--accent-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Main Container: Grid Layout */
+/* Main Container Grid */
 .container {
     display: grid;
     grid-template-rows: repeat(7, 25vh);
@@ -42,6 +38,7 @@ body {
     padding: 20px;
     flex-grow: 1;
 
+    /* Adjust to your layout needs */
     grid-template-areas:
         "profilePicture project1 logo project2"
         "profilePicture name name project2"
@@ -52,14 +49,14 @@ body {
         "project15 project15 project15 project15";
 }
 
-/* Shared Tile Styles */
+/* Shared Box Style */
 .box {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--primary-color);
+    background: var(--tile-color);
     border-radius: 8px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -77,7 +74,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: var(--logo-padding);
-    background-color: var(--logo-background-color);
+    background-color: var(--black);
 }
 
 #logo img {
@@ -85,10 +82,9 @@ body {
     height: auto;
     object-fit: contain;
     border-radius: 8px;
-    max-height: 100%;
 }
 
-/* Profile Picture Tile */
+/* Profile Picture */
 #profilePicture.box img {
     width: 100%;
     height: 100%;
@@ -96,50 +92,21 @@ body {
     border-radius: 8px;
 }
 
-/* Entire Tile as Button for Projects */
+/* Project Tile Button */
 .project-tile {
     border: none;
     background: none;
     cursor: pointer;
     padding: 0;
     outline: none;
-    /* Center content */
+    /* Occupy entire tile space */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.project-tile:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* The sticker remains top-right inside the tile */
-.sticker {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: var(--white);
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: bold;
-    text-transform: uppercase;
-    pointer-events: none; /* not clickable */
-}
-
-/* Sticker Colors Based on Type */
-.sticker.project {
-    background-color: var(--project-sticker-color);
-}
-
-.sticker.experience {
-    background-color: var(--experience-sticker-color);
-}
-
-/* Project Content: Title & Image in Center */
+/* Project Content */
 .project-content {
     display: flex;
     flex-direction: column;
@@ -148,17 +115,16 @@ body {
 }
 
 .project-title {
-    font-size: 1.2em; /* Larger Title */
+    font-size: 1.5em;
     margin-bottom: 10px;
-    color: var(--white);
+    color: var(--accent-color);
     font-weight: bold;
-    text-align: center;
 }
 
 .project-image {
-    width: 60%;           /* Smaller than before */
+    width: 50%;
     height: auto;
-    object-fit: contain;  /* Entire image visible without cropping */
+    object-fit: contain;
     border-radius: 8px;
 }
 
@@ -173,20 +139,20 @@ body {
 #name .full-name {
     font-size: calc(1em * var(--golden-ratio) * var(--golden-ratio)); /* ~2.618em */
     font-weight: bold;
-    color: var(--white);
+    color: var(--accent-color);
 }
 
 #name .title {
     font-size: calc(1em * var(--golden-ratio)); /* ~1.618em */
     font-weight: semi-bold;
     margin: 10px 0;
-    color: var(--white);
+    color: var(--accent-color);
 }
 
 #name .intro {
     font-size: 1em;
     text-align: center;
-    color: var(--white);
+    color: var(--accent-color);
     white-space: normal;
     width: 90%;
     margin: 0 auto;
@@ -205,13 +171,13 @@ body {
 }
 
 .modal-content {
-    background-color: var(--page-background-color);
+    background-color: var(--dark-bg);
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     border-radius: 8px;
-    color: var(--white);
+    color: var(--accent-color);
     position: relative;
 }
 
@@ -227,6 +193,29 @@ body {
     color: #fff;
 }
 
+/* Easter Egg Bomb */
+#bomb {
+    font-family: var(--font-family), Arial, sans-serif;
+    color: var(--white);
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 50px;
+    background-color: rgba(255, 69, 0, 0.9); /* Vibrant color for contrast */
+    border-radius: 50%;
+    animation: scale-bomb 0.3s ease-out forwards;
+}
+@keyframes scale-bomb {
+  0%   { transform: scale(0); }
+  50%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Flip Animation (for profile image) */
+#profileImg.flip-animation {
+    transform: rotateY(360deg);
+    transition: transform 0.5s ease-out;
+}
+
 /* Image Gallery in Modal */
 .image-gallery {
     display: flex;
@@ -240,13 +229,12 @@ body {
     border-radius: 4px;
 }
 
-/* Responsive Adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 15px;
         padding: 10px;
-
         grid-template-areas:
             "logo"
             "profilePicture"
@@ -284,11 +272,6 @@ body {
         font-size: 1em;
     }
 
-    .sticker {
-        font-size: 0.7em;
-        padding: 4px 8px;
-    }
-
     .project-image {
         width: 70%;
     }
@@ -317,11 +300,6 @@ body {
 
     #name .intro {
         font-size: 0.8em;
-    }
-
-    .sticker {
-        font-size: 0.6em;
-        padding: 3px 6px;
     }
 
     .project-image {

@@ -8,14 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&display=swap" rel="stylesheet" />
   <!-- Main CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-  <!-- Optional: Font Awesome (if using icons) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pVvFdqYPPgk3mpmKjcNJIg8eI4kKKykX8q0Y/PAF1KyfW3zNFPKqfB0IzxaPlxnjTqIKz2BtfN6+7VZIl9+qPQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
 </head>
 <body>
   <div class="container">
@@ -34,6 +26,7 @@
     <div id="profilePicture" class="box" style="grid-area: profilePicture;">
       {% if profile.image_filename %}
         <img
+          id="profileImg"
           src="{{ url_for('static', filename='images/' + profile.image_filename) }}"
           alt="Profile Picture"
           loading="lazy"
@@ -41,43 +34,32 @@
       {% endif %}
     </div>
 
-    <!-- Loop through Projects -->
-    {% for project in projects %}
-      <!-- Make the entire tile a button -->
-      <button
-        id="project{{ project.id }}"
-        class="box project-tile"
-        style="grid-area: {{ project.grid_position }};"
-        data-project-id="{{ project.id }}"
-      >
-        <!-- Sticker at Top-Right -->
-        <div class="sticker {{ project.project_type|lower }}">
-          {{ project.project_type }}
-        </div>
-
-        <!-- Centered Content: Title (large) + Smaller Image -->
-        <div class="project-content">
-          <!-- Large Title -->
-          <h3 class="project-title">{{ project.title }}</h3>
-          <!-- Smaller Image -->
-          {% if project.image_filename %}
-            <img
-              class="project-image"
-              src="{{ url_for('static', filename='images/' + project.image_filename) }}"
-              alt="{{ project.title }}"
-              loading="lazy"
-            />
-          {% endif %}
-        </div>
-      </button>
-    {% endfor %}
-
     <!-- Name Tile -->
     <div id="name" class="box" style="grid-area: name;">
       <p class="full-name">{{ name.full_name }}</p>
       <h2 class="title">{{ name.title }}</h2>
       <p class="intro" id="typewriter-intro">{{ name.intro }}</p>
     </div>
+
+    <!-- Project Tiles -->
+    {% for project in projects %}
+      <button
+        id="project{{ project.id }}"
+        class="box project-tile {{ project.project_type|lower }}"
+        style="grid-area: {{ project.grid_position }};"
+        data-project-id="{{ project.id }}"
+      >
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <img
+            class="project-image"
+            src="{{ url_for('static', filename='images/' + project.image_filename) }}"
+            alt="{{ project.title }}"
+            loading="lazy"
+          />
+        </div>
+      </button>
+    {% endfor %}
   </div>
 
   <!-- Project Modals -->
@@ -86,7 +68,6 @@
       <div class="modal-content">
         <!-- Close Button -->
         <span class="close" data-modal-id="{{ project.id }}">&times;</span>
-
         <!-- Modal Details -->
         <h2>{{ project.title }}</h2>
         {% if project.position %}
@@ -103,7 +84,6 @@
             <a href="{{ project.link }}" target="_blank">Learn More</a>
           </p>
         {% endif %}
-
         <!-- Additional Images (if any) -->
         <div class="image-gallery">
           {% for image in project.images %}
@@ -121,71 +101,91 @@
   <!-- Typewriter JS -->
   <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
 
-  <!-- Modal Handling JS -->
+  <!-- Easter Egg & Bomb Animation Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const projectTiles = document.querySelectorAll('.project-tile');
-      const modals = document.querySelectorAll('.modal');
-      const closes = document.querySelectorAll('.close');
+      const profileImg = document.querySelector('#profileImg');
+      const body = document.body;
+      let clickCount = 0;
+      let easterEggTriggered = false;
+      let timerExpired = false;
 
-      // Open modal on tile click
-      projectTiles.forEach((tile) => {
-        tile.addEventListener('click', () => {
-          const projectId = tile.getAttribute('data-project-id');
-          const modal = document.getElementById(`modal${projectId}`);
-          if (modal) {
-            modal.style.display = 'block';
-            history.pushState(null, '', `#project${projectId}`);
-          }
-        });
-      });
+      // Create bomb element for the animation
+      const bomb = document.createElement('div');
+      bomb.id = 'bomb';
+      bomb.style.position = 'absolute';
+      bomb.style.width = '50px';
+      bomb.style.height = '50px';
+      bomb.style.backgroundImage = "url('{{ url_for('static', filename='images/bomb.png') }}')";
+      bomb.style.backgroundSize = 'contain';
+      bomb.style.backgroundRepeat = 'no-repeat';
+      bomb.style.pointerEvents = 'none';
+      bomb.style.display = 'none';
+      bomb.style.zIndex = '1000';
+      body.appendChild(bomb);
 
-      // Close modal on clicking close button
-      closes.forEach((close) => {
-        close.addEventListener('click', () => {
-          const projectId = close.getAttribute('data-modal-id');
-          const modal = document.getElementById(`modal${projectId}`);
-          if (modal) {
-            modal.style.display = 'none';
-            history.pushState(null, '', window.location.pathname);
-          }
-        });
-      });
-
-      // Close modal when clicking outside modal content
-      window.addEventListener('click', (event) => {
-        modals.forEach((modal) => {
-          if (event.target === modal) {
-            modal.style.display = 'none';
-            history.pushState(null, '', window.location.pathname);
-          }
-        });
-      });
-
-      // Open modal if URL has a #project hash
-      const hash = window.location.hash;
-      if (hash.startsWith('#project')) {
-        const projectId = hash.replace('#project', '');
-        const modal = document.getElementById(`modal${projectId}`);
-        if (modal) {
-          modal.style.display = 'block';
+      // 1-minute timer
+      setTimeout(() => {
+        timerExpired = true;
+        if (easterEggTriggered) {
+          // Reset to original image
+          profileImg.src = "{{ url_for('static', filename='images/' + profile.image_filename) }}";
+          easterEggTriggered = false;
         }
-      }
+      }, 60000);
 
-      // Handle back/forward browser navigation
-      window.addEventListener('popstate', () => {
-        const newHash = window.location.hash;
-        // Close all modals first
-        modals.forEach((modal) => {
-          modal.style.display = 'none';
-        });
-        if (newHash.startsWith('#project')) {
-          const projectId = newHash.replace('#project', '');
-          const modal = document.getElementById(`modal${projectId}`);
-          if (modal) {
-            modal.style.display = 'block';
-          }
+      // Move bomb with mouse
+      body.addEventListener('mousemove', (e) => {
+        bomb.style.left = `${e.pageX}px`;
+        bomb.style.top = `${e.pageY}px`;
+      });
+
+      // Click logic on profile image
+      profileImg.addEventListener('click', () => {
+        if (easterEggTriggered || timerExpired) return;
+
+        clickCount++;
+        bomb.textContent = clickCount;
+        bomb.style.display = 'block';
+
+        // Hide bomb after 300ms
+        setTimeout(() => {
+          bomb.style.display = 'none';
+        }, 300);
+
+        if (clickCount >= 20) {
+          // Flip animation
+          profileImg.classList.add('flip-animation');
+          setTimeout(() => {
+            profileImg.src = "{{ url_for('static', filename='images/surprise_profile.jpg') }}";
+            profileImg.classList.remove('flip-animation');
+            easterEggTriggered = true;
+          }, 500);
         }
+      });
+    });
+  </script>
+
+  <!-- Slideshow Script (if any background slides) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slideshows = document.querySelectorAll('.slideshow-container');
+
+      slideshows.forEach((slideshow) => {
+        const slides = slideshow.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        if (slides.length > 0) {
+          slides[0].style.left = '0';
+        }
+
+        setInterval(() => {
+          if (slides.length > 1) {
+            slides[currentSlide].style.left = '-100%';
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.left = '0';
+          }
+        }, 4000);
       });
     });
   </script>

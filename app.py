@@ -1,15 +1,10 @@
-# app.py
-
 from flask import Flask, render_template
-from models import db, Logo, Profile, Name, Project, Image
+from models import db, Logo, Profile, Name, Project
 
 app = Flask(__name__)
-
-# Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'  # Using SQLite for simplicity
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize the database with the app
 db.init_app(app)
 
 @app.route('/')

@@ -1,5 +1,3 @@
-# models.py
-
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -33,10 +31,9 @@ class Project(db.Model):
     description = db.Column(db.Text, nullable=True)
     link = db.Column(db.String(255), nullable=True)
 
-    images = db.relationship('Image', backref='project', cascade='all, delete, delete-orphan')
-
 class Image(db.Model):
     __tablename__ = 'images'
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
     image_filename = db.Column(db.String(255), nullable=False)
+    image_description = db.Column(db.Text, nullable=True)
