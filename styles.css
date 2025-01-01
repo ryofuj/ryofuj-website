@@ -1,0 +1,78 @@
+/* Load SF Pro Rounded Regular font from the local folder */
+@font-face {
+    font-family: 'SF Pro Rounded';
+    src: url('./fonts/SFProRounded-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* General styles */
+  body {
+    font-family: 'SF Pro Rounded', Arial, sans-serif;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Center container */
+  .container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Base tile styles */
+  .neumorphic-tile {
+    background: #e0e0e0;
+    border-radius: 15px;
+    box-shadow: 
+      8px 8px 15px #bebebe, 
+      -8px -8px 15px #ffffff;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    transition: all 0.3s ease;
+  }
+  
+  .neumorphic-tile h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  
+  .neumorphic-tile p {
+    color: #666;
+  }
+  
+  /* Hover effect for all tiles */
+  .neumorphic-tile:hover {
+    box-shadow: 
+      4px 4px 10px #bebebe, 
+      -4px -4px 10px #ffffff;
+    transform: scale(1.02);
+  }
+  
+  /* Floating tile */
+  .floating {
+    box-shadow: 
+      10px 10px 20px #bebebe, 
+      -10px -10px 20px #ffffff;
+  }
+  
+  /* Inset tile */
+  .inset {
+    box-shadow: 
+      inset 8px 8px 15px #bebebe, 
+      inset -8px -8px 15px #ffffff;
+    transition: all 0.3s ease; /* Smooth hover effect */
+  }
+  
+  /* Enhanced hover effect for inset */
+  .inset:hover {
+    box-shadow: 
+      inset 12px 12px 20px #bebebe, 
+      inset -12px -12px 20px #ffffff;
+    transform: scale(0.98); /* Slight shrink for more depth */
+  }
+  
