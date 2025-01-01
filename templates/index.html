@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main-container">
+
+  <div class="left-column">
+    <div class="profile-tile-1x2">
+      <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile" class="profile-image">
+      <div class="profile-info">
+        <h2>Ryo Fujimura</h2>
+        <p>Software Engineer</p>
+        <div class="tags-list">
+          <span>Swift</span>
+          <span>Project Management</span>
+          <span>Work</span>
+          <span>Computer Science</span>
+          <span>CSULB</span>
+        </div>
+        <p>Building awesome apps and experiences.</p>
+      </div>
+    </div>
+
+    <div class="profile-tile-1x1">
+      <div class="chat-content">
+        <h3>Let's Chat!</h3>
+        <div class="chat-links">
+          <a href="https://github.com/username" target="_blank">
+            <img src="{{ url_for('static', filename='images/icons/github.svg') }}" alt="GitHub">
+          </a>
+          <a href="/resume.pdf" target="_blank">
+            <img src="{{ url_for('static', filename='images/icons/doc.svg') }}" alt="Resume">
+          </a>
+          <a href="mailto:ryo@example.com">
+            <img src="{{ url_for('static', filename='images/icons/email.svg') }}" alt="Email">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="search-filter-area">
+      <input type="text" id="search-input" placeholder="Search experiences...">
+    </div>
+    <div class="tiles-grid">
+      {% for exp in experiences %}
+        <div class="tile tile-{{ exp.tile_size }}"
+             data-longdesc="{{ exp.long_description }}"
+             data-image="{{ url_for('static', filename='images/' ~ exp.main_image) }}"
+             data-link="{{ exp.main_link }}">
+          <img src="{{ url_for('static', filename='images/' ~ exp.main_image) }}"
+               alt="{{ exp.title }}"
+               class="tile-image">
+          <div class="tile-details">
+            <h2>{{ exp.title }}</h2>
+            <p class="subtitle-holder">{{ exp.subtitle }}</p>
+            <p>{{ exp.short_description }}</p>
+            <a href="{{ exp.main_link }}" target="_blank">More Info</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-content" id="modal-content">
+    <button class="modal-close" id="modal-close">×</button>
+  </div>
+</div>
+
+{% endblock %}
