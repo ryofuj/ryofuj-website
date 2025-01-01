@@ -3,19 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neumorphism Tiles</title>
+  <title>Responsive Neumorphism Layout</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="neumorphic-tile">
-      <h2>Standard Tile</h2>
-      <p>This is a regular neumorphic tile.</p>
+  <div class="outer-container">
+    <!-- Profile Section (Left Sidebar) -->
+    <div class="profile-section inset">
+      <!-- Logo Section -->
+      <div class="logo-section">
+        <h1>Logo</h1>
+      </div>
+
+      <!-- Profile Tile -->
+      <div class="profile-tile">
+        <h2>User Name</h2>
+        <p>Welcome to your profile. Here you can manage your details.</p>
+      </div>
+
+      <!-- Link Tile -->
+      <div class="link-tile">
+        <a href="#">Home</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+      </div>
     </div>
 
-    <div class="neumorphic-tile inset">
-      <h2>Inset Tile</h2>
-      <p>This tile appears pushed inside.</p>
+    <!-- Main Content Section -->
+    <div class="content-container">
+      <!-- Search and Filter Section -->
+      <div class="filter-section inset">
+        <input type="text" placeholder="Search..." class="search-bar">
+        <div class="filter-options">
+          <button class="filter-button">Filter 1</button>
+          <button class="filter-button">Filter 2</button>
+          <button class="filter-button">Filter 3</button>
+        </div>
+      </div>
+
+      <!-- Experience Section -->
+      <div class="experience-section-container inset">
+        <div class="experience-section">
+          <div class="experience-tile">
+            <h3>Experience 1</h3>
+            <p>Details about experience 1.</p>
+          </div>
+          <div class="experience-tile">
+            <h3>Experience 2</h3>
+            <p>Details about experience 2.</p>
+          </div>
+          <div class="experience-tile">
+            <h3>Experience 3</h3>
+            <p>Details about experience 3.</p>
+          </div>
+          <div class="experience-tile">
+            <h3>Experience 4</h3>
+            <p>Details about experience 4.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
