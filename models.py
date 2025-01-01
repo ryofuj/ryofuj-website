@@ -14,6 +14,7 @@ class Experience(db.Model):
     main_link = db.Column(db.String(200))
     main_image = db.Column(db.String(200))
     tile_size = db.Column(db.String(10))
+    tags = db.Column(db.Text)
 
     def __repr__(self):
         return f'<Experience {self.title}>'

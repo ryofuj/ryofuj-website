@@ -6,6 +6,38 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+  <header>
+    <h1></h1>
+    <div id="search-filter-container">
+      <input type="text" id="search-input" placeholder="Search experiences...">
+      <div class="filter-tags">
+        <label>
+          <input type="checkbox" value="aws">
+          <span>AWS</span>
+        </label>
+        <label>
+          <input type="checkbox" value="swift">
+          <span>Swift</span>
+        </label>
+        <label>
+          <input type="checkbox" value="python">
+          <span>Python</span>
+        </label>
+        <label>
+          <input type="checkbox" value="project_management">
+          <span>PM</span>
+        </label>
+        <label>
+          <input type="checkbox" value="computer_science">
+          <span>CS</span>
+        </label>
+        <label>
+          <input type="checkbox" value="work">
+          <span>Work</span>
+        </label>
+      </div>
+    </div>
+  </header>
   {% block content %}{% endblock %}
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
