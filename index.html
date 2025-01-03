@@ -1,88 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Responsive Neumorphism Layout</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="outer-container">
-    <!-- Profile Section (Left Sidebar) -->
-    <div class="profile-section inset">
-      <!-- Profile Content -->
-      <div class="profile-content">
-        <!-- Profile Photo -->
-        <img src="./images/profile.jpg" alt="Profile Photo" class="profile-photo">
-
-        <!-- Title and Subtitle -->
-        <h2>John Doe</h2>
-        <h4>Software Engineer</h4>
-        <p>Passionate developer creating innovative solutions for modern problems. Open source enthusiast and lifelong learner.</p>
-
-        <!-- Numbers Section -->
-        <div class="profile-numbers">
-          <div>
-            <h3>120</h3>
-            <p>Projects</p>
-          </div>
-          <div>
-            <h3>350</h3>
-            <p>Followers</p>
-          </div>
-          <div>
-            <h3>50</h3>
-            <p>Repositories</p>
+  <div class="content-wrapper">
+    <div class="layout-container">
+      <!-- Profile Section -->
+      <div class="profile-section">
+        <div class="logo-section">
+          <h1>Logo</h1>
+        </div>
+        <div class="profile-content inset">
+          <img src="./images/profile.jpg" alt="Profile Photo" class="profile-photo" />
+          <h2>John Doe</h2>
+          <h4>Software Engineer</h4>
+          <p>Passionate developer creating innovative solutions for modern problems. Open source enthusiast and lifelong learner.</p>
+          <div class="profile-numbers">
+            <div>
+              <h3>120+</h3>
+              <p>Projects</p>
+            </div>
+            <div>
+              <h3>350+</h3>
+              <p>Followers</p>
+            </div>
+            <div>
+              <h3>50+</h3>
+              <p>Repositories</p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Link Section -->
-    <div class="link-section">
-      <div class="link-tile">
-        <a href="https://linkedin.com" target="_blank">
-          <img src="./images/linkedin.png" alt="LinkedIn">
-        </a>
-        <a href="https://github.com" target="_blank">
-          <img src="./images/github.png" alt="GitHub">
-        </a>
-        <a href="mailto:example@example.com">
-          <img src="./images/email.png" alt="Email">
-        </a>
-      </div>
-    </div>
-
-    <!-- Main Content Section -->
-    <div class="content-container">
-      <!-- Search and Filter Section -->
-      <div class="filter-section">
-        <input type="text" placeholder="Search..." class="search-bar">
-        <div class="filter-options">
-          <button class="filter-button">Filter 1</button>
-          <button class="filter-button">Filter 2</button>
-          <button class="filter-button">Filter 3</button>
+        <div class="link-tile">
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+            <div class="social-icon">
+              <img src="./images/linkedin.png" alt="LinkedIn" />
+            </div>
+          </a>
+          <a href="https://github.com" target="_blank" aria-label="GitHub">
+            <div class="social-icon">
+              <img src="./images/github.png" alt="GitHub" />
+            </div>
+          </a>
+          <a href="mailto:example@example.com" aria-label="Email">
+            <div class="social-icon">
+              <img src="./images/email.png" alt="Email" />
+            </div>
+          </a>
         </div>
       </div>
 
-      <!-- Experience Section -->
-      <div class="experience-section-container neumorphic">
-        <div class="experience-section">
-          <div class="experience-tile">
-            <h3>Experience 1</h3>
-            <p>Details about experience 1.</p>
+      <!-- Main Section -->
+      <div class="main-section">
+        <!-- Filter Section -->
+        <div class="filter-section">
+          <input type="text" placeholder="🔍  Search..." class="search-bar" aria-label="Search" />
+          <div class="filter-options inset">
+            <button class="filter-button">
+              <img src="./images/swift.png" alt="LinkedIn" />
+            </button>
+            <button class="filter-button">2</button>
+            <button class="filter-button">3</button>
           </div>
-          <div class="experience-tile">
-            <h3>Experience 2</h3>
-            <p>Details about experience 2.</p>
-          </div>
-          <div class="experience-tile">
-            <h3>Experience 3</h3>
-            <p>Details about experience 3.</p>
-          </div>
-          <div class="experience-tile">
-            <h3>Experience 4</h3>
-            <p>Details about experience 4.</p>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="content-container">
+          <div class="experience-section-container">
+            <div class="experience-section">
+              <div class="tile project-1">1a</div>
+              <div class="tile project-2">1b</div>
+              <div class="tile project-3">1c</div>
+              <div class="tile project-4">1d</div>
+              <div class="tile project-5">2a</div>
+              <div class="tile project-6">2b</div>
+              <div class="tile project-7">2c</div>
+              <div class="tile project-8">2d</div>
+              <div class="tile project-9">3a</div>
+              <div class="tile project-10">3b</div>
+              <div class="tile project-11">3c</div>
+              <div class="tile project-12">3d</div>
+              <div class="tile project-13">4a</div>
+              <div class="tile project-14">4b</div>
+              <div class="tile project-15">4c</div>
+              <div class="tile project-16">4d</div>
+              <div class="tile project-17">5a</div>
+              <div class="tile project-18">5b</div>
+              <div class="tile project-19">5c</div>
+              <div class="tile project-20">5d</div>
+              <div class="tile project-21">6a</div>
+              <div class="tile project-22">6b</div>
+              <div class="tile project-23">6c</div>
+              <div class="tile project-24">6d</div>
+              <!-- Additional tiles -->
+              <div class="tile">x1</div>
+              <!-- Add more tiles as needed -->
+            </div>          
           </div>
         </div>
       </div>

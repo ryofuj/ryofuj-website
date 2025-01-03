@@ -1,26 +1,18 @@
-/* General Styles */
-body {
-  font-family: 'SF Pro Rounded', Arial, sans-serif;
-  background: #e0e0e0;
+/* 1. Global Styles */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
-/* Titles and Description */
-h2 {
-  font-size: 1.5rem;
-  margin: 0;
-  color: #333;
+body {
+  font-family: 'SF Pro Rounded', Arial, sans-serif;
+  background: #ffffff;
+  overflow-x: hidden;
 }
 
-h4 {
-  font-size: 1rem;
+h1, h2, h3, h4 {
   margin: 0;
-  color: #666;
 }
 
 p {
@@ -30,59 +22,56 @@ p {
   padding: 0 10px;
 }
 
-/* Outer Grid Layout */
-.outer-container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  width: 100%;
-  height: 100vh; /* Profile takes full screen height */
-  background: #e0e0e0;
-}
-
-/* Profile Section */
-.profile-section {
-  background: #e0e0e0;
+/* 2. Utility Classes */
+.inset {
   border-radius: 15px;
-  box-shadow: 
-    inset 8px 8px 15px #bebebe, 
-    inset -8px -8px 15px #ffffff;
-  /* padding: 20px; */
-  text-align: center;
-  overflow-y: auto; /* Enable scrolling if content overflows */
-  padding: 50px 10px;
-  margin: 50px;
+  box-shadow: inset 3px 3px 6px #dcdcdc, inset -3px -3px 6px #ffffff;
 }
 
-.profile-content {
+.outer {
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px #dcdcdc, -5px -5px 15px #ffffff;
+}
+
+/* 3. Layout Containers */
+.layout-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.profile-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  z-index: 999;
+}
+
+.profile-section .profile-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  width: 100%;
+  padding: 20px ;
 }
 
-/* Profile Photo */
-.profile-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 
-    8px 8px 15px #bebebe, 
-    -8px -8px 15px #ffffff;
-  object-fit: cover;
-}
-
-/* Logo Section */
 .logo-section {
-  height: 70px; /* Matches the height of the search bar */
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  background: #e0e0e0;
-  box-shadow: 
-    inset 5px 5px 10px #bebebe, 
-    inset -5px -5px 10px #ffffff;
 }
 
 .logo-section h1 {
@@ -90,149 +79,37 @@ p {
   color: #333;
 }
 
-/* Profile Tile */
-.profile-tile {
-  background: #e0e0e0;
-  border-radius: 15px;
-  box-shadow: 
-    8px 8px 15px #bebebe, 
-    -8px -8px 15px #ffffff;
-  padding: 20px;
-  text-align: center;
-  margin-bottom: 20px;
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 6px 6px 12px #dcdcdc, -6px -6px 12px #ffffff;
+  object-fit: cover;
 }
 
-/* Link Tile */
-.link-tile {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-  background: #e0e0e0;
-  border-radius: 15px;
-  box-shadow: 
-    8px 8px 15px #bebebe, 
-    -8px -8px 15px #ffffff;
-}
-
-.link-tile a {
-  text-decoration: none;
+h2 {
+  font-size: 1.5rem;
   color: #333;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  background: #e0e0e0;
-  box-shadow: 
-    3px 3px 6px #bebebe, 
-    -3px -3px 6px #ffffff;
-  transition: all 0.2s ease-in-out;
 }
 
-.link-tile a:hover {
-  background: #d9d9d9;
-  box-shadow: 
-    inset 3px 3px 6px #bebebe, 
-    inset -3px -3px 6px #ffffff;
+h4 {
+  font-size: 1rem;
+  color: #666;
 }
 
-/* Content Container */
-.content-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 20px;
-}
-
-/* Search and Filter Section */
-.filter-section {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 20px;
-  align-items: center;
-  padding: 20px;
-}
-
-.search-bar {
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 
-    inset 3px 3px 5px #bebebe, 
-    inset -3px -3px 5px #ffffff;
-  width: 100%;
-}
-
-.filter-options {
-  display: flex;
-  gap: 10px;
-}
-
-.filter-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  margin: 0 10px;
-  background: #e0e0e0;
-  box-shadow: 
-    3px 3px 6px #bebebe, 
-    -3px -3px 6px #ffffff;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-/* Experience Section Neumorphism */
-.experience-section-container {
-  background: #e0e0e0;
-  border-radius: 15px;
-  padding: 40px;
-  height: 100%;
-  /* margin-right: 10px;
-  margin-bottom: 10px; */
-  box-shadow: 
-  inset -10px -10px 20px #ffffff, 
-  inset 10px 10px 20px rgba(0, 0, 0, 0.15);
-
-}
-
-.experience-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  
-}
-
-.experience-tile {
-  background: #e0e0e0;
-  border-radius: 15px;
-  box-shadow: 
-    8px 8px 15px #bebebe, 
-    -8px -8px 15px #ffffff;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.experience-tile:hover {
-  transform: scale(1.05);
-  box-shadow: 
-    6px 6px 12px #bebebe, 
-    -6px -6px 12px #ffffff;
-}
-
-/* Numbers Section */
 .profile-numbers {
-  /* display: flex; */
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-around;
+  width: 100%;
+  padding: 15px;
 }
 
 .profile-numbers div {
   text-align: center;
+  padding: 10px;
 }
 
 .profile-numbers h3 {
   font-size: 1.2rem;
-  margin: 0;
   color: #333;
 }
 
@@ -241,48 +118,218 @@ p {
   color: #777;
 }
 
-/* Social Links */
-.social-links {
+.link-tile {
   display: flex;
-  gap: 15px;
   justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
 }
 
-.social-links img {
+.social-icon {
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 4px 4px 8px #dcdcdc, -4px -4px 8px #ffffff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.social-icon:hover {
+  box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
+  transform: scale(1.05);
+}
+
+.social-icon img {
   width: 30px;
   height: 30px;
-  transition: transform 0.2s ease;
+  display: block;
+  max-width: 100%;
 }
 
-.social-links img:hover {
-  transform: scale(1.1);
+/* 4. Main Section */
+.main-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 300px;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-  .outer-container {
-    grid-template-columns: 1fr; /* Stack everything vertically */
+/* 5. Filter Section */
+.filter-section {
+  display: grid;
+  margin: 0 20px;
+  width: 100%;
+  /* grid-template-areas:"search-bar filter-options filter-options filter-options"; */
+  grid-template-columns: 1fr 3fr;
+  padding: 20px 40px;
+  border-radius: 15px;
+  z-index: 998;
+}
+
+.search-bar {
+  padding: 0 0 0 24px;
+  height: 48px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: inset 2px 2px 4px #f3f3f3, inset -2px -2px 4px #621212;
+}
+
+.search-bar:hover{
+  box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
+}
+
+.search-bar:focus {
+  box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
+  outline: none;
+}
+
+.filter-options {
+  margin: 0 24px;
+  padding: 0 14px;
+  display: flex;
+  gap: 16px;
+  height: 48px;
+  border-radius: 100px;
+  align-items: center;
+}
+
+.filter-button {
+  align-items: center;
+  /* padding: 20px; */
+  aspect-ratio: 1/1;
+  border: none;
+  height: 32px;
+  border-radius: 100px;
+  align-items: center;
+  /* box-shadow: 3px 3px 6px #dcdcdc, -3px -3px 6px #ffffff; */
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.filter-button img {
+  width: 16px;
+  height: 16px;
+  aspect-ratio: 1/1;
+}
+
+.filter-button:hover {
+  box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
+  background: #f5f5f5;
+}
+
+/* 6. Content Container */
+.content-container {
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* 7. Experience Section */
+.experience-section-container {
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 5px 5px 15px #dcdcdc, -5px -5px 15px #ffffff;
+}
+
+.experience-section {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.tile {
+  border-radius: 15px;
+  background: #700a0a;
+  aspect-ratio: 1/1;
+}
+
+@media (min-width: 1200px) {
+  .experience-section {
+    grid-template-columns: repeat(4, 1fr);
   }
+}
 
-  .profile-section {
-    height: auto; /* Adjust height when stacked */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .experience-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .experience-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .profile-numbers {
+    display: flex;
   }
 
   .experience-section {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for experiences */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .tile {
+    width: 100%;
   }
 }
 
-@media (max-width: 600px) {
-  .filter-section {
-    grid-template-columns: 1fr;
+/* 9. Experience Tile */
+.experience-tile {
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px #dcdcdc, -4px -4px 8px #ffffff;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.experience-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 2px 2px 4px #dcdcdc, -2px -2px 4px #ffffff;
+}
+
+/* 10. Mobile Overrides */
+@media (max-width: 599px) {
+  .profile-section,
+  .filter-section,
+  .experience-section {
+    align-items: center;
+    overflow-y: visible; 
   }
 
   .search-bar {
-    display: none; /* Hide search bar on smaller screens */
+    display: none;
   }
 
-  .experience-section {
-    grid-template-columns: 1fr; /* Single column for experiences */
+  .profile-section {
+    position: static;
+    width: 100%;
+  }
+
+  .filter-section {
+    margin-top: 20px;
+  }
+
+  .main-section {
+    align-items: center;
+    height: auto;
+    overflow: visible;
+  }
+
+  .content-container {
+    height: auto;
+  }
+
+  .layout-container {
+    flex-direction: column;
   }
 }
