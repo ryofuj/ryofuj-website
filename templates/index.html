@@ -4,128 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Responsive Neumorphism Layout</title>
-  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/experience.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/search_filter.css') }}">
 </head>
 <body>
   <div class="content-wrapper">
     <div class="layout-container">
       <!-- Profile Section -->
-      <div class="profile-section">
-        <div class="logo-section">
-          <img src="/static/images/ryosketch-2.png" alt="Logo" class="logo" />
-          <img src="/static/images/logo.png" alt="Logo" class="logo" />
-          <img src="/static/images/ryosketch-3.png" alt="Logo" class="logo" />
-        </div>
-        <div class="profile-content inset">
-          <img src="/static/images/ryosketch-1.png" alt="Profile Photo" class="profile-photo" />
-          <h2>Ryo Fujimura</h2>
-          <h4>Software Engineer</h4>
-          <p>Passionate developer creating innovative solutions for modern problems. Open source enthusiast and lifelong learner.</p>
-          <div class="profile-numbers">
-            <div>
-              <h3>120+</h3>
-              <p>Projects</p>
-            </div>
-            <div>
-              <h3>350+</h3>
-              <p>Followers</p>
-            </div>
-            <div>
-              <h3>50+</h3>
-              <p>Repositories</p>
-            </div>
-          </div>
-        </div>
-        <div class="link-tile">
-          <a href="https://www.linkedin.com/in/ryofujimura/" target="_blank" aria-label="LinkedIn">
-            <div class="social-icon">
-              <img src="/static/images/linkedin.png" alt="LinkedIn" />
-            </div>
-          </a>
-          <a href="https://github.com/ryofujimura" target="_blank" aria-label="GitHub">
-            <div class="social-icon">
-              <img src="/static/images/github.png" alt="GitHub" />
-            </div>
-          </a>
-          <a href="https://docs.google.com/document/d/1J32LsLRUETEwXttxBxeZHVihFNcm10fRAfiumhfVTTU/edit?usp=sharing" aria-label="Resume">
-            <div class="social-icon">
-              <img src="/static/images/resume.png" alt="Resume" />
-            </div>
-          </a>
-        </div>
-      </div>
-
+      <!-- use porfolio.html -->
+       {% include 'portfolio.html' %}      
       <!-- Main Section -->
-      <div class="main-section">
-        <!-- Filter Section -->
-        <div class="filter-section">
-          <div class="search-bar">
-            <div>🔍</div>
-            <input type="text" placeholder="" class="search-input" aria-label="Search" />
-          </div>
-          <div class="filter-options inset">
-            <button class="filter-button">
-              <img src="/static/images/swift.png" alt="LinkedIn" />
-            </button>
-            <button class="filter-button">2</button>
-            <button class="filter-button">3</button>
-            <button class="filter-button">4</button>
-            <button class="filter-button">5</button>
-            <button class="filter-button">6</button>
-            <button class="filter-button">7</button>
-            <button class="filter-button">8</button>
-            <button class="filter-button">9</button>
-            <button class="filter-button">2</button>
-            <button class="filter-button">3</button>
-            <button class="filter-button">4</button>
-            <button class="filter-button">5</button>
-            <button class="filter-button">6</button>
-            <button class="filter-button">7</button>
-            <button class="filter-button">8</button>
-            <button class="filter-button">9</button>
-            <button class="filter-button">2</button>
-            <button class="filter-button">3</button>
-            <button class="filter-button">4</button>
-            <button class="filter-button">5</button>
-            <button class="filter-button">6</button>
-            <button class="filter-button">7</button>
-            <button class="filter-button">8</button>
-            <button class="filter-button">9</button>
-          </div>
-        </div>
-
-        <!-- Scrollable Content -->
-        <div class="content-container inset">
-          <div class="experience-section-container">
-            <div class="experience-section">
-              <div class="tile project-1">1</div>
-              <div class="tile project-2">2</div>
-              <div class="tile project-3">3</div>
-              <div class="tile project-4">4</div>
-              <div class="tile project-5">5</div>
-              <div class="tile project-6">6</div>
-              <div class="tile project-7">7</div>
-              <div class="tile project-8">2d</div>
-              <div class="tile project-9">3a</div>
-              <div class="tile project-10">3b</div>
-              <div class="tile project-11">3c</div>
-              <div class="tile project-12">3d</div>
-              <div class="tile project-13">4a</div>
-              <div class="tile project-14">4b</div>
-              <div class="tile project-15">4c</div>
-              <div class="tile project-16">4d</div>
-              <div class="tile project-17">5a</div>
-              <div class="tile project-18">5b</div>
-              <div class="tile project-19">5c</div>
-              <div class="tile project-20">5d</div>
-              <div class="tile project-21">6a</div>
-              <div class="tile project-22">6b</div>
-              <div class="tile project-23">6c</div>
-              <div class="tile project-24">6d</div>
-            </div>          
-          </div>
-        </div>
-      </div>
+      {% include 'base.html' %} 
     </div>
   </div>
 </body>

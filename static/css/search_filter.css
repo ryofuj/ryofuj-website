@@ -1,0 +1,90 @@
+/* 5. Filter Section */
+.filter-section {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    z-index: 998;
+    overflow: hidden;
+    max-width: 1036px;
+    padding: 40px 0 20px 20px;
+    height: 108px;
+  }
+
+/* General styles for the search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 48px;
+  border-radius: 50px;
+  padding: 0 20px;
+  box-shadow: inset 3px 3px 6px #dcdcdc, inset -3px -3px 6px #ffffff;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hide input borders and set padding */
+.search-input {
+  border: none;        
+  flex: 1; /* Allows the input to expand inside the flex container */
+  font-size: 16px;
+  outline: none; /* Removes focus border */
+  background: none; /* Matches the container's background */
+}
+
+/* Hover effect for the search bar */
+.search-bar:hover {
+  box-shadow: inset 3px 3px 6px #cfcfcf, inset -3px -3px 6px #ffffff;
+}
+
+.search-bar:hover div {
+  transform: scale(1.10);
+}
+
+.search-input:focus, .search-bar:focus-within div {
+  transform: scale(1.10);
+} 
+
+/* When the input is focused, style the entire search-bar container */
+.search-input:focus + .search-bar, /* Optionally */
+.search-bar:focus-within {
+  box-shadow: inset 3px 3px 6px #cfcfcf, inset -3px -3px 6px #ffffff;
+  outline: none;
+}
+
+
+.filter-options {
+  overflow: auto;  
+  margin: 0 24px;
+  padding: 0 14px;
+  display: flex;
+  gap: 16px;
+  border-radius: 100px;
+  align-items: center;
+  scrollbar-width: none;
+}
+
+.filter-button {
+  background-color: #ffffff;
+  align-items: center;
+  /* padding: 20px; */
+  aspect-ratio: 1/1;
+  border: none;
+  height: 32px;
+  border-radius: 100px;
+  align-items: center;
+  /* box-shadow: 3px 3px 6px #dcdcdc, -3px -3px 6px #ffffff; */
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 4px 4px 8px #dcdcdc, -4px -4px 8px #ffffff;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.filter-button img {
+  width: 16px;
+  height: 16px;
+  aspect-ratio: 1/1;
+}
+
+.filter-button:hover {
+  box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
+  transform: scale(1.05);
+}

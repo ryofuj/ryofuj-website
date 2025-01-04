@@ -1,0 +1,50 @@
+@media (max-width: 599px) {
+    .profile-numbers {
+      display: flex;
+    }
+  
+    .experience-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .profile-section,
+    .filter-section,
+    .experience-section {
+      align-items: center;
+      overflow-y: visible; 
+    }
+  
+    .search-bar {
+      display: none;
+    }
+  
+    .profile-section {
+      position: static;
+      width: 100%;
+    }
+   
+    .profile-numbers h3 {
+      font-size: 1.4rem;
+      color: #333;
+    }
+  
+    .filter-section {
+      margin-top: 20px;
+    }
+  
+    .main-section {
+      align-items: center;
+      height: auto;
+      overflow: visible;
+    }
+  
+    .content-container {
+      height: auto;
+    }
+  
+    .layout-container {
+      flex-direction: column;
+    }
+  }
