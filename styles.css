@@ -16,7 +16,7 @@ h1, h2, h3, h4 {
 }
 
 p {
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   color: #777;
   text-align: center;
   padding: 0 10px;
@@ -25,7 +25,7 @@ p {
 /* 2. Utility Classes */
 .inset {
   border-radius: 15px;
-  box-shadow: inset 3px 3px 6px #dcdcdc, inset -3px -3px 6px #ffffff;
+  box-shadow: inset 12px 12px 34px rgba(25, 24, 26, 0.08);
 }
 
 .outer {
@@ -62,7 +62,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
   width: 100%;
   padding: 20px ;
 }
@@ -72,29 +72,36 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 }
 
-.logo-section h1 {
-  font-size: 1.5rem;
-  color: #333;
+.logo-section img {
+  aspect-ratio: 1/1;
+  width: auto;
+  height: 32px;
 }
 
 .profile-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 6px 6px 12px #dcdcdc, -6px -6px 12px #ffffff;
-  object-fit: cover;
+  aspect-ratio: 1/1;
+  height: 120px;
+  max-width: 120px;
+  /* border-radius: 50%; */
+  /* box-shadow: 6px 6px 12px #dcdcdc, -6px -6px 12px #ffffff; */
+  /* object-fit: cover; */
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #333;
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #666;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: black;
 }
 
 .profile-numbers {
@@ -109,12 +116,12 @@ h4 {
 }
 
 .profile-numbers h3 {
-  font-size: 1.2rem;
+  font-size: 2rem;
   color: #333;
 }
 
 .profile-numbers p {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: #777;
 }
 
@@ -129,11 +136,11 @@ h4 {
 .social-icon {
   background: #ffffff;
   border-radius: 50%;
-  box-shadow: 4px 4px 8px #dcdcdc, -4px -4px 8px #ffffff;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 4px 4px 8px #dcdcdc, -4px -4px 8px #ffffff;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -143,10 +150,10 @@ h4 {
 }
 
 .social-icon img {
-  width: 30px;
+  aspect-ratio: 1/1;
   height: 30px;
+  max-width: 30px;
   display: block;
-  max-width: 100%;
 }
 
 /* 4. Main Section */
@@ -165,8 +172,8 @@ h4 {
   display: grid;
   margin: 0 20px;
   width: 100%;
-  /* grid-template-areas:"search-bar filter-options filter-options filter-options"; */
   grid-template-columns: 1fr 3fr;
+  font-size: 1.4rem;
   padding: 20px 40px;
   border-radius: 15px;
   z-index: 998;
@@ -177,15 +184,15 @@ h4 {
   height: 48px;
   border: none;
   border-radius: 50px;
-  box-shadow: inset 2px 2px 4px #f3f3f3, inset -2px -2px 4px #621212;
+  box-shadow: inset 3px 3px 6px #dcdcdc, inset -3px -3px 6px #ffffff;
 }
 
 .search-bar:hover{
-  box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
+  box-shadow: inset 3px 3px 6px #cfcfcf, inset -3px -3px 6px #ffffff;
 }
 
 .search-bar:focus {
-  box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
+  box-shadow: inset 3px 3px 6px #cfcfcf, inset -3px -3px 6px #ffffff;
   outline: none;
 }
 
@@ -200,6 +207,7 @@ h4 {
 }
 
 .filter-button {
+  background-color: #ffffff;
   align-items: center;
   /* padding: 20px; */
   aspect-ratio: 1/1;
@@ -210,8 +218,10 @@ h4 {
   /* box-shadow: 3px 3px 6px #dcdcdc, -3px -3px 6px #ffffff; */
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 4px 4px 8px #dcdcdc, -4px -4px 8px #ffffff;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
 .filter-button img {
   width: 16px;
   height: 16px;
@@ -220,7 +230,7 @@ h4 {
 
 .filter-button:hover {
   box-shadow: inset 2px 2px 4px #dcdcdc, inset -2px -2px 4px #ffffff;
-  background: #f5f5f5;
+  transform: scale(1.05);
 }
 
 /* 6. Content Container */
@@ -231,9 +241,12 @@ h4 {
 
 /* 7. Experience Section */
 .experience-section-container {
-  border-radius: 15px;
+  border-radius: 15px 0 0 0;
+  margin: -10px;
   padding: 20px;
-  box-shadow: 5px 5px 15px #dcdcdc, -5px -5px 15px #ffffff;
+  /* box-shadow: 5px 5px 15px #dcdcdc, -5px -5px 15px #ffffff; */
+  
+  box-shadow: inset 3px 3px 6px #dcdcdc, inset -3px -3px 6px #ffffff;
 }
 
 .experience-section {
@@ -258,11 +271,17 @@ h4 {
   .experience-section {
     grid-template-columns: repeat(3, 1fr);
   }
+  .filter-section {
+    grid-template-columns: 1fr 2fr;
+  }
 }
 
 @media (min-width: 600px) and (max-width: 899px) {
   .experience-section {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .filter-section {
+    grid-template-columns: 1fr 2fr;
   }
 }
 
