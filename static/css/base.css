@@ -99,7 +99,7 @@ h4 {
   font-size: 1.2rem;
   color: #666;
   color: #ffffff;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 4px;
   background-color: black;
 }
@@ -197,6 +197,7 @@ h4 {
 }
 
 .filter-options {
+  overflow: auto;  
   margin: 0 24px;
   padding: 0 14px;
   display: flex;
@@ -332,6 +333,11 @@ h4 {
   .profile-section {
     position: static;
     width: 100%;
+  }
+ 
+  .profile-numbers h3 {
+    font-size: 1.4rem;
+    color: #333;
   }
 
   .filter-section {
