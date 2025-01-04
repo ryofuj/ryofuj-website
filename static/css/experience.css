@@ -14,8 +14,11 @@
     border-radius: 15px;
     min-height: 100px;
     height: 100%; 
-    background: #700a0a;
+    background: white;
     aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center; /* horizontally centered */
+    align-items: center; /* vertically centered */
   }
   
   @media (min-width: 1337px) {
