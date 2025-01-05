@@ -39,6 +39,9 @@
     .project-1 { 
       grid-area: project-1; background-color: #ff9999; 
       aspect-ratio: 1/2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .project-2 { 
       grid-area: project-2; background-color: #99ff99; 
