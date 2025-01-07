@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/experience.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/search_filter.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/toothin.css') }}">
 </head>
 <body>
   <div class="content-wrapper">
@@ -19,6 +21,11 @@
       <!-- Main Section -->
       {% include 'base.html' %} 
     </div>
+    <div class="too-thin">
+      <div class="too-thin-content">
+        <h1>Oops!</h1>
+        <p>This screen is feeling a little too squished. Try widening your view!</p>
+      </div>
   </div>
 </body>
 </html>
