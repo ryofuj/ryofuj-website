@@ -6,36 +6,56 @@
     height: auto;
   }
 
+  .profile-section .profile-content {
+    display: grid;
+  }
   /* Profile Section */
  .profile-section {
+    display: grid;
     position: relative;
     width: 100%;
-    height: auto;
-    padding: 20px;
-    display: grid;
+    height:  auto;
     max-width: 400px;
     margin: 0 auto;
   }
 
   .profile-content {
     display: grid;
+    padding: 16px;
     grid-template-areas: 
       "profile-photo profile-photo profile-name profile-name"
       "profile-photo profile-photo profile-title profile-title"
       "profile-bio profile-bio profile-bio profile-bio"
       "profile-numbers profile-numbers profile-numbers profile-numbers";
     grid-gap: 16px;
+
   }
 
   .profile-photo {
+    grid-area: profile-photo;
     height: 100px;
     max-width: 100px;
+    margin: auto;
+    padding: 0;
+    aspect-ratio: 1/1;
+  }
+  .profile-name {
+    grid-area: profile-name;
+}
+
+  .profile-title {
+      grid-area: profile-title;
+  }
+
+  .profile-bio {
+      grid-area: profile-bio;
   }
 
   .profile-numbers {
-    display: flex;
-
+      grid-area: profile-numbers;
+      display: flex;
   }
+
 
   /* Filter Section */
   .filter-section {
