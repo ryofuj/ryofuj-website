@@ -4,7 +4,7 @@
     grid-template-columns: 1fr 3fr;
     z-index: 998;
     overflow: hidden;
-    max-width: 1036px;
+
     min-height: 108px;
     max-height: 108px;
     align-items: center;
@@ -66,17 +66,11 @@
 
 .filter-button {
   background-color: #ffffff;
-  align-items: center;
-  /* padding: 20px; */
   aspect-ratio: 1/1;
   border: none;
   height: 32px;
   border-radius: 100px;
-  align-items: center;
-  /* box-shadow: 3px 3px 6px #dcdcdc, -3px -3px 6px #ffffff; */
   cursor: pointer;
-  font-weight: bold;
-  /* box-shadow: 4px 4px 8px #dcdcdc, -4px -4px 8px #ffffff; */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -84,6 +78,7 @@
   aspect-ratio: 1/auto;
   max-width: 16px;
   max-height: 16px;
+  margin: auto;
 }
 
 .filter-button:hover {

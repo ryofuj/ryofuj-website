@@ -13,6 +13,7 @@
     gap: 20px;
     padding: 40px;
     z-index: 999;
+    scrollbar-width: none;
   }
   
   .profile-section .profile-content {
