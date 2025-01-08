@@ -182,7 +182,6 @@ def seed_data():
             long_description=item.get("long_description"),
             main_link=item.get("main_link"),
             main_image=item.get("main_image"),
-            tile_size=""  # optional: set if you have a desired tile_size
         )
 
         db.session.add(exp)
