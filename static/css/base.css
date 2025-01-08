@@ -1,11 +1,11 @@
 .main-section {
-    display: flex;
+    display: grid;
     flex-direction: column;
     flex: 1;
     margin-left: 300px;
-    height: 100vh;
+    height: 100svh;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
   }
 
 
