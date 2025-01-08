@@ -12,27 +12,26 @@ experience_tags = db.Table(
 class Profile(db.Model):
     """
     Profile table to store personal information about the owner of the website.
-    You can expand or adjust fields as needed.
     """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     title = db.Column(db.String(100))
     bio = db.Column(db.Text)
-    avatar_url = db.Column(db.String(255))
+    img_path = db.Column(db.String(255))  # updated to match "img_path"
 
     def __repr__(self):
         return f'<Profile {self.name}>'
 
 class ExperienceType(db.Model):
     """
-    ExperienceType table to categorize different experiences, e.g. "Project", "Job", "Award", etc.
+    ExperienceType table to categorize different experiences, 
+    e.g. "Work", "Project", "Leadership", "Publication", etc.
     """
     __tablename__ = 'experience_type'
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
 
-    # Relationship back to Experience
     experiences = db.relationship("Experience", back_populates="experience_type")
 
     def __repr__(self):
@@ -40,7 +39,7 @@ class ExperienceType(db.Model):
 
 class Tag(db.Model):
     """
-    Tag table, storing tags like "Python", "Web", "AI", "Flask", etc.
+    Tag table, storing tags like "Python", "Flask", "Web Dev", "AI", etc.
     """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True, nullable=False)
@@ -56,8 +55,6 @@ class Experience(db.Model):
       - Many-to-many relationship with Tag through experience_tags
     """
     id = db.Column(db.Integer, primary_key=True)
-    
-    # FK reference to ExperienceType
     experience_type_id = db.Column(db.Integer, db.ForeignKey('experience_type.id'), nullable=False)
     
     title = db.Column(db.String(255), nullable=False)
@@ -66,9 +63,8 @@ class Experience(db.Model):
     long_description = db.Column(db.Text)
     main_link = db.Column(db.String(500))
     main_image = db.Column(db.String(255))
-    tile_size = db.Column(db.String(50))  # e.g. "1x1", "2x1", or custom
-    
-    # Relationship
+    tile_size = db.Column(db.String(50))  # e.g., "1x1", "2x1", etc.
+
     experience_type = db.relationship("ExperienceType", back_populates="experiences")
     tags = db.relationship("Tag", secondary=experience_tags, backref="experiences")
 
