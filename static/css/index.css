@@ -12,6 +12,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'SF Pro Rounded Semi bold';
+  src: url('/static/fonts/SFProRoundedSemibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded Bold';
+  src: url('/static/fonts/SFProRoundedBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: 'SF Pro Rounded', Arial, sans-serif;
   background: #ffffff;
@@ -33,6 +47,16 @@ p {
 .inset {
   border-radius: 15px;
   box-shadow: inset 12px 12px 34px rgba(25, 24, 26, 0.08);
+}
+
+.inset-mini {
+  border-radius: 15px;
+  box-shadow: inset 4px 4px 12px rgba(25, 24, 26, 0.08);
+}
+
+.outer-mini {
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px #dcdcdc, -5px -5px 5px #ffffff;
 }
 
 .outer {

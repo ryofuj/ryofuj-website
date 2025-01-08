@@ -1,207 +1,208 @@
 /* 6. Content Container */
 .content-container {
-  /* margin: 20px; */
-    overflow-y: auto;
-    border-radius: 15px 0 0 0;
-  }
-  
-  /* 7. Experience Section */
-  .experience-section-container {
+/* margin: 20px; */
+  border-radius: 15px;
+  box-shadow: inset 12px 12px 34px rgba(25, 24, 26, 0.08);
+  overflow-y: auto;
+  border-radius: 15px 0 0 0;
+}
+
+/* 7. Experience Section */
+.experience-section-container {
+  padding: 20px;
+}
+
+.tile {
+  border-radius: 15px;
+  min-height: 100px;
+  height: 100%; 
+  background: white;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center; /* horizontally centered */
+  align-items: center; /* vertically centered */
+}
+
+@media (min-width: 1337px) {
+  .experience-section {
+    display: grid;
+    grid-template-areas:
+    "project-1 project-2 project-3 project-3"
+    "project-1 project-4 project-3 project-3"
+    "project-5 project-6 project-6 project-7";
+    grid-template-columns: repeat(4, 1fr);  
+    grid-template-rows: auto;
+    gap: 40px;
     padding: 20px;
-  }
+    max-width: 1021px;
 
-  .tile {
-    border-radius: 15px;
-    min-height: 100px;
-    height: 100%; 
-    background: white;
-    aspect-ratio: 1/1;
+  }
+  
+  .project-1 { 
+    grid-area: project-1; background-color: #ff9999; 
+    aspect-ratio: 1/2;
     display: flex;
-    justify-content: center; /* horizontally centered */
-    align-items: center; /* vertically centered */
+    justify-content: center;
+    align-items: center;
   }
-  
-  @media (min-width: 1337px) {
-    .experience-section {
-      display: grid;
-      grid-template-areas:
-      "project-1 project-2 project-3 project-3"
-      "project-1 project-4 project-3 project-3"
-      "project-5 project-6 project-6 project-7";
-      grid-template-columns: repeat(4, 1fr);  
-      grid-template-rows: auto;
-      gap: 40px;
-      padding: 20px;
-      max-width: 1021px;
+  .project-2 { 
+    grid-area: project-2; background-color: #99ff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-3 { 
+    grid-area: project-3; background-color: #9999ff; 
+    aspect-ratio: 2/2;
+  }
+  .project-4 { 
+    grid-area: project-4; background-color: #ffff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-5 { 
+    grid-area: project-5; background-color: #99ffff; 
+    aspect-ratio: 1/1;
+  }
+  .project-6 { 
+    grid-area: project-6; background-color: #ff99ff; 
+    aspect-ratio: 2/1;
+  }
+  .project-7 {
+    grid-area: project-7; background-color: #cccccc; 
+    aspect-ratio: 1/1;
+  }
+}
 
-    }
-    
-    .project-1 { 
-      grid-area: project-1; background-color: #ff9999; 
-      aspect-ratio: 1/2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .project-2 { 
-      grid-area: project-2; background-color: #99ff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-3 { 
-      grid-area: project-3; background-color: #9999ff; 
-      aspect-ratio: 2/2;
-    }
-    .project-4 { 
-      grid-area: project-4; background-color: #ffff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-5 { 
-      grid-area: project-5; background-color: #99ffff; 
-      aspect-ratio: 1/1;
-    }
-    .project-6 { 
-      grid-area: project-6; background-color: #ff99ff; 
-      aspect-ratio: 2/1;
-    }
-    .project-7 {
-      grid-area: project-7; background-color: #cccccc; 
-      aspect-ratio: 1/1;
-    }
+@media (min-width: 1097px) and (max-width: 1336px) {
+  .experience-section {
+    display: grid;
+    grid-template-areas:
+    "project-1 project-2 project-3 project-3"
+    "project-1 project-4 project-3 project-3"
+    "project-5 project-6 project-6 project-7";
+    grid-template-columns: repeat(4, 1fr);  
+    grid-template-rows: auto;
+    gap: 40px;
+    padding: 20px;
+    max-width: 1021px;
   }
   
-  @media (min-width: 1097px) and (max-width: 1336px) {
-    .experience-section {
-      display: grid;
-      grid-template-areas:
-      "project-1 project-2 project-3 project-3"
-      "project-1 project-4 project-3 project-3"
-      "project-5 project-6 project-6 project-7";
-      grid-template-columns: repeat(4, 1fr);  
-      grid-template-rows: auto;
-      gap: 40px;
-      padding: 20px;
-      max-width: 1021px;
-    }
-    
-    .project-1 { 
-      grid-area: project-1; background-color: #ff9999; 
-      aspect-ratio: 1/2;
-    }
-    .project-2 { 
-      grid-area: project-2; background-color: #99ff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-3 { 
-      grid-area: project-3; background-color: #9999ff; 
-      aspect-ratio: 2/2;
-    }
-    .project-4 { 
-      grid-area: project-4; background-color: #ffff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-5 { 
-      grid-area: project-5; background-color: #99ffff; 
-      aspect-ratio: 1/1;
-    }
-    .project-6 { 
-      grid-area: project-6; background-color: #ff99ff; 
-      aspect-ratio: 2/1;
-    }
-    .project-7 {
-      grid-area: project-7; background-color: #cccccc; 
-      aspect-ratio: 1/1;
-    } 
+  .project-1 { 
+    grid-area: project-1; background-color: #ff9999; 
+    aspect-ratio: 1/2;
+  }
+  .project-2 { 
+    grid-area: project-2; background-color: #99ff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-3 { 
+    grid-area: project-3; background-color: #9999ff; 
+    aspect-ratio: 2/2;
+  }
+  .project-4 { 
+    grid-area: project-4; background-color: #ffff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-5 { 
+    grid-area: project-5; background-color: #99ffff; 
+    aspect-ratio: 1/1;
+  }
+  .project-6 { 
+    grid-area: project-6; background-color: #ff99ff; 
+    aspect-ratio: 2/1;
+  }
+  .project-7 {
+    grid-area: project-7; background-color: #cccccc; 
+    aspect-ratio: 1/1;
+  } 
+}
+
+@media (min-width: 857px) and (max-width: 1096px) {
+  .filter-section {
+    grid-template-columns: 1fr 2fr;
+  }
+  .experience-section {
+    display: grid;
+    grid-template-areas:
+    "project-1 project-1 project-2"
+    "project-4 project-5 project-3"
+    "project-6 project-6 project-3";
+    grid-template-columns: repeat(3, 1fr);  
+    grid-template-rows: auto;
+    gap: 40px;
+    padding: 20px;
+    max-width: 1021px;
   }
   
-  @media (min-width: 857px) and (max-width: 1096px) {
-    .filter-section {
-      grid-template-columns: 1fr 2fr;
-    }
-    .experience-section {
-      display: grid;
-      grid-template-areas:
-      "project-1 project-1 project-2"
-      "project-4 project-5 project-3"
-      "project-6 project-6 project-3";
-      grid-template-columns: repeat(3, 1fr);  
-      grid-template-rows: auto;
-      gap: 40px;
-      padding: 20px;
-      max-width: 1021px;
-    }
-    
-    .project-1 { 
-      grid-area: project-1; background-color: #ff9999; 
-      aspect-ratio: 2/1;
-    }
-    .project-2 { 
-      grid-area: project-2; background-color: #99ff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-3 { 
-      grid-area: project-3; background-color: #9999ff; 
-      aspect-ratio: 1/2;
-    }
-    .project-4 { 
-      grid-area: project-4; background-color: #ffff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-5 { 
-      grid-area: project-5; background-color: #99ffff; 
-      aspect-ratio: 1/1;
-    }
-    .project-6 { 
-      grid-area: project-6; background-color: #ff99ff; 
-      aspect-ratio: 2/1;
-    }
+  .project-1 { 
+    grid-area: project-1; background-color: #ff9999; 
+    aspect-ratio: 2/1;
+  }
+  .project-2 { 
+    grid-area: project-2; background-color: #99ff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-3 { 
+    grid-area: project-3; background-color: #9999ff; 
+    aspect-ratio: 1/2;
+  }
+  .project-4 { 
+    grid-area: project-4; background-color: #ffff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-5 { 
+    grid-area: project-5; background-color: #99ffff; 
+    aspect-ratio: 1/1;
+  }
+  .project-6 { 
+    grid-area: project-6; background-color: #ff99ff; 
+    aspect-ratio: 2/1;
+  }
+}
+
+@media (min-width: 371px) and  (max-width: 856px) {
+  .filter-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  .experience-section {
+    display: grid;
+    grid-template-areas:
+    "project-1 project-1"
+    "project-2 project-4"
+    "project-3 project-3"
+    "project-5 project-7"
+    "project-6 project-6";
+    grid-template-columns: repeat(2, 1fr);  
+    grid-template-rows: auto;
+    gap: 40px;
+    padding: 20px;
+    max-width: 1021px;
   }
   
-  @media (min-width: 600px) and (max-width: 856px) {
-    .filter-section {
-      grid-template-columns: 1fr 1fr;
-    }
-    .experience-section {
-      display: grid;
-      grid-template-areas:
-      "project-1 project-1"
-      "project-2 project-4"
-      "project-3 project-3"
-      "project-5 project-7"
-      "project-6 project-6";
-      grid-template-columns: repeat(2, 1fr);  
-      grid-template-rows: auto;
-      gap: 40px;
-      padding: 20px;
-      max-width: 1021px;
-    }
-    
-    .project-1 { 
-      grid-area: project-1; background-color: #ff9999; 
-      aspect-ratio: 2/1;
-    }
-    .project-2 { 
-      grid-area: project-2; background-color: #99ff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-3 { 
-      grid-area: project-3; background-color: #9999ff; 
-      aspect-ratio: 2/1;
-    }
-    .project-4 { 
-      grid-area: project-4; background-color: #ffff99; 
-      aspect-ratio: 1/1;
-    }
-    .project-5 { 
-      grid-area: project-5; background-color: #99ffff; 
-      aspect-ratio: 1/1;
-    }
-    .project-6 { 
-      grid-area: project-6; background-color: #ff99ff; 
-      aspect-ratio: 2/1;
-    }
-    .project-7 {
-      grid-area: project-7; background-color: #cccccc; 
-      aspect-ratio: 1/1;
-    } 
+  .project-1 { 
+    grid-area: project-1; background-color: #ff9999; 
+    aspect-ratio: 2/1;
   }
-  
+  .project-2 { 
+    grid-area: project-2; background-color: #99ff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-3 { 
+    grid-area: project-3; background-color: #9999ff; 
+    aspect-ratio: 2/1;
+  }
+  .project-4 { 
+    grid-area: project-4; background-color: #ffff99; 
+    aspect-ratio: 1/1;
+  }
+  .project-5 { 
+    grid-area: project-5; background-color: #99ffff; 
+    aspect-ratio: 1/1;
+  }
+  .project-6 { 
+    grid-area: project-6; background-color: #ff99ff; 
+    aspect-ratio: 2/1;
+  }
+  .project-7 {
+    grid-area: project-7; background-color: #cccccc; 
+    aspect-ratio: 1/1;
+  } 
+}

@@ -7,3 +7,8 @@
     overflow: hidden;
     position: relative;
   }
+
+
+.too-thin {
+  display: none;
+}
