@@ -63,6 +63,7 @@ class Experience(db.Model):
     long_description = db.Column(db.Text)
     main_link = db.Column(db.String(500))
     main_image = db.Column(db.String(255))
+    tile_size = db.Column(db.String(50))  # e.g., "1x1", "2x1", etc.
 
     experience_type = db.relationship("ExperienceType", back_populates="experiences")
     tags = db.relationship("Tag", secondary=experience_tags, backref="experiences")

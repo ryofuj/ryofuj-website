@@ -5,11 +5,11 @@
         <img src="/static/images/ryosketch-3.png" alt="Logo" class="logo" />
     </div>
     <div class="profile-content inset">
-        <img src="/static/images/ryosketch-1.png" alt="Profile Photo" class="profile-photo" />
-        <h2 class="profile-name">Hi, I'm<br>Ryo Fujimura</h2>
-        <h4 class="profile-title">Software Engineer</h4>
-        <p class="profile-bio">Passionate developer creating innovative solutions for modern problems. 
-            learner.</p>
+        {% if profile %}
+        <img src={{ profile.img_path }} alt="Profile Photo" class="profile-photo" />
+        <h2 class="profile-name">Hi, I'm<br>{{ profile.name }}</h2> 
+        <h4 class="profile-title">{{ profile.title }}</h4>
+        <p class="profile-bio">{{ profile.bio }}</p>
         <div class="profile-numbers">
             <div>
                 <h3>120+</h3>
@@ -24,6 +24,9 @@
                 <p>Repositories</p>
             </div>
         </div>
+        {% else %}
+            <h2 class="profile-name">Hi, I'm<br>Ryo Fujimura</h2>
+        {% endif %}
     </div>
     <div class="link-tile">
         <a href="https://www.linkedin.com/in/ryofujimura/" target="_blank" aria-label="LinkedIn">

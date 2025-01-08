@@ -1,6 +1,6 @@
+import os
 from flask import Flask, render_template
 from models import db, Profile, Experience, Tag, ExperienceType
-import os
 
 app = Flask(__name__)
 
@@ -12,8 +12,7 @@ db.init_app(app)
 
 def get_or_create_experience_type(name):
     """
-    Helper function to either retrieve an existing ExperienceType
-    or create a new one if it doesn't exist.
+    Helper to retrieve (or create) an ExperienceType by name.
     """
     et = ExperienceType.query.filter_by(name=name).first()
     if not et:
@@ -24,8 +23,7 @@ def get_or_create_experience_type(name):
 
 def get_or_create_tag(tag_name):
     """
-    Helper function to either retrieve an existing Tag
-    or create a new one if it doesn't exist.
+    Helper to retrieve (or create) a Tag by name.
     """
     t = Tag.query.filter_by(name=tag_name).first()
     if not t:
@@ -37,19 +35,17 @@ def get_or_create_tag(tag_name):
 @app.before_request
 def create_tables():
     """
-    Create all tables in the database before the first request.
-    This is just a demo approach. In production, you might manage 
-    migrations using Flask-Migrate or Alembic. 
+    Creates all tables if they don't exist, then seeds data once.
     """
     db.create_all()
-    seed_data()  # Insert sample data
+    seed_data()
 
 def seed_data():
     """
-    Insert/update initial data if the tables are empty (or if you want to 
-    ensure certain records exist). Adjust as needed for your use case.
+    Populates the database with initial data if it doesn't already exist.
+    Prevents duplicate insertions by checking if records exist first.
     """
-    # 1. Profile
+    # 1. Seed Profile (only if none exists)
     if not Profile.query.first():
         profile = Profile(
             name="Ryo Fujimura",
@@ -58,21 +54,14 @@ def seed_data():
             img_path="/static/images/ryosketch-1.png"
         )
         db.session.add(profile)
-    
-    # 2. Experience Types (pre-create common ones)
-    #    We expect to see Work, Project, Leadership, Publication, etc. 
-    #    We'll add or create on-the-fly in the loop below as well.
-    base_types = ["Work", "Project", "New", "Leadership", "Publication"]
-    for base_type in base_types:
-        get_or_create_experience_type(base_type)
+        db.session.commit()
 
-    # 3. Pre-create some tags or rely on dynamic creation below
-    #    Add a few to illustrate
-    default_tags = ["Python", "Flask", "Web Dev", "AI", "Data", "Swift", "C++", "AWS", "computer_science", "adobe", "project_management"]
-    for tag_name in default_tags:
-        get_or_create_tag(tag_name)
+    # 2. Seed Experience (only if none exists)
+    if Experience.query.first():
+        # Already have at least one experience, skip re-inserting
+        return
 
-    # 4. Experience data (from your JSON)
+    # If no experiences, insert them now.
     data = {
       "experiences": [
         {
@@ -168,12 +157,12 @@ def seed_data():
       ]
     }
 
-    # Insert Experiences
+    # Insert the experiences from our data
     for item in data["experiences"]:
-        # 4a. Get or create the ExperienceType
+        # 2a. Ensure the ExperienceType exists
         etype = get_or_create_experience_type(item["experience_type"])
 
-        # 4b. Create the Experience object
+        # 2b. Create the Experience instance
         exp = Experience(
             experience_type_id=etype.id,
             title=item.get("title"),
@@ -183,13 +172,11 @@ def seed_data():
             main_link=item.get("main_link"),
             main_image=item.get("main_image"),
         )
-
         db.session.add(exp)
-        db.session.flush()  # flush to get the new exp.id if needed
+        db.session.flush()  # get exp.id now, if needed
 
-        # 4c. Handle tags
-        tag_list = item.get("tags", [])
-        for tag_name in tag_list:
+        # 2c. Tags
+        for tag_name in item.get("tags", []):
             tag_obj = get_or_create_tag(tag_name)
             exp.tags.append(tag_obj)
 
@@ -198,19 +185,16 @@ def seed_data():
 @app.route('/')
 def home():
     """
-    Example route rendering some data in a simple way.
+    Display the profile (if any) and all experiences.
     """
     profile = Profile.query.first()
     experiences = Experience.query.all()
+    tags = Tag.query.all()
     
-    return render_template(
-        'index.html',
-        profile=profile,
-        experiences=experiences
-    )
+    return render_template('index.html', profile=profile, experiences=experiences, tags=tags)
 
 if __name__ == '__main__':
-    # Make sure the DB file directory is valid
+    # If needed, ensure the DB file is created
     if not os.path.exists('local_database.db'):
         open('local_database.db', 'a').close()
 
