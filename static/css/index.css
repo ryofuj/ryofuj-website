@@ -3,6 +3,8 @@
   box-sizing: border-box;
   margin: 0;
   /* padding: 0; */
+  min-width: 0px;
+
 }
 
 @font-face {
@@ -385,15 +387,15 @@ outline: none;
 
 
 .filter-options {
-overflow: auto;  
-margin: 0 24px;
-padding: 5px 14px;
-display: flex;
-gap: 16px;
-height: 48px;
-border-radius: 100px;
-align-items: center;
-scrollbar-width: none;
+  overflow: auto;  
+  margin: 0 24px;
+  padding: 5px 14px;
+  display: flex;
+  gap: 16px;
+  height: 48px;
+  border-radius: 100px;
+  align-items: center;
+  scrollbar-width: none;
 }
 
 .filter-button {
@@ -401,6 +403,7 @@ background-color: #ffffff;
 aspect-ratio: 1/1;
 border: none;
 height: 32px;
+width: 32px;
 border-radius: 100px;
 cursor: pointer;
 transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -567,7 +570,7 @@ transform: scale(1.05);
 
 @media (min-width: 880px) and (max-width: 1169px) {
   .experience-section {
-    grid-template-columns: repeat(2fr, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .project-1 { 
     aspect-ratio: 2/1;
