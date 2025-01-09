@@ -153,6 +153,46 @@ def seed_data():
           "main_link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing",
           "main_image": "resume.png",
           "tags": ["computer_science"]
+        },
+        {
+          "experience_type": "Leadership",
+          "title": "Trainer",
+          "subtitle": "Amazon Web Services (September 2023 - November 2023)",
+          "short_description": "AWS cloud infrastructure training.",
+          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
+          "main_link": "/",
+          "main_image": "aws.png",
+          "tags": ["aws"]
+        },
+        {
+          "experience_type": "Publication",
+          "title": "6G Network and Data Management with Blockchain",
+          "subtitle": "Research Paper (September 2024)",
+          "short_description": "Research on AWS & Blockchain for 6G networks.",
+          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
+          "main_link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing",
+          "main_image": "resume.png",
+          "tags": ["computer_science"]
+        },
+        {
+          "experience_type": "Leadership",
+          "title": "Trainer",
+          "subtitle": "Amazon Web Services (September 2023 - November 2023)",
+          "short_description": "AWS cloud infrastructure training.",
+          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
+          "main_link": "/",
+          "main_image": "aws.png",
+          "tags": ["aws"]
+        },
+        {
+          "experience_type": "Publication",
+          "title": "6G Network and Data Management with Blockchain",
+          "subtitle": "Research Paper (September 2024)",
+          "short_description": "Research on AWS & Blockchain for 6G networks.",
+          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
+          "main_link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing",
+          "main_image": "resume.png",
+          "tags": ["computer_science"]
         }
       ]
     }

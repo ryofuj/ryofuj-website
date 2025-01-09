@@ -69,6 +69,7 @@
 .filter-button {
   background-color: #ffffff;
   aspect-ratio: 1/1;
+  white-space: nowrap;
   border: none;
   height: 32px;
   border-radius: 100px;
@@ -78,6 +79,7 @@
 }
 
 .filter-button img {
+  overflow: hidden;
   aspect-ratio: 1/auto;
   max-width: 16px;
   max-height: 16px;

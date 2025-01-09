@@ -40,14 +40,14 @@
 /* Responsive Breakpoints */
 @media (min-width: 1460px) {
   /* Project Styles */
-  .project-1 { 
+  #project-1 { 
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 2;
     background-color: #ff9999;
   }
 
-  .project-2 { 
+  #project-2 { 
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
@@ -55,34 +55,34 @@
     aspect-ratio: 1/1;
   }
 
-  .project-3 { 
+  #project-3 { 
     aspect-ratio: unset;
     grid-column: span 2;
     grid-row: span 2;
     background-color: #9999ff;
   }
 
-  .project-4 { 
+  #project-4 { 
     grid-column: span 1;
     grid-row: span 1;
     background-color: #ffff99;
     aspect-ratio: 1/1;
   }
 
-  .project-5 { 
+  #project-5 { 
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ffff;
   }
 
-  .project-6 { 
+  #project-6 { 
     aspect-ratio: unset;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #ff99ff;
   }
 
-  .project-7 {
+  #project-7 {
     grid-column: span 1;
     grid-row: span 1;
     background-color: #cccccc;
@@ -90,21 +90,21 @@
 }
 
 @media (min-width: 1170px) and (max-width: 1459px) {
-  .project-1 { 
+  #project-1 { 
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #ff9999;
   }
 
-  .project-2 { 
+  #project-2 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ff99;
   }
 
-  .project-3 { 
+  #project-3 { 
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 2; 
@@ -114,28 +114,28 @@
     background-color: #9999ff;
   }
 
-  .project-4 { 
+  #project-4 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #ffff99;
   }
 
-  .project-5 { 
+  #project-5 { 
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ffff;
   }
 
-  .project-6 { 
+  #project-6 { 
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #ff99ff;
   }
 
-  .project-7 {
+  #project-7 {
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
@@ -144,52 +144,105 @@
 }
 
 @media  (max-width: 1169px) {
+  .content-container {
+    overflow-y: initial;
+  }
+
+  .experience-section-container {
+    height: auto;
+  }
+
   .experience-section {
     grid-template-columns: repeat(2, 1fr);
   }
-  .project-1 { 
+  #project-1 {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #ff9999;
+
+    aspect-ratio: 2/1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    }
+  
+  #project-1 .experience-image-container {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  #project-1 .experience-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  #project-1 .experience-content {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  #project-1 .experience-type {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.2rem 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  #project-1 .experience-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  #project-1 .experience-subtitle {
+    font-size: 1rem;
+    color: #4d4d4d;
   }
 
-  .project-2 { 
+  #project-2 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ff99;
   }
 
-  .project-3 { 
+  #project-3 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #9999ff;
   }
 
-  .project-4 { 
+  #project-4 { 
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #ffff99;
   }
 
-  .project-5 { 
+  #project-5 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ffff;
   }
 
-  .project-6 { 
+  #project-6 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #ff99ff;
   }
 
-  .project-7 {
+  #project-7 {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;

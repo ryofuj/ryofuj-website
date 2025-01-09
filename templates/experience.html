@@ -5,25 +5,35 @@
         {% if experiences %}
         {% for exp in experiences %}
         {% if loop.index < 8 %}
-          <div class="project-{{ loop.index }} outer">
-            <h3>{{ exp.title }} ({{ exp.experience_type.name }})</h3>
-            <p>{{ exp.short_description }}</p>
-            <p>Tags:
-              {% for tag in exp.tags %}
-                <span>{{ tag.name }}</span>
-              {% endfor %}
-            </p>
+        <div id="project-{{ loop.index }}" class="outer">
+          <div class="experience-image-container">
+            <img src="{{ url_for('static', filename='images/' + exp.main_image) }}" alt="Experience Image">
           </div>
+          <div class="experience-content">
+            <div class="experience-type">
+              hello {{ exp.experience_type }}
+            </div>
+            <div class="experience-title">{{ exp.title }}</div>
+            <div class="experience-subtitle">{{ exp.subtitle }}</div>
+          </div>
+          <!-- <div class="experience-shortdes">{{ exp.short_description }}</div> -->
+          <!-- <div class="experience-longdes">{{ exp.long_description }}</div> -->
+          <!-- <div class="experience-tags">">
+            {% for tag in exp.tags %}
+              <span>{{ tag.name }}</span>
+            {% endfor %}
+          </div> -->
+        </div>
         {% else %}
-          <div class="tile project-{{ loop.index }} outer">
-            <h3>{{ exp.title }} ({{ exp.experience_type.name }})</h3>
-            <p>{{ exp.short_description }}</p>
-            <p>Tags:
-              {% for tag in exp.tags %}
-                <span>{{ tag.name }}</span>
-              {% endfor %}
-            </p>
+        <div id="project-{{ loop.index }}" class="tile outer">
+          <div class="experience-type">{{ exp.experience_type.name}}</div>
+          <div class="experience-image">
+            <img src="{{ url_for('static', filename='images/' + exp.main_image) }}" alt="Experience Image">
           </div>
+          <div class="experience-title">{{ exp.title }}</div>
+          <div class="experience-shortdes">{{ exp.short_description }}</div>
+          <div class="experience-longdes">{{ exp.long_description }}</div>
+        </div>
         {% endif %}
         {% endfor %}
         {% else %}
