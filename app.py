@@ -67,9 +67,16 @@ def seed_data():
         {
           "experience_type": "Project",
           "title": "Software Engineer Intern",
-          "subtitle": "American Honda Motor Company, Inc. (June 2024 - August 2024)",
+          # Previously: subtitle="American Honda Motor Company, Inc. (June 2024 - August 2024)"
+          "subtitle": "American Honda Motor Company, Inc.",
+          "term": "June 2024 - August 2024",
           "short_description": "Conducted on-device AI research for automotive applications.",
-          "long_description": "Conducted comprehensive research on on-device generative AI, focusing on its potential applications within the automotive industry to enhance vehicle functionalities. Developed and demonstrated applications on an NVIDIA Jetson Orin Nano 8GB using Linux and CUDA, showcasing on-device generative AI capabilities with Meta's Llama 3 model to enhance vehicle autonomy and local AI performance.",
+          "long_description": (
+              "Conducted comprehensive research on on-device generative AI, focusing on its potential "
+              "applications within the automotive industry to enhance vehicle functionalities. "
+              "Developed and demonstrated applications on an NVIDIA Jetson Orin Nano 8GB using Linux "
+              "and CUDA, showcasing on-device generative AI capabilities with Meta's Llama 3 model."
+          ),
           "main_link": "https://www.honda.com/",
           "main_image": "honda.svg",
           "tags": ["swift", "computer_science"]
@@ -77,9 +84,16 @@ def seed_data():
         {
           "experience_type": "Work",
           "title": "Data Engineer",
-          "subtitle": "CUSCO USA Inc. (October 2021 - May 2024)",
+          "subtitle": "CUSCO USA Inc.",
+          "term": "October 2021 - May 2024",
           "short_description": "Led a team to develop Python apps extracting data from thousands of PDFs.",
-          "long_description": "Led a three-member team in developing a Python application that extracted data from 11,560 archived PDF files, utilizing advanced software development methodologies. Demonstrated proficiency in testing and development, including the creation of comprehensive test cases to ensure software quality and functionality. Enhanced user access to historical data dating back to 1977, resulting in a 30% increase in revenue by enabling precise retrieval of previously inaccessible information for new users.",
+          "long_description": (
+              "Led a three-member team in developing a Python application that extracted data from 11,560 "
+              "archived PDF files, utilizing advanced software development methodologies. Demonstrated "
+              "proficiency in testing and development, including creation of comprehensive test cases to "
+              "ensure software quality. Enhanced user access to historical data dating back to 1977, "
+              "resulting in a 30% revenue increase by enabling retrieval of previously inaccessible info."
+          ),
           "main_link": "https://cuscousainc.com/",
           "main_image": "cusco.svg",
           "tags": ["python", "project_management", "adobe"]
@@ -87,9 +101,15 @@ def seed_data():
         {
           "experience_type": "Work",
           "title": "Data Engineer",
-          "subtitle": "FUJITSUBO GIKEN KOGYO CO., LTD (September 2023 - November 2023)",
+          "subtitle": "FUJITSUBO GIKEN KOGYO CO., LTD",
+          "term": "September 2023 - November 2023",
           "short_description": "Python-based scraper to automate data extraction.",
-          "long_description": "Engineered a Python-based software program employing web scraping techniques to meticulously extract crucial data from diverse websites. Automated generation workflows with Adobe InDesign, significantly boosting efficiency and achieving a 100% error-free rate by eliminating manual effort across various cases, ensuring software quality and functionality.",
+          "long_description": (
+              "Engineered a Python-based software program employing web scraping techniques to "
+              "extract crucial data from diverse websites. Automated generation workflows with "
+              "Adobe InDesign, significantly boosting efficiency and achieving a 100% error-free "
+              "rate by eliminating manual effort across various cases."
+          ),
           "main_link": "https://www.fujitsubo.co.jp/",
           "main_image": "fujitsubo.svg",
           "tags": ["python", "adobe"]
@@ -97,9 +117,14 @@ def seed_data():
         {
           "experience_type": "Work",
           "title": "Co-PM and Developer",
-          "subtitle": "Matcha Time (March 2024 - April 2024)",
+          "subtitle": "Matcha Time",
+          "term": "March 2024 - April 2024",
           "short_description": "Swift/SwiftUI project with multi-city sync.",
-          "long_description": "Developed and created application functions with Swift/SwiftUI, implemented multi-city synchronization, designed and tested features, fixed bugs, and deployed solutions. Planned and completed the project in 4 weeks, launched the application on the Mac App Store, and managed cross-functional team collaboration to ensure seamless integration and project success.",
+          "long_description": (
+              "Developed and created application functions with Swift/SwiftUI, implemented multi-city "
+              "synchronization, designed and tested features, fixed bugs, and deployed solutions. Planned "
+              "and completed the project in 4 weeks, launched the application on the Mac App Store."
+          ),
           "main_link": "https://apps.apple.com/us/app/matcha-time/id6497067918?mt=12",
           "main_image": "matchatime.svg",
           "tags": ["swift", "project_management"]
@@ -107,9 +132,14 @@ def seed_data():
         {
           "experience_type": "Project",
           "title": "Developer",
-          "subtitle": "Poker Percentage (January 2022 - April 2024)",
+          "subtitle": "Poker Percentage",
+          "term": "January 2022 - April 2024",
           "short_description": "WatchOS app for real-time poker odds.",
-          "long_description": "Developed a poker percentage calculator application for watchOS using Swift and WatchKit, facilitating real-time calculation of odds and probabilities. Improved user decision-making by providing accurate insights into poker hands, resulting in a 15% increase in win rates among users.",
+          "long_description": (
+              "Developed a poker percentage calculator application for watchOS using Swift and WatchKit, "
+              "facilitating real-time calculation of odds and probabilities. Improved user decision-making "
+              "by providing accurate insights into poker hands, resulting in a 15% increase in win rates."
+          ),
           "main_link": "https://apps.apple.com/us/app/poker-pocket-odds/id6499280318",
           "main_image": "poker.png",
           "tags": ["swift", "project_management"]
@@ -117,9 +147,15 @@ def seed_data():
         {
           "experience_type": "Project",
           "title": "Developer",
-          "subtitle": "Schedule Mastermind (December 2023 - February 2024)",
+          "subtitle": "Schedule Mastermind",
+          "term": "December 2023 - February 2024",
           "short_description": "Streamlined scheduling with Python & Flask.",
-          "long_description": "Engineered a Python-based application with the Flask framework, streamlining scheduling operations for over 500 classes. Created a user-friendly interface for course selection, timetable generation, and conflict resolution, achieving a 100% reduction in scheduling errors and boosting overall productivity by 25% through automation.",
+          "long_description": (
+              "Engineered a Python-based application with the Flask framework, streamlining scheduling "
+              "operations for over 500 classes. Created a user-friendly interface for course selection, "
+              "timetable generation, and conflict resolution, achieving a 100% reduction in scheduling "
+              "errors and boosting overall productivity by 25% through automation."
+          ),
           "main_link": "/app1",
           "main_image": "schedule.jpg",
           "tags": ["python", "computer_science"]
@@ -127,9 +163,14 @@ def seed_data():
         {
           "experience_type": "Project",
           "title": "Developer and Project Leader",
-          "subtitle": "Shohei Home Ground (March 2023 - November 2023)",
+          "subtitle": "Shohei Home Ground",
+          "term": "March 2023 - November 2023",
           "short_description": "Automated Instagram posting, grew 11k followers.",
-          "long_description": "Engineered and deployed a streamlined content scheduling and posting process using Python and the Instagram API, achieving 685 posts and increasing followers by 11,000 in 8 months. Transformed the project from a non-revenue-generating initiative to a profitable venture by enhancing engagement and expanding the audience.",
+          "long_description": (
+              "Engineered and deployed a streamlined content scheduling and posting process using Python "
+              "and the Instagram API, achieving 685 posts and increasing followers by 11,000 in 8 months. "
+              "Transformed the project from a non-revenue-generating initiative to a profitable venture."
+          ),
           "main_link": "https://www.instagram.com/shoheihomeground/",
           "main_image": "shoheihomeground.svg",
           "tags": ["python", "project_management"]
@@ -137,9 +178,13 @@ def seed_data():
         {
           "experience_type": "Leadership",
           "title": "Trainer",
-          "subtitle": "Amazon Web Services (September 2023 - November 2023)",
+          "subtitle": "Amazon Web Services",
+          "term": "September 2023 - November 2023",
           "short_description": "AWS cloud infrastructure training.",
-          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
+          "long_description": (
+              "Provided training sessions to professionals on Amazon Web Services, imparting knowledge "
+              "on cloud infrastructure and services."
+          ),
           "main_link": "/",
           "main_image": "aws.png",
           "tags": ["aws"]
@@ -147,49 +192,13 @@ def seed_data():
         {
           "experience_type": "Publication",
           "title": "6G Network and Data Management with Blockchain",
-          "subtitle": "Research Paper (September 2024)",
+          "subtitle": "Research Paper",
+          "term": "September 2024",
           "short_description": "Research on AWS & Blockchain for 6G networks.",
-          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
-          "main_link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing",
-          "main_image": "resume.png",
-          "tags": ["computer_science"]
-        },
-        {
-          "experience_type": "Leadership",
-          "title": "Trainer",
-          "subtitle": "Amazon Web Services (September 2023 - November 2023)",
-          "short_description": "AWS cloud infrastructure training.",
-          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
-          "main_link": "/",
-          "main_image": "aws.png",
-          "tags": ["aws"]
-        },
-        {
-          "experience_type": "Publication",
-          "title": "6G Network and Data Management with Blockchain",
-          "subtitle": "Research Paper (September 2024)",
-          "short_description": "Research on AWS & Blockchain for 6G networks.",
-          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
-          "main_link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing",
-          "main_image": "resume.png",
-          "tags": ["computer_science"]
-        },
-        {
-          "experience_type": "Leadership",
-          "title": "Trainer",
-          "subtitle": "Amazon Web Services (September 2023 - November 2023)",
-          "short_description": "AWS cloud infrastructure training.",
-          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
-          "main_link": "/",
-          "main_image": "aws.png",
-          "tags": ["aws"]
-        },
-        {
-          "experience_type": "Publication",
-          "title": "6G Network and Data Management with Blockchain",
-          "subtitle": "Research Paper (September 2024)",
-          "short_description": "Research on AWS & Blockchain for 6G networks.",
-          "long_description": "Provided training sessions to professionals on Amazon Web Services, imparting knowledge on cloud infrastructure and services.",
+          "long_description": (
+              "Explored emerging paradigms in 6G networking and how blockchain can enhance data "
+              "management and security. Evaluated AWS-based solutions for distributed infrastructures."
+          ),
           "main_link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing",
           "main_image": "resume.png",
           "tags": ["computer_science"]
@@ -202,18 +211,19 @@ def seed_data():
         # 2a. Ensure the ExperienceType exists
         etype = get_or_create_experience_type(item["experience_type"])
 
-        # 2b. Create the Experience instance
+        # 2b. Create the Experience instance (now including 'term')
         exp = Experience(
             experience_type_id=etype.id,
             title=item.get("title"),
             subtitle=item.get("subtitle"),
+            term=item.get("term"),
             short_description=item.get("short_description"),
             long_description=item.get("long_description"),
             main_link=item.get("main_link"),
             main_image=item.get("main_image"),
         )
         db.session.add(exp)
-        db.session.flush()  # get exp.id now, if needed
+        db.session.flush()  # get exp.id now if needed
 
         # 2c. Tags
         for tag_name in item.get("tags", []):

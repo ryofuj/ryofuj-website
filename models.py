@@ -58,7 +58,10 @@ class Experience(db.Model):
     experience_type_id = db.Column(db.Integer, db.ForeignKey('experience_type.id'), nullable=False)
     
     title = db.Column(db.String(255), nullable=False)
+    # Now split the original 'subtitle' into two columns
     subtitle = db.Column(db.String(255))
+    term = db.Column(db.String(100))  # new column for dates/terms
+    
     short_description = db.Column(db.Text)
     long_description = db.Column(db.Text)
     main_link = db.Column(db.String(500))
