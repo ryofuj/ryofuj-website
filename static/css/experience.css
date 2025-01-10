@@ -37,6 +37,25 @@
   overflow-x: clip;
 }
 
+/* Experiece types */
+/* Work Styling */
+.work {
+  color: red;
+  border: 2px solid red;
+}
+
+/* Project Styling */
+.project {
+  color: #d4a017; /* Mustard yellow */
+  border: 2px solid #d4a017;
+}
+
+/* Other Styling */
+.other {
+  color: #333; /* Default dark gray */
+  border: 2px solid #0d9118;
+}
+
 /* Responsive Breakpoints */
 @media (min-width: 1460px) {
   /* Project Styles */
@@ -155,15 +174,18 @@
   .experience-section {
     grid-template-columns: repeat(2, 1fr);
   }
+
   #project-1 {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
-    background-color: #ff9999;
+    background-color: white;
 
     aspect-ratio: 2/1;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1rem;
+    gap: 1rem;
     }
   
   #project-1 .experience-image-container {
@@ -174,7 +196,7 @@
     overflow: hidden;
   }
   
-  #project-1 .experience-image-container img {
+  .experience-image-container img {
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -183,26 +205,35 @@
   #project-1 .experience-content {
     grid-column: 2;
     display: flex;
+    white-space: nowrap;
+    overflow: visible;
     flex-direction: column;
     justify-content: center;
   }
   
   #project-1 .experience-type {
-    position: absolute;
-    top: 0;
-    right: 0;
+    grid-column: 3;
+    /* height: 100%; */
+    /* top: 1rem; */
+    /* right: 1rem; */
+    margin: 0 0 auto auto;
     padding: 0.2rem 0.5rem;
-    color: #fff;
-    font-weight: bold;
-    font-size: 0.9rem;
+    border-radius: 0.3rem;
+    font-family: 'SF Pro Rounded Bold', sans-serif;
+    text-transform: uppercase;
   }
   
-  #project-1 .experience-title {
+  .experience-title {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-family: 'SF Pro Rounded Bold', sans-serif;
   }
   
-  #project-1 .experience-subtitle {
+  .experience-subtitle {
+    font-size: 1rem;
+    font-family: 'SF Pro Rounded Bold', sans-serif;
+    color: #4d4d4d;
+  }
+  .experience-term {
     font-size: 1rem;
     color: #4d4d4d;
   }

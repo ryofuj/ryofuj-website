@@ -10,11 +10,12 @@
             <img src="{{ url_for('static', filename='images/' + exp.main_image) }}" alt="Experience Image">
           </div>
           <div class="experience-content">
-            <div class="experience-type">
-              hello {{ exp.experience_type }}
-            </div>
             <div class="experience-title">{{ exp.title }}</div>
             <div class="experience-subtitle">{{ exp.subtitle }}</div>
+            <div class="experience-term">{{ exp.term }}</div>
+          </div>
+          <div class="experience-type {% if exp.experience_type.name == 'Work' %}work{% elif exp.experience_type.name == 'Project' %}project{% else %}other{% endif %}">
+            {{ exp.experience_type.name }}
           </div>
           <!-- <div class="experience-shortdes">{{ exp.short_description }}</div> -->
           <!-- <div class="experience-longdes">{{ exp.long_description }}</div> -->
