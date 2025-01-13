@@ -1,4 +1,4 @@
-/* 6. Content Container */
+/* Global Styles */
 .content-container {
   border-radius: 15px;
   box-shadow: inset 12px 12px 34px rgba(25, 24, 26, 0.08);
@@ -6,7 +6,6 @@
   border-radius: 15px 0 0 0;
 }
 
-/* 7. Experience Section */
 .experience-section-container {
   padding: 20px;
 }
@@ -14,14 +13,13 @@
 .tile {
   border-radius: 15px;
   min-height: 100px;
-  height: 100%; 
+  height: 100%;
   background: white;
   display: flex;
-  justify-content: center; /* horizontally centered */
-  align-items: center; /* vertically centered */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Grid Styles */
 .experience-section {
   display: grid;
   width: 100%;
@@ -37,75 +35,71 @@
   overflow-x: clip;
 }
 
-/* Experiece types */
-/* Work Styling */
 .work {
   color: red;
   border: 2px solid red;
 }
 
-/* Project Styling */
 .project {
-  color: #d4a017; /* Mustard yellow */
+  color: #d4a017;
   border: 2px solid #d4a017;
 }
 
-/* Other Styling */
 .other {
-  color: #333; /* Default dark gray */
+  color: #333;
   border: 2px solid #0d9118;
 }
 
-/* Responsive Breakpoints */
+.experience-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.experience-term {
+  font-size: 1rem;
+  color: #4d4d4d;
+}
+
+.experience-content {
+  display: flex;
+  white-space: nowrap;
+  overflow: visible;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.experience-type {
+  margin: 0 0 auto auto;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  font-family: 'SF Pro Rounded Bold', sans-serif;
+  text-transform: uppercase;
+}
+
+.experience-title {
+  font-size: 1.5rem;
+  font-family: 'SF Pro Rounded Bold', sans-serif;
+}
+
+.experience-subtitle {
+  font-size: 1rem;
+  font-family: 'SF Pro Rounded Bold', sans-serif;
+  color: #4d4d4d;
+}
+
+img {
+  max-width: 100px;
+  height: auto;
+}
+/* Project 1 */
 @media (min-width: 1460px) {
-  /* Project Styles */
   #project-1 { 
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 2;
     background-color: #ff9999;
   }
-
-  #project-2 { 
-    aspect-ratio: unset;
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #99ff99;
-    aspect-ratio: 1/1;
-  }
-
-  #project-3 { 
-    aspect-ratio: unset;
-    grid-column: span 2;
-    grid-row: span 2;
-    background-color: #9999ff;
-  }
-
-  #project-4 { 
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #ffff99;
-    aspect-ratio: 1/1;
-  }
-
-  #project-5 { 
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #99ffff;
-  }
-
-  #project-6 { 
-    aspect-ratio: unset;
-    grid-column: span 2;
-    grid-row: span 1;
-    background-color: #ff99ff;
-  }
-
-  #project-7 {
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #cccccc;
-  }  
 }
 
 @media (min-width: 1170px) and (max-width: 1459px) {
@@ -115,79 +109,20 @@
     grid-row: span 1;
     background-color: #ff9999;
   }
-
-  #project-2 { 
-    aspect-ratio: 1;
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #99ff99;
-  }
-
-  #project-3 { 
-    aspect-ratio: unset;
-    grid-column: span 1;
-    grid-row: span 2; 
-    grid-column-start: 3;
-    /* grid-row-start: 2; */
-    /* grid-row-end: 3; */
-    background-color: #9999ff;
-  }
-
-  #project-4 { 
-    aspect-ratio: 1;
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #ffff99;
-  }
-
-  #project-5 { 
-    aspect-ratio: unset;
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #99ffff;
-  }
-
-  #project-6 { 
-    aspect-ratio: 2/1;
-    grid-column: span 2;
-    grid-row: span 1;
-    background-color: #ff99ff;
-  }
-
-  #project-7 {
-    aspect-ratio: 1;
-    grid-column: span 1;
-    grid-row: span 1;
-    background-color: #cccccc;
-  }
 }
 
-@media  (max-width: 1169px) {
-  .content-container {
-    overflow-y: initial;
-  }
-
-  .experience-section-container {
-    height: auto;
-  }
-
-  .experience-section {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+@media (max-width: 1169px) {
   #project-1 {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
     background-color: white;
 
-    aspect-ratio: 2/1;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 1rem;
-    gap: 1rem;
-    }
-  
+    gap: 1rem;  
+  }
   #project-1 .experience-image-container {
     grid-column: 1;
     display: flex;
@@ -195,84 +130,174 @@
     justify-content: center;
     overflow: hidden;
   }
-  
-  .experience-image-container img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
-  
   #project-1 .experience-content {
     grid-column: 2;
-    display: flex;
-    white-space: nowrap;
-    overflow: visible;
-    flex-direction: column;
-    justify-content: center;
   }
-  
   #project-1 .experience-type {
     grid-column: 3;
-    /* height: 100%; */
-    /* top: 1rem; */
-    /* right: 1rem; */
-    margin: 0 0 auto auto;
-    padding: 0.2rem 0.5rem;
-    border-radius: 0.3rem;
-    font-family: 'SF Pro Rounded Bold', sans-serif;
-    text-transform: uppercase;
   }
-  
-  .experience-title {
-    font-size: 1.5rem;
-    font-family: 'SF Pro Rounded Bold', sans-serif;
-  }
-  
-  .experience-subtitle {
-    font-size: 1rem;
-    font-family: 'SF Pro Rounded Bold', sans-serif;
-    color: #4d4d4d;
-  }
-  .experience-term {
-    font-size: 1rem;
-    color: #4d4d4d;
-  }
+}
 
+/* Project 2 */
+@media (min-width: 1460px) {
+  #project-2 { 
+    aspect-ratio: unset;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #99ff99;
+    aspect-ratio: 1/1;
+  }
+}
+
+@media (min-width: 1170px) and (max-width: 1459px) {
   #project-2 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ff99;
   }
+}
 
+@media (max-width: 1169px) {
+  #project-2 { 
+    aspect-ratio: 1;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #99ff99;
+  }
+}
+
+/* Project 3 */
+@media (min-width: 1460px) {
+  #project-3 { 
+    aspect-ratio: unset;
+    grid-column: span 2;
+    grid-row: span 2;
+    background-color: #9999ff;
+  }
+}
+
+@media (min-width: 1170px) and (max-width: 1459px) {
+  #project-3 { 
+    aspect-ratio: unset;
+    grid-column: span 1;
+    grid-row: span 2; 
+    grid-column-start: 3;
+    background-color: #9999ff;
+  }
+}
+
+@media (max-width: 1169px) {
   #project-3 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #9999ff;
   }
+}
 
+/* Project 4 */
+@media (min-width: 1460px) {
+  #project-4 { 
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #ffff99;
+    aspect-ratio: 1/1;
+  }
+}
+
+@media (min-width: 1170px) and (max-width: 1459px) {
+  #project-4 { 
+    aspect-ratio: 1;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #ffff99;
+  }
+}
+
+@media (max-width: 1169px) {
   #project-4 { 
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #ffff99;
   }
+}
 
+/* Project 5 */
+@media (min-width: 1460px) {
+  #project-5 { 
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #99ffff;
+  }
+}
+
+@media (min-width: 1170px) and (max-width: 1459px) {
+  #project-5 { 
+    aspect-ratio: unset;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #99ffff;
+  }
+}
+
+@media (max-width: 1169px) {
   #project-5 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ffff;
   }
+}
 
+/* Project 6 */
+@media (min-width: 1460px) {
+  #project-6 { 
+    aspect-ratio: unset;
+    grid-column: span 2;
+    grid-row: span 1;
+    background-color: #ff99ff;
+  }
+}
+
+@media (min-width: 1170px) and (max-width: 1459px) {
+  #project-6 { 
+    aspect-ratio: 2/1;
+    grid-column: span 2;
+    grid-row: span 1;
+    background-color: #ff99ff;
+  }
+}
+
+@media (max-width: 1169px) {
   #project-6 { 
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #ff99ff;
   }
+}
 
+/* Project 7 */
+@media (min-width: 1460px) {
+  #project-7 {
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #cccccc;
+  }
+}
+
+@media (min-width: 1170px) and (max-width: 1459px) {
+  #project-7 {
+    aspect-ratio: 1;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #cccccc;
+  }
+}
+
+@media (max-width: 1169px) {
   #project-7 {
     aspect-ratio: 2/1;
     grid-column: span 2;
@@ -280,5 +305,3 @@
     background-color: #cccccc;
   }
 }
-
-
