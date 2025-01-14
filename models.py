@@ -62,10 +62,13 @@ class Experience(db.Model):
     term = db.Column(db.String(100))  # new column for dates/terms
     short_description = db.Column(db.Text)
     long_description = db.Column(db.Text)
-    main_link = db.Column(db.String(500))
-    sub_links = db.Column(db.Text)  # Stores dictionary-like string for sub-links
     main_image = db.Column(db.String(255))
     tile_size = db.Column(db.String(50))  # e.g., "1x1", "2x1", etc.
+
+    # New columns for storing lists as strings
+    links = db.Column(db.Text)  # Comma-separated list of links
+    link_images = db.Column(db.Text)  # Comma-separated list of link images
+    images = db.Column(db.Text)  # Comma-separated list of images
 
     experience_type = db.relationship("ExperienceType", back_populates="experiences")
     tags = db.relationship("Tag", secondary=experience_tags, backref="experiences")

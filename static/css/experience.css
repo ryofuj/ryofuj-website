@@ -101,7 +101,7 @@ img {
     background-color: white;
 
     display: grid;
-    grid-template-rows: 0fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
     padding: 1rem;
     gap: 1rem;  
   }
@@ -121,6 +121,9 @@ img {
   }
   #project-1 .experience-shortdes {
     display: 4;
+  }
+  #project-1 .experience-sublink {
+    grid-row: 5;
   }
 }
 

@@ -1,56 +1,71 @@
 <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/experience.css') }}"> -->
-<div class="content-container">
-    <div class="experience-section-container">
-      <div class="experience-section">
-        {% if experiences %}
-        {% for exp in experiences %}
-        {% if loop.index < 8 %}
-        <div id="project-{{ loop.index }}" class="outer">
-          <div class="experience-image-container">
-            <img src="{{ url_for('static', filename='images/' + exp.main_image) }}" alt="Experience Image">
-          </div>
-          <div class="experience-content">
-            <div class="experience-title">{{ exp.title }}</div>
-            <div class="experience-subtitle">{{ exp.subtitle }}</div>
-            <div class="experience-term">{{ exp.term }}</div>
-          </div>
-          <div class="experience-type {% if exp.experience_type.name == 'Work' %}work{% elif exp.experience_type.name == 'Project' %}project{% else %}other{% endif %}">
-            {{ exp.experience_type.name }}
-          </div>
-          <div class="experience-shortdes">{{ exp.short_description }}</div>
-          <!-- <div class="experience-longdes">{{ exp.long_description }}</div> -->
-          <!-- <div class="experience-tags">">
-            {% for tag in exp.tags %}
-              <span>{{ tag.name }}</span>
-            {% endfor %}
-          </div> -->
-          {% if exp.sublink%}
-          <div class="experience-sublink">
-            {% for sublink in sublinks %}
-            hello
-            {% endfor %}
-          </div>
-          {% endif %}
+<div class="content-container"><div class="content-container">
+  <div class="experience-section-container">
+    <div class="experience-section">
+      {% if experiences %}
+      {% for exp in experiences %}
+      <div id="project-{{ loop.index }}" class="outer">
+        <div class="experience-image-container">
+          <img 
+            src="{{ url_for('static', filename='images/' + (exp.main_image or 'default_image.png')) }}" 
+            alt="Experience Image">
         </div>
-        {% else %}
-        <div id="project-{{ loop.index }}" class="tile outer">
-          <div class="experience-type">{{ exp.experience_type.name}}</div>
-          <div class="experience-image">
-            <img src="{{ url_for('static', filename='images/' + exp.main_image) }}" alt="Experience Image">
-          </div>
+        <div class="experience-content">
           <div class="experience-title">{{ exp.title }}</div>
-          <div class="experience-shortdes">{{ exp.short_description }}</div>
-          <div class="experience-longdes">{{ exp.long_description }}</div>
+          <div class="experience-subtitle">{{ exp.subtitle }}</div>
+          <div class="experience-term">{{ exp.term }}</div>
+        </div>
+        <div class="experience-type 
+          {% if exp.experience_type.name == 'Work' %}work
+          {% elif exp.experience_type.name == 'Project' %}project
+          {% else %}other
+          {% endif %}">
+          {{ exp.experience_type.name }}
+        </div>
+        <div class="experience-shortdes">{{ exp.short_description }}</div>
+
+        {% if exp.links %}
+        <div class="experience-links">
+          <ul>
+            {% for link in exp.links.split(',') %}
+            <li>
+              <a href="{{ link }}" target="_blank">{{ link }}</a>
+            </li>
+            {% endfor %}
+          </ul>
         </div>
         {% endif %}
-        {% endfor %}
-        {% else %}
-          <h3>No experiences found.</h3>
+
+        {% if exp.link_images %}
+        <div class="experience-link-images">
+          {% for image in exp.link_images.split(',') %}
+          <img 
+            src="{{ url_for('static', filename='images/' + image) }}" 
+            alt="Link Image" class="link-image">
+          {% endfor %}
+        </div>
         {% endif %}
-      </div>          
+
+        {% if exp.images %}
+        <div class="experience-images">
+          {% for image in exp.images.split(',') %}
+          <img 
+            src="{{ url_for('static', filename='images/' + image) }}" 
+            alt="Experience Image" class="additional-image">
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="experience-tags">
+          {% for tag in exp.tags %}
+          <span class="tag">{{ tag.name }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <h3>No experiences found.</h3>
+      {% endif %}
     </div>
   </div>
-
-  <!-- 
-  
-   -->
+</div>
