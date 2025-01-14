@@ -62,6 +62,8 @@ def seed_data():
         return
 
     # If no experiences, insert them now.
+    
+    # If no experiences, insert them now.
     data = {
       "experiences": [
         {
@@ -78,6 +80,7 @@ def seed_data():
               "and CUDA, showcasing on-device generative AI capabilities with Meta's Llama 3 model."
           ),
           "main_link": "https://www.honda.com/",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "honda.svg",
           "tags": ["swift", "computer_science"]
         },
@@ -95,6 +98,7 @@ def seed_data():
               "resulting in a 30% revenue increase by enabling retrieval of previously inaccessible info."
           ),
           "main_link": "https://cuscousainc.com/",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "cusco.svg",
           "tags": ["python", "project_management", "adobe"]
         },
@@ -111,6 +115,7 @@ def seed_data():
               "rate by eliminating manual effort across various cases."
           ),
           "main_link": "https://www.fujitsubo.co.jp/",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "fujitsubo.svg",
           "tags": ["python", "adobe"]
         },
@@ -126,6 +131,7 @@ def seed_data():
               "and completed the project in 4 weeks, launched the application on the Mac App Store."
           ),
           "main_link": "https://apps.apple.com/us/app/matcha-time/id6497067918?mt=12",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "matchatime.svg",
           "tags": ["swift", "project_management"]
         },
@@ -141,6 +147,7 @@ def seed_data():
               "by providing accurate insights into poker hands, resulting in a 15% increase in win rates."
           ),
           "main_link": "https://apps.apple.com/us/app/poker-pocket-odds/id6499280318",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "poker.png",
           "tags": ["swift", "project_management"]
         },
@@ -157,6 +164,7 @@ def seed_data():
               "errors and boosting overall productivity by 25% through automation."
           ),
           "main_link": "/app1",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "schedule.jpg",
           "tags": ["python", "computer_science"]
         },
@@ -172,6 +180,7 @@ def seed_data():
               "Transformed the project from a non-revenue-generating initiative to a profitable venture."
           ),
           "main_link": "https://www.instagram.com/shoheihomeground/",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "shoheihomeground.svg",
           "tags": ["python", "project_management"]
         },
@@ -186,6 +195,7 @@ def seed_data():
               "on cloud infrastructure and services."
           ),
           "main_link": "/",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "aws.png",
           "tags": ["aws"]
         },
@@ -200,6 +210,7 @@ def seed_data():
               "management and security. Evaluated AWS-based solutions for distributed infrastructures."
           ),
           "main_link": "https://docs.google.com/document/d/1K49_6etVnN7hcCNUc1l-0wJpp3B-NT9J/edit?usp=sharing",
+          "sub_links": '{"/image_placeholder": "https://www.google.com"}',
           "main_image": "resume.png",
           "tags": ["computer_science"]
         }

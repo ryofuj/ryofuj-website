@@ -17,13 +17,20 @@
           <div class="experience-type {% if exp.experience_type.name == 'Work' %}work{% elif exp.experience_type.name == 'Project' %}project{% else %}other{% endif %}">
             {{ exp.experience_type.name }}
           </div>
-          <!-- <div class="experience-shortdes">{{ exp.short_description }}</div> -->
+          <div class="experience-shortdes">{{ exp.short_description }}</div>
           <!-- <div class="experience-longdes">{{ exp.long_description }}</div> -->
           <!-- <div class="experience-tags">">
             {% for tag in exp.tags %}
               <span>{{ tag.name }}</span>
             {% endfor %}
           </div> -->
+          {% if exp.sublink%}
+          <div class="experience-sublink">
+            {% for sublink in sublinks %}
+            hello
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
         {% else %}
         <div id="project-{{ loop.index }}" class="tile outer">
