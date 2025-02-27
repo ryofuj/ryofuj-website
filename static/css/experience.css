@@ -80,19 +80,30 @@
 .experience-title {
   font-size: 1.5rem;
   font-family: 'SF Pro Rounded Bold', sans-serif;
+  display: flex;
+  justify-content: center;
 }
 
 .experience-subtitle {
   font-size: 1rem;
   font-family: 'SF Pro Rounded Bold', sans-serif;
   color: #4d4d4d;
+  display: flex;
+  justify-content: center;
+}
+
+.experience-term {
+  display: flex;
+    justify-content: center;
 }
 
 img {
   max-width: 100px;
   height: auto;
 }
+
 /* Project 1 */
+/* 4 x 3 */
 @media (min-width: 1460px) {
   #project-1 {
     aspect-ratio: 1/2;
@@ -101,33 +112,66 @@ img {
     background-color: white;
 
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 0.1fr 1fr 1fr 1fr 0.1fr ;
     padding: 1rem;
     gap: 1rem;  
   }
+
+  /* hidden items */
   #project-1 .experience-image-container {
+    display: none;
+  }
+  #project-1 .experience-links {
+    display: none;
+  }
+  #project-1 .experience-tags {
+    display: none;
+  }
+
+  #project-1 .experience-images {
     grid-row: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
+
+  #project-1 .experience-images img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
   #project-1 .experience-content {
     grid-row: 3;
+    padding: 15px;
   }
   #project-1 .experience-type {
     grid-row: 1;
     overflow:visible;
   }
+
   #project-1 .experience-shortdes {
     display: 4;
+    padding: 15px;
   }
   #project-1 .experience-sublink {
     grid-row: 5;
   }
+  #project-1 .experience-link-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px;
+  }
+  #project-1 .experience-link-images img {
+    width: 40px;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+/* 3 x 3 */
+@media (min-width: 1114px) and (max-width: 1459px) {
   #project-1 {
     aspect-ratio: 2/1;
     grid-column: span 2;
@@ -157,7 +201,8 @@ img {
   }
 }
 
-@media (max-width: 1169px) {
+/* 2 x 3 */
+@media (max-width: 1113px) {
   #project-1 {
     aspect-ratio: 2/1;
     grid-column: span 2;
@@ -188,6 +233,7 @@ img {
 }
 
 /* Project 2 */
+/* 4 x 3 */
 @media (min-width: 1460px) {
   #project-2 { 
     aspect-ratio: unset;
@@ -195,10 +241,46 @@ img {
     grid-row: span 1;
     background-color: #99ff99;
     aspect-ratio: 1/1;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr ;
+    padding: 1rem;
+    gap: 1rem;  
   }
+  #project-2 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-2 .experience-content {
+    grid-row: 2;
+    padding: 15px;
+    margin: auto 0 0 0;
+  }
+  /* hidden items */
+  #project-2 .experience-image-container {
+    display: none;
+  }
+  #project-2 .experience-links {
+    display: none;
+  }
+  #project-2 .experience-tags {
+    display: none;
+  }
+  #project-2 .experience-link-images {
+    display: none;
+  }
+  #project-2 .experience-shortdes {
+    display: none;
+  }
+  #project-2 .experience-images {
+    display: none;
+  }
+
 }
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+/* 3 x 3 */
+@media (min-width: 1114px) and (max-width: 1459px) {
   #project-2 { 
     aspect-ratio: 1;
     grid-column: span 1;
@@ -207,7 +289,8 @@ img {
   }
 }
 
-@media (max-width: 1169px) {
+/* 2 x 3 */
+@media (max-width: 1113px) {
   #project-2 { 
     aspect-ratio: 1;
     grid-column: span 1;
@@ -217,16 +300,71 @@ img {
 }
 
 /* Project 3 */
+/* 4 x 3 */
 @media (min-width: 1460px) {
   #project-3 { 
     aspect-ratio: unset;
     grid-column: span 2;
     grid-row: span 2;
     background-color: #9999ff;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr 0.1fr 1fr 0.1fr ;
+    padding: 1rem;
+    gap: 1rem;  
+  }
+  #project-3 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-3 .experience-images {
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+  #project-3 .experience-images img {
+    /* image size to fit the size of the box while keeping the ratio */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  #project-3 .experience-content {
+    grid-row: 3;
+    padding: 15px;
+  }
+  #project-3 .experience-shortdes {
+    grid-row: 4;
+    padding: 15px;
+  }
+  #project-3 .experience-link-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px;
+  }
+  #project-3 .experience-link-images img {
+    width: 40px;
+    height: auto;
+    object-fit: contain;
+  }
+  /* hidden items */
+  #project-3 .experience-image-container {
+    display: none;
+  }
+  #project-3 .experience-links {
+    display: none;
+  }
+  #project-3 .experience-tags {
+    display: none;
   }
 }
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+/* 3 x 3 */
+@media (min-width: 1114px) and (max-width: 1459px) {
   #project-3 { 
     aspect-ratio: unset;
     grid-column: span 1;
@@ -236,7 +374,8 @@ img {
   }
 }
 
-@media (max-width: 1169px) {
+/* 2 x 3 */
+@media (max-width: 1113px) {
   #project-3 { 
     aspect-ratio: 1;
     grid-column: span 1;
@@ -246,16 +385,54 @@ img {
 }
 
 /* Project 4 */
+/* 4 x 3 */
 @media (min-width: 1460px) {
   #project-4 { 
+    aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #ffff99;
     aspect-ratio: 1/1;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr ;
+    padding: 1rem;
+    gap: 1rem;  
   }
+  #project-4 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-4 .experience-content {
+    grid-row: 2;
+    padding: 15px;
+    margin: auto 0 0 0;
+  }
+  /* hidden items */
+  #project-4 .experience-image-container {
+    display: none;
+  }
+  #project-4 .experience-links {
+    display: none;
+  }
+  #project-4 .experience-tags {
+    display: none;
+  }
+  #project-4 .experience-link-images {
+    display: none;
+  }
+  #project-4 .experience-shortdes {
+    display: none;
+  }
+  #project-4 .experience-images {
+    display: none;
+  }
+
 }
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+/* 3 x 3 */
+@media (min-width: 1114px) and (max-width: 1459px) {
   #project-4 { 
     aspect-ratio: 1;
     grid-column: span 1;
@@ -264,7 +441,8 @@ img {
   }
 }
 
-@media (max-width: 1169px) {
+/* 2 x 3 */
+@media (max-width: 1113px) {
   #project-4 { 
     aspect-ratio: 2/1;
     grid-column: span 2;
@@ -274,15 +452,54 @@ img {
 }
 
 /* Project 5 */
+/* 4 x 3 */
 @media (min-width: 1460px) {
   #project-5 { 
+    aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #99ffff;
+    aspect-ratio: 1/1;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr ;
+    padding: 1rem;
+    gap: 1rem;  
   }
+  #project-5 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-5 .experience-content {
+    grid-row: 2;
+    padding: 15px;
+    margin: auto 0 0 0;
+  }
+  /* hidden items */
+  #project-5 .experience-image-container {
+    display: none;
+  }
+  #project-5 .experience-links {
+    display: none;
+  }
+  #project-5 .experience-tags {
+    display: none;
+  }
+  #project-5 .experience-link-images {
+    display: none;
+  }
+  #project-5 .experience-shortdes {
+    display: none;
+  }
+  #project-5 .experience-images {
+    display: none;
+  }
+
 }
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+/* 3 x 3 */
+@media (min-width: 1114px) and (max-width: 1459px) {
   #project-5 { 
     aspect-ratio: unset;
     grid-column: span 1;
@@ -291,7 +508,8 @@ img {
   }
 }
 
-@media (max-width: 1169px) {
+/* 2 x 3 */
+@media (max-width: 1113px) {
   #project-5 { 
     aspect-ratio: 1;
     grid-column: span 1;
@@ -301,16 +519,68 @@ img {
 }
 
 /* Project 6 */
+/* 4 x 3 */
 @media (min-width: 1460px) {
   #project-6 { 
     aspect-ratio: unset;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #ff99ff;
+
+    display: grid;
+    grid-template-columns: 0.1fr 1fr 0.1fr ;
+    padding: 1rem;
+    gap: 1rem; 
+  }
+  #project-6 .experience-images {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+  #project-6 .experience-images img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  #project-6 .experience-content {
+    grid-column: 2;
+    padding: 15px;
+  }
+  #project-6 .experience-type {
+    grid-column: 3;
+    overflow:visible;
+  }
+  #project-6 {
+    display: grid;
+    grid-template-columns: 0.1fr 1fr 0.1fr; /* 3 columns: 10%, 80%, 10% */
+    padding: 1rem;
+    gap: 1rem;
+    grid-template-rows: 1fr; /* Explicitly set to 1 row (optional but enforces intent) */
+}
+
+  /* hidden items */
+  #project-6 .experience-image-container {
+    display: none;
+  }
+  #project-6 .experience-links {
+    display: none;
+  }
+  #project-6 .experience-tags {
+    display: none;
+  }
+  #project-6 .experience-link-images {
+    display: none;
+  }
+  #project-6 .experience-shortdes {
+    display: none;
   }
 }
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+/* 3 x 3 */
+@media (min-width: 1114px) and (max-width: 1459px) {
   #project-6 { 
     aspect-ratio: 2/1;
     grid-column: span 2;
@@ -319,7 +589,8 @@ img {
   }
 }
 
-@media (max-width: 1169px) {
+/* 2 x 3 */
+@media (max-width: 1113px) {
   #project-6 { 
     aspect-ratio: 1;
     grid-column: span 1;
@@ -329,15 +600,53 @@ img {
 }
 
 /* Project 7 */
+/* 4 x 3 */
 @media (min-width: 1460px) {
-  #project-7 {
+  #project-7 { 
+    aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
     background-color: #cccccc;
-  }
-}
+    aspect-ratio: 1/1;
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+    display: grid;
+    grid-template-rows: 0.1fr 1fr ;
+    padding: 1rem;
+    gap: 1rem;  
+  }
+  #project-7 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-7 .experience-content {
+    grid-row: 2;
+    padding: 15px;
+    margin: auto 0 0 0;
+  }
+  /* hidden items */
+  #project-7 .experience-image-container {
+    display: none;
+  }
+  #project-7 .experience-links {
+    display: none;
+  }
+  #project-7 .experience-tags {
+    display: none;
+  }
+  #project-7 .experience-link-images {
+    display: none;
+  }
+  #project-7 .experience-shortdes {
+    display: none;
+  }
+  #project-7 .experience-images {
+    display: none;
+  }
+
+}
+/* 3 x 3 */
+@media (min-width: 1114px) and (max-width: 1459px) {
   #project-7 {
     aspect-ratio: 1;
     grid-column: span 1;
@@ -346,11 +655,144 @@ img {
   }
 }
 
-@media (max-width: 1169px) {
+/* 2 x 3 */
+@media (max-width: 1113px) {
   #project-7 {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
     background-color: #cccccc;
+  }
+}
+
+/* cant make a flask loop in css :( */
+@media (min-width: 1460px) {
+  #project-8 { 
+    aspect-ratio: unset;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #ffff99;
+    aspect-ratio: 1/1;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr ;
+    padding: 1rem;
+    gap: 1rem;  
+  }
+  #project-8 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-8 .experience-content {
+    grid-row: 2;
+    padding: 15px;
+    margin: auto 0 0 0;
+  }
+  /* hidden items */
+  #project-8 .experience-image-container {
+    display: none;
+  }
+  #project-8 .experience-links {
+    display: none;
+  }
+  #project-8 .experience-tags {
+    display: none;
+  }
+  #project-8 .experience-link-images {
+    display: none;
+  }
+  #project-8 .experience-shortdes {
+    display: none;
+  }
+  #project-8 .experience-images {
+    display: none;
+  }
+}
+@media (min-width: 1460px) {
+  #project-9 { 
+    aspect-ratio: unset;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #ffff99;
+    aspect-ratio: 1/1;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr ;
+    padding: 1rem;
+    gap: 1rem;  
+  }
+  #project-9 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-9 .experience-content {
+    grid-row: 2;
+    padding: 15px;
+    margin: auto 0 0 0;
+  }
+  /* hidden items */
+  #project-9 .experience-image-container {
+    display: none;
+  }
+  #project-9 .experience-links {
+    display: none;
+  }
+  #project-9 .experience-tags {
+    display: none;
+  }
+  #project-9 .experience-link-images {
+    display: none;
+  }
+  #project-9 .experience-shortdes {
+    display: none;
+  }
+  #project-9 .experience-images {
+    display: none;
+  }
+
+}
+@media (min-width: 1460px) {
+  #project-10 { 
+    aspect-ratio: unset;
+    grid-column: span 1;
+    grid-row: span 1;
+    background-color: #ffff99;
+    aspect-ratio: 1/1;
+
+    display: grid;
+    grid-template-rows: 0.1fr 1fr ;
+    padding: 1rem;
+    gap: 1rem;  
+  }
+  #project-10 .experience-type {
+    grid-row: 1;
+    overflow:visible;
+  }
+
+  #project-10 .experience-content {
+    grid-row: 2;
+    padding: 15px;
+    margin: auto 0 0 0;
+  }
+  /* hidden items */
+  #project-10 .experience-image-container {
+    display: none;
+  }
+  #project-10 .experience-links {
+    display: none;
+  }
+  #project-10 .experience-tags {
+    display: none;
+  }
+  #project-10 .experience-link-images {
+    display: none;
+  }
+  #project-10 .experience-shortdes {
+    display: none;
+  }
+  #project-10 .experience-images {
+    display: none;
   }
 }
