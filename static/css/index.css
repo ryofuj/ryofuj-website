@@ -325,6 +325,7 @@ p {
   height: 100svh;
   overflow: hidden;
   /* position: relative; */
+  grid-template-rows: auto 1fr;
 }
 
 
