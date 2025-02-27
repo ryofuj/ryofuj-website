@@ -514,7 +514,7 @@ transform: scale(1.05);
   }
 }
 
-@media (min-width: 1170px) and (max-width: 1459px) {
+@media (min-width: 1114px) and (max-width: 1459px) {
   .project-1 { 
     aspect-ratio: 2/1;
     grid-column: span 2;
@@ -568,7 +568,7 @@ transform: scale(1.05);
   }
 }
 
-@media (min-width: 880px) and (max-width: 1169px) {
+@media (min-width: 880px) and (max-width: 1113px) {
   .experience-section {
     grid-template-columns: repeat(2, 1fr);
   }
