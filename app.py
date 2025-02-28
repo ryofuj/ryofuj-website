@@ -300,6 +300,22 @@ def home():
     
     return render_template('index.html', profile=profile, experiences=experiences, tags=tags)
 
+@app.route('/project/<int:project_id>')
+def project_detail(project_id):
+    """
+    Display a specific project with modal pre-opened
+    """
+    profile = Profile.query.first()
+    experiences = Experience.query.all()
+    tags = Tag.query.all()
+    
+    # Get the specific project (or 404 if not found)
+    project = Experience.query.get_or_404(project_id)
+    
+    # Pass the direct project ID to the template
+    return render_template('index.html', profile=profile, experiences=experiences, 
+                          tags=tags, direct_project_id=project_id)
+
 if __name__ == '__main__':
     # Ensure the DB file can exist
     if not os.path.exists('local_database.db'):

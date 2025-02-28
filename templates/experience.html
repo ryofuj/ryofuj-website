@@ -128,26 +128,40 @@
   projectItems.forEach(item => {
     item.addEventListener("click", function() {
       const projectId = this.getAttribute("data-project-id");
-      openModal(projectId);
+      openModal(projectId, true); // true = update URL
     });
   });
   
   // Close modal when clicking the close button
   closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
+    closeModal(true); // true = update URL
   });
   
   // Close modal when clicking outside of modal content
   window.addEventListener("click", function(event) {
     if (event.target === modal) {
-      modal.style.display = "none";
+      closeModal(true); // true = update URL
+    }
+  });
+
+  // Handle browser back/forward buttons
+  window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.projectId) {
+      openModal(event.state.projectId, false); // don't update URL as it's already changed
+    } else {
+      closeModal(false); // don't update URL as it's already changed
     }
   });
   
-  function openModal(projectId) {
+  function openModal(projectId, updateURL) {
     // Find the project data
     const project = projectsData.find(p => p.id == projectId);
     if (!project) return;
+    
+    // Update URL if requested
+    if (updateURL) {
+      history.pushState({projectId: projectId}, '', `/project/${projectId}`);
+    }
     
     // Populate modal with project data
     document.getElementById("modal-title").textContent = project.title;
@@ -174,6 +188,26 @@
       linksHTML += '</ul>';
     }
     document.getElementById("modal-links").innerHTML = linksHTML;
+
+    // Add this to your openModal function
+    let shareHTML = `
+      <div class="share-section">
+        <h4>Share this project</h4>
+        <button id="copyLinkBtn" class="copy-link-btn">Copy Link</button>
+      </div>
+    `;
+    document.getElementById("modal-links").innerHTML += shareHTML;
+
+    document.getElementById("copyLinkBtn").addEventListener("click", function() {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => {
+          this.textContent = "Copied!";
+          setTimeout(() => {
+            this.textContent = "Copy Link";
+          }, 2000);
+        })
+        .catch(err => console.error('Failed to copy: ', err));
+    });
     
     // Additional images
     let imagesHTML = '';
@@ -199,5 +233,24 @@
     
     // Show the modal
     modal.style.display = "block";
+    document.title = `${project.title} - Portfolio`;
   }
+  
+  function closeModal(updateURL) {
+    modal.style.display = "none";
+    
+    if (updateURL) {
+      history.pushState({}, '', '/');
+    }
+    
+    document.title = "Portfolio";
+  }
+
+  // Check if a direct project ID was provided
+  {% if direct_project_id %}
+    // Open the modal with the provided project ID when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+      openModal({{ direct_project_id }}, false);
+    });
+  {% endif %}
 </script>
