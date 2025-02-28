@@ -450,13 +450,10 @@ transform: scale(1.05);
 .experience-section {
   display: grid;
   width: 100%;
-  /* aspect-ratio: 1/1; */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-auto-flow: dense;
-  /* grid-auto-rows: 1fr; */
   grid-auto-columns: 1fr;
   gap: 40px;
-  /* padding: 20px; */
 }
 
 .outer {
@@ -787,7 +784,7 @@ transform: scale(1.05);
 
 }
 
-@media (max-width: 371px) {
+@media (max-width: 411px) {
   /* hide all and show that display is too thin to display anything */
  .layout-container {
      display: none;

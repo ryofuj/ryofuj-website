@@ -23,10 +23,9 @@
 .experience-section {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-auto-flow: dense;
   grid-auto-columns: 1fr;
-  gap: 1rem;
 }
 
 .outer {
@@ -109,7 +108,7 @@ img {
     aspect-ratio: 1/2;
     grid-column: span 1;
     grid-row: span 2;
-    background-color: white;
+    /* background-color: white; */
 
     display: grid;
     grid-template-rows: 0.1fr 1fr 1fr 1fr 0.1fr ;
@@ -176,7 +175,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 2;
     grid-row: span 1;
-    background-color: white;
+    /* background-color: white; */
 
     display: grid;
     grid-template-rows: 0.01fr 1fr ;
@@ -242,7 +241,7 @@ img {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
-    background-color: white;
+    /* background-color: white; */
 
     display: grid;
     grid-template-rows: 0.01fr 1fr ;
@@ -308,7 +307,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #99ff99;
+    /* background-color: #99ff99; */
     aspect-ratio: 1/1;
 
     display: grid;
@@ -354,7 +353,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 2;
     grid-row: span 2;
-    background-color: #9999ff;
+    /* background-color: #9999ff; */
 
     display: grid;
     grid-template-rows: 0.1fr 1fr 0.1fr 1fr 0.1fr ;
@@ -418,7 +417,7 @@ img {
     grid-column: span 1;
     grid-row: span 2; 
     grid-column-start: 3;
-    background-color: #9999ff;
+    /* background-color: #9999ff; */
 
     display: grid;
     grid-template-rows: 0.1fr 1fr 1fr 1fr 0.1fr ;
@@ -485,7 +484,7 @@ img {
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #9999ff;
+    /* background-color: #9999ff; */
 
     display: grid;
     grid-template-rows: 0.1fr 1fr ;
@@ -531,7 +530,7 @@ img {
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #ffff99;
+    /* background-color: #ffff99; */
 
     display: grid;
     grid-template-rows: 0.1fr 1fr ;
@@ -576,7 +575,7 @@ img {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
-    background-color: #ffff99;
+    /* background-color: #ffff99; */
 
     display: grid;
     grid-template-rows: 0.01fr 1fr ;
@@ -641,7 +640,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #99ffff;
+    /* background-color: #99ffff; */
     aspect-ratio: 1/1;
 
     display: grid;
@@ -687,7 +686,7 @@ img {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
-    background-color: #ff99ff;
+    /* background-color: #ff99ff; */
 
     display: grid;
     grid-template-rows: 0.01fr 1fr ;
@@ -752,7 +751,7 @@ img {
     aspect-ratio: 1;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #ff99ff;
+    /* background-color: #ff99ff; */
 
     display: grid;
     grid-template-rows: 0.1fr 1fr ;
@@ -798,7 +797,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #cccccc;
+    /* background-color: #cccccc; */
     aspect-ratio: 1/1;
 
     display: grid;
@@ -844,7 +843,7 @@ img {
     aspect-ratio: 2/1;
     grid-column: span 2;
     grid-row: span 1;
-    background-color: #cccccc;
+    /* background-color: #cccccc; */
 
     display: grid;
     grid-template-rows: 0.01fr 1fr ;
@@ -910,7 +909,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #ffff99;
+    /* background-color: #ffff99; */
     aspect-ratio: 1/1;
 
     display: grid;
@@ -952,7 +951,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #ffff99;
+    /* background-color: #ffff99; */
     aspect-ratio: 1/1;
 
     display: grid;
@@ -994,7 +993,7 @@ img {
     aspect-ratio: unset;
     grid-column: span 1;
     grid-row: span 1;
-    background-color: #ffff99;
+    /* background-color: #ffff99; */
     aspect-ratio: 1/1;
 
     display: grid;
