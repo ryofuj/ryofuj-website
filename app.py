@@ -47,7 +47,7 @@ def seed_data():
     """
     if not Profile.query.first():
         profile = Profile(
-            name="Ryo Fujimura",
+            name="Ryo ",
             title="Software Engineer",
             bio="Aspiring CS student with expertise in AI, data engineering, and software solutions.",
             img_path="/static/images/ryosketch-1.png"
@@ -65,8 +65,8 @@ def seed_data():
                 "title": "Software Engineer Intern",
                 "subtitle": "American Honda Motor Company, Inc.",
                 "term": "June 2024 - August 2024",
-                "short_description": "Conducted on-device AI research for automotive applications.",
-                "long_description": (
+                "short_description": "Researched on-device generative AI for automotive applications. Developed and demonstrated AI features on an NVIDIA Jetson Orin Nano 8GB using Linux, CUDA, and Meta's Llama 3 model.",
+                 "long_description": (
                     "Conducted comprehensive research on on-device generative AI, focusing on its potential applications within the automotive industry to enhance vehicle functionalities. Developed and demonstrated applications on an NVIDIA Jetson Orin Nano 8GB using Linux and CUDA, showcasing on-device generative AI capabilities with Meta's Llama 3 model."
                 ),
                 # New arrays:
@@ -304,5 +304,9 @@ if __name__ == '__main__':
     # Ensure the DB file can exist
     if not os.path.exists('local_database.db'):
         open('local_database.db', 'a').close()
+
+    # Call create_tables() explicitly when the app starts
+    with app.app_context():
+        create_tables()
 
     app.run(debug=True)

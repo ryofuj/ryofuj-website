@@ -23,14 +23,26 @@
 .experience-section {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-auto-flow: dense;
   grid-auto-columns: 1fr;
+}
+@media (max-width: 571px) {
+  .experience-section {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1rem;
+  }
+}
+@media (max-width: 975px) {
+  .experience-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
 }
 
 .outer {
   aspect-ratio: 1;
-  overflow-y: auto;
+  overflow-y: clip;
   overflow-x: clip;
 }
 
@@ -415,7 +427,7 @@ img {
   #project-3 { 
     aspect-ratio: unset;
     grid-column: span 1;
-    grid-row: span 2; 
+    grid-row: span 2;
     grid-column-start: 3;
     /* background-color: #9999ff; */
 
