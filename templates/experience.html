@@ -1,11 +1,10 @@
-<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/experience.css') }}"> -->
 <div class="content-container">
   <div class="content-container">
   <div class="experience-section-container">
     <div class="experience-section">
       {% if experiences %}
       {% for exp in experiences %}
-      <div id="project-{{ loop.index }}" class="outer">
+      <div id="project-{{ loop.index }}" class="outer project-item" data-project-id="{{ exp.id }}">
         <div class="experience-image-container">
           <img 
             src="{{ url_for('static', filename='images/' + (exp.main_image or 'default_image.png')) }}" 
@@ -78,3 +77,127 @@
     </div>
   </div>
 </div>
+
+<!-- Project Modal -->
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h2 id="modal-title"></h2>
+      <h3 id="modal-subtitle"></h3>
+      <div id="modal-term"></div>
+    </div>
+    <div class="modal-body">
+      <div id="modal-main-image"></div>
+      <div id="modal-description"></div>
+      <div id="modal-links"></div>
+      <div id="modal-images"></div>
+      <div id="modal-tags"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Store experience data in a JavaScript object for easy access
+  const projectsData = [
+    {% for exp in experiences %}
+    {
+      id: {{ exp.id }},
+      title: "{{ exp.title }}",
+      subtitle: "{{ exp.subtitle }}",
+      term: "{{ exp.term }}",
+      type: "{{ exp.experience_type.name }}",
+      shortDescription: "{{ exp.short_description }}",
+      mainImage: "{{ exp.main_image or 'default_image.png' }}",
+      links: "{{ exp.links or '' }}".split(',').filter(Boolean),
+      linkImages: "{{ exp.link_images or '' }}".split(',').filter(Boolean),
+      images: "{{ exp.images or '' }}".split(',').filter(Boolean),
+      tags: [{% for tag in exp.tags %}"{{ tag.name }}"{% if not loop.last %},{% endif %}{% endfor %}]
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ];
+
+  // Get the modal
+  const modal = document.getElementById("projectModal");
+  const closeBtn = document.querySelector(".close-modal");
+  
+  // Get all project items
+  const projectItems = document.querySelectorAll(".project-item");
+  
+  // Add click event to each project item
+  projectItems.forEach(item => {
+    item.addEventListener("click", function() {
+      const projectId = this.getAttribute("data-project-id");
+      openModal(projectId);
+    });
+  });
+  
+  // Close modal when clicking the close button
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+  
+  // Close modal when clicking outside of modal content
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+  
+  function openModal(projectId) {
+    // Find the project data
+    const project = projectsData.find(p => p.id == projectId);
+    if (!project) return;
+    
+    // Populate modal with project data
+    document.getElementById("modal-title").textContent = project.title;
+    document.getElementById("modal-subtitle").textContent = project.subtitle;
+    document.getElementById("modal-term").textContent = project.term;
+    
+    // Main image
+    document.getElementById("modal-main-image").innerHTML = `
+      <img src="/static/images/${project.mainImage}" alt="${project.title}">
+    `;
+    
+    // Description
+    document.getElementById("modal-description").innerHTML = `
+      <p>${project.shortDescription}</p>
+    `;
+    
+    // Links
+    let linksHTML = '';
+    if (project.links.length) {
+      linksHTML = '<h4>Links</h4><ul>';
+      project.links.forEach(link => {
+        linksHTML += `<li><a href="${link}" target="_blank">${link}</a></li>`;
+      });
+      linksHTML += '</ul>';
+    }
+    document.getElementById("modal-links").innerHTML = linksHTML;
+    
+    // Additional images
+    let imagesHTML = '';
+    if (project.images.length) {
+      imagesHTML = '<h4>Gallery</h4><div class="image-gallery">';
+      project.images.forEach(img => {
+        imagesHTML += `<img src="/static/images/${img}" alt="Project image">`;
+      });
+      imagesHTML += '</div>';
+    }
+    document.getElementById("modal-images").innerHTML = imagesHTML;
+    
+    // Tags
+    let tagsHTML = '';
+    if (project.tags.length) {
+      tagsHTML = '<div class="modal-tags">';
+      project.tags.forEach(tag => {
+        tagsHTML += `<span class="tag">${tag}</span>`;
+      });
+      tagsHTML += '</div>';
+    }
+    document.getElementById("modal-tags").innerHTML = tagsHTML;
+    
+    // Show the modal
+    modal.style.display = "block";
+  }
+</script>
